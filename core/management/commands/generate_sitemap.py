@@ -80,7 +80,7 @@ class Command(BaseCommand):
             model = apps.get_model(model_path)
 
             pages_qs = (
-                model.objects.live().public().exclude(depth=1)
+                model.objects.live().exclude(depth=1)
                 # .only(
                 #     "id",
                 #     "url_path",

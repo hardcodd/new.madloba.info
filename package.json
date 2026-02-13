@@ -1,7 +1,7 @@
 {
-	"name": "new.madloba.info",
+	"name": "madloba",
 	"version": "1.0.0",
-	"description": "new.madloba.info",
+	"description": "madloba",
 	"private": true,
 	"scripts": {
 		"dev": "webpack serve --mode development",

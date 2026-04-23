@@ -29,4 +29,7 @@ flake8-requirements.txt
 logs/
 
 export_catalog.py
+import_reviews.py
+redirect.py
+update_catalog.py
 *.csv

@@ -1,8 +1,9 @@
-{% load i18n %}
+{% load i18n core %}
 
 <div id="org-map-wrapper" class="map-wrapper ratio">
   <!-- Static map preview -->
-  <img id="org-map-static" class="map-static" src="https://maps.googleapis.com/maps/api/staticmap?center={{ page.ll }}&zoom=15&size=800x400&markers={{ page.ll }}&key={{ GOOGLE_MAPS_API_KEY }}" alt="Location map" />
+	{% get_static_map page as static_map_src %}
+	<img id="org-map-static" class="map-static" src="{{ static_map_src }}" alt="Location map" />
 
   <!-- Overlay with text -->
   <div class="map-overlay">

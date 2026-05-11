@@ -25,6 +25,7 @@ import "./components/cookie-consent";
 import "./components/comments";
 import "./components/contact-tabs";
 import "./components/blog-post";
+import "./components/gallery";
 
 // Pages
 import "./map-page";

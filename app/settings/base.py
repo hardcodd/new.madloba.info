@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     "authors",
     "comments",
     "ratings",
+    "gallery",
     "search",
 ]
 

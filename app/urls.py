@@ -50,6 +50,7 @@ urlpatterns += i18n_patterns(
     path("search/", search_views.search, name="search"),
     path("catalog/", include("catalog.urls"), name="catalog"),
     path("comments/", include("comments.urls", namespace="comments")),
+    path("gallery/", include("gallery.urls", namespace="gallery")),
     path("", include(wagtail_urls)),
     prefix_default_language=False,
 )

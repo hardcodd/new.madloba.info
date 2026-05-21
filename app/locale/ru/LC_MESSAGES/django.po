@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-21 21:14+0700\n"
-"PO-Revision-Date: 2026-05-21 21:30+0400\n"
+"PO-Revision-Date: 2026-05-21 21:49+0400\n"
 "Last-Translator: Alex Shubenkin <shubenkin.alexander@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -707,7 +707,7 @@ msgstr ""
 
 #: catalog/templates/catalog/organization_page.html:79
 msgid "Call"
-msgstr ""
+msgstr "Позвонить"
 
 #: catalog/templates/catalog/organization_page.html:89
 msgid "Build a route"

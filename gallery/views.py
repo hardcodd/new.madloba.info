@@ -1,10 +1,7 @@
-import json
-
-from django.core.serializers import serialize
 from django.http import Http404, JsonResponse
 from django.template.loader import render_to_string
 
-from gallery.models import GalleryImage, GalleryPostPage
+from gallery.models import GalleryPostPage
 from gallery.services import get_gallery_images_service
 
 

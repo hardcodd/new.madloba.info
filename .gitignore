@@ -33,3 +33,5 @@ import_reviews.py
 redirect.py
 update_catalog.py
 *.csv
+/*/migrations/
+/import_comments.py

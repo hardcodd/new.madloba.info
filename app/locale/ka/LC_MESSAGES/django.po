@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 18:16+0700\n"
-"PO-Revision-Date: 2026-05-01 18:17+0400\n"
+"POT-Creation-Date: 2026-05-21 21:14+0700\n"
+"PO-Revision-Date: 2026-05-21 21:26+0400\n"
 "Last-Translator: Alex Shubenkin <shubenkin.alexander@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -160,11 +160,6 @@ msgstr "გასვლა"
 msgid "Sign In"
 msgstr "შესვლა"
 
-#: app/templates/includes/logo.html:14
-#, python-format
-msgid "All about %(site_name)s"
-msgstr "ყველაფერი %(site_name)s შესახებ"
-
 #: app/templates/includes/pagination.html:15
 msgid "First page"
 msgstr "პირველი გვერდი"
@@ -232,61 +227,82 @@ msgstr ""
 msgid "Post:"
 msgstr ""
 
-#: blog/blocks.py:15
+#: blog/blocks.py:16
 msgid "Blog post"
 msgstr ""
 
-#: blog/blocks.py:20 blog/blocks.py:33 blog/blocks.py:46 catalog/blocks.py:20
+#: blog/blocks.py:21 blog/blocks.py:34 blog/blocks.py:47 catalog/blocks.py:20
 #: catalog/blocks.py:33 catalog/blocks.py:46
 msgid "Count"
 msgstr ""
 
-#: blog/blocks.py:23
+#: blog/blocks.py:24
 #, fuzzy
 #| msgid "By categories"
 msgid "Blog category page"
 msgstr "კატეგორიების მიხედვით"
 
-#: blog/blocks.py:28
+#: blog/blocks.py:29
 msgid "Latest blog posts from category"
 msgstr ""
 
-#: blog/blocks.py:36
+#: blog/blocks.py:37
 msgid "Blog index page"
 msgstr ""
 
-#: blog/blocks.py:41
+#: blog/blocks.py:42
 msgid "Latest blog posts"
 msgstr ""
 
-#: blog/blocks.py:49 catalog/blocks.py:49
+#: blog/blocks.py:50 catalog/blocks.py:49
 msgid "Parent page"
 msgstr ""
 
-#: blog/blocks.py:55 catalog/blocks.py:55
+#: blog/blocks.py:56 catalog/blocks.py:55
 msgid "Paginated organizations"
 msgstr ""
 
-#: blog/models.py:23 blog/models.py:38
+#: blog/blocks.py:61 blog/blocks.py:65
+msgid "Gallery"
+msgstr ""
+
+#: blog/models.py:26 blog/models.py:41
 msgid "Subtitle"
 msgstr ""
 
-#: blog/models.py:82 catalog/models.py:152 catalog/models.py:515
+#: blog/models.py:85 catalog/models.py:152 catalog/models.py:515
 #: catalog/models.py:523 core/blocks.py:111 core/blocks.py:122
 #: core/blocks.py:139 core/blocks.py:150 core/blocks.py:209 core/blocks.py:302
-#: home/models.py:20 reviews/models.py:89 reviews/models.py:97
+#: gallery/models.py:67 gallery/models.py:75 home/models.py:20
+#: reviews/models.py:89 reviews/models.py:97
 msgid "Image"
 msgstr "გამოსახულება"
 
-#: blog/models.py:87 catalog/models.py:101 catalog/models.py:159
+#: blog/models.py:90 catalog/models.py:101 catalog/models.py:159
 #: core/blocks.py:301 home/models.py:26 home/models.py:58 home/models.py:88
 msgid "Text"
 msgstr "ტექსტი"
 
-#: blog/models.py:96 catalog/models.py:108 catalog/models.py:166
+#: blog/models.py:100 catalog/models.py:108 catalog/models.py:166
 #: core/blocks.py:162 home/models.py:35 home/models.py:67 home/models.py:97
 #: home/models.py:116
 msgid "Content"
+msgstr ""
+
+#: blog/models.py:138 catalog/models.py:413 catalog/models.py:454
+#: catalog/models.py:524 gallery/models.py:53 gallery/models.py:76
+#: reviews/models.py:70 reviews/models.py:98
+msgid "Images"
+msgstr "სურათები"
+
+#: blog/models.py:153
+#, fuzzy
+#| msgid "By categories"
+msgid "Blog gallery"
+msgstr "კატეგორიების მიხედვით"
+
+#: blog/models.py:154
+msgid "Blog galleries"
 msgstr ""
 
 #: blog/templates/blog/includes/categories_widget.html:11
@@ -408,11 +424,11 @@ msgid "Separate multiple phone numbers with a comma."
 msgstr ""
 
 #: catalog/models.py:278 catalog/templates/catalog/organization_page.html:176
-#: core/models.py:70 home/models.py:129
+#: core/models.py:72 home/models.py:129
 msgid "Social networks"
 msgstr "სოციალური ქსელები"
 
-#: catalog/models.py:279 core/models.py:71 home/models.py:130
+#: catalog/models.py:279 core/models.py:73 home/models.py:130
 msgid "Enter one social network link per line."
 msgstr ""
 
@@ -499,11 +515,6 @@ msgstr "აჩვენე ეს ორგანიზაცია რუკა
 msgid "The organization is located in building of another organization."
 msgstr "ორგანიზაცია განთავსებულია სხვა ორგანიზაციის შენობაში."
 
-#: catalog/models.py:413 catalog/models.py:454 catalog/models.py:524
-#: reviews/models.py:70 reviews/models.py:98
-msgid "Images"
-msgstr "სურათები"
-
 #: catalog/models.py:427 catalog/models.py:455 catalog/models.py:570
 #: catalog/models.py:591
 msgid "Rewards"
@@ -550,7 +561,7 @@ msgstr "ჯილდო"
 #: catalog/models.py:599 catalog/models.py:617 core/blocks.py:82
 #: core/blocks.py:92 core/blocks.py:110 core/blocks.py:121 core/blocks.py:137
 #: core/blocks.py:148 core/blocks.py:176 core/blocks.py:205 core/blocks.py:267
-#: core/blocks.py:286 core/blocks.py:316 core/models.py:272 home/models.py:112
+#: core/blocks.py:286 core/blocks.py:316 core/models.py:275 home/models.py:112
 msgid "Title"
 msgstr "სათაური"
 
@@ -612,7 +623,7 @@ msgstr ""
 
 #: catalog/services.py:293 catalog/services.py:313
 msgid "Closed"
-msgstr ""
+msgstr "დახურულია"
 
 #: catalog/services.py:301
 msgid "Open 24 hours"
@@ -655,7 +666,7 @@ msgstr "განახლებულია:"
 msgid "Temporarily Closed"
 msgstr "დროებით დაკეტილია"
 
-#: catalog/templates/catalog/includes/organization-map.html:9
+#: catalog/templates/catalog/includes/organization-map.html:10
 msgid "Click to load interactive map"
 msgstr "დააწკაპუნეთ ინტერაქტიული რუკის ჩასატვირთად"
 
@@ -702,7 +713,7 @@ msgstr ""
 
 #: catalog/templates/catalog/organization_page.html:138
 msgid "Official website"
-msgstr ""
+msgstr "ოფიციალური ვებსაიტი"
 
 #: catalog/templates/catalog/organization_page.html:159
 msgid "E-mail"
@@ -710,7 +721,7 @@ msgstr ""
 
 #: catalog/templates/catalog/organization_page.html:192
 msgid "Coords and Plus Code"
-msgstr ""
+msgstr "კოორდინატები და პლუს კოდი"
 
 #: catalog/templates/catalog/organization_page.html:196
 msgid "Copy coords"
@@ -722,7 +733,7 @@ msgstr "პლუს კოდის კოპირება"
 
 #: catalog/templates/catalog/organization_page.html:224
 msgid "They speak languages"
-msgstr ""
+msgstr "ისინი ენებზე საუბრობენ"
 
 #: catalog/templates/catalog/organization_page.html:283
 #: catalog/templates/catalog/organization_type_map.html:6
@@ -732,7 +743,7 @@ msgstr "რუკაზე"
 
 #: catalog/templates/catalog/organization_page.html:284
 msgid "Free audit maps"
-msgstr ""
+msgstr "უფასო აუდიტის რუკები"
 
 #: catalog/templates/catalog/organization_type_map.html:17
 msgid "near me in"
@@ -933,7 +944,7 @@ msgstr ""
 #: comments/templates/comments/form.html:24
 #: reviews/templates/reviews/reviews-form.html:33
 msgid "Send"
-msgstr ""
+msgstr "გაგზავნა"
 
 #: comments/templates/comments/form.html:31
 msgid "Log in to leave a comment"
@@ -1164,115 +1175,115 @@ msgstr ""
 msgid "Section with cards"
 msgstr ""
 
-#: core/models.py:34
+#: core/models.py:36
 msgid "Site logo"
 msgstr ""
 
-#: core/models.py:35
+#: core/models.py:37
 msgid "The logo of the site."
 msgstr ""
 
-#: core/models.py:44
+#: core/models.py:46
 msgid "Mobile logo"
 msgstr ""
 
-#: core/models.py:45
+#: core/models.py:47
 msgid "The logo of the site for mobile devices."
 msgstr ""
 
-#: core/models.py:54
+#: core/models.py:56
 msgid "Default organization image"
 msgstr ""
 
-#: core/models.py:55
+#: core/models.py:57
 msgid "The default image for organizations."
 msgstr ""
 
-#: core/models.py:64
+#: core/models.py:66
 msgid "Flag"
 msgstr "დროშა"
 
-#: core/models.py:65
+#: core/models.py:67
 msgid "Flag for hero banner on home page."
 msgstr ""
 
-#: core/models.py:77
+#: core/models.py:79
 msgid "Content source"
 msgstr ""
 
-#: core/models.py:78
+#: core/models.py:80
 msgid "Source of the content displayed on the site."
 msgstr ""
 
-#: core/models.py:84
+#: core/models.py:86
 #, fuzzy
 #| msgid "Footer code"
 msgid "Footer text"
 msgstr "ქვედა კოდექსი"
 
-#: core/models.py:85
+#: core/models.py:87
 msgid "Text displayed in the footer of the site."
 msgstr ""
 
-#: core/models.py:89
+#: core/models.py:91
 #, fuzzy
 #| msgid "Footer code"
 msgid "Footer script"
 msgstr "ქვედა კოდექსი"
 
-#: core/models.py:91
+#: core/models.py:93
 #, fuzzy
 #| msgid "Footer code"
 msgid "Footer scripts"
 msgstr "ქვედა კოდექსი"
 
-#: core/models.py:92
+#: core/models.py:94
 msgid "Scripts added here will be included in the footer of the site."
 msgstr ""
 
-#: core/models.py:98
+#: core/models.py:100
 msgid "Ad button text"
 msgstr ""
 
-#: core/models.py:99
+#: core/models.py:101
 msgid "Text for the ad button displayed in the header."
 msgstr ""
 
-#: core/models.py:105
+#: core/models.py:107
 #, fuzzy
 #| msgid "Add organization"
 msgid "Ad button caption"
 msgstr "დაამატეთ ორგანიზაცია"
 
-#: core/models.py:106
+#: core/models.py:108
 msgid "Caption for the ad button displayed in the header."
 msgstr ""
 
-#: core/models.py:111
+#: core/models.py:113
 msgid "Ad button URL"
 msgstr ""
 
-#: core/models.py:112
+#: core/models.py:114
 msgid "URL for the ad button displayed in the header."
 msgstr ""
 
-#: core/models.py:130
+#: core/models.py:133
 msgid "Site settings"
 msgstr ""
 
-#: core/models.py:147
+#: core/models.py:150
 msgid "Robots.txt content"
 msgstr ""
 
-#: core/models.py:148
+#: core/models.py:151
 msgid "Content of the robots.txt file."
 msgstr ""
 
-#: core/models.py:156
+#: core/models.py:159
 msgid "Robots.txt"
 msgstr ""
 
-#: core/models.py:169
+#: core/models.py:172
 msgid ""
 "Add external code snippets e.g. Google Analytics, Facebook Pixel, etc... to "
 "the header, body, or footer of your site."
@@ -1280,75 +1291,75 @@ msgstr ""
 "დაამატეთ გარე კოდის ფრაგმენტები, მაგ. Google Analytics, Facebook Pixel და "
 "ა.შ.. თქვენი საიტის სათაურში, ძირში ან ქვედაბოლოში."
 
-#: core/models.py:176
+#: core/models.py:179
 msgid "Header code"
 msgstr "სათაურის კოდი"
 
-#: core/models.py:182
+#: core/models.py:185
 msgid "Body code"
 msgstr "სხეულის კოდი"
 
-#: core/models.py:188
+#: core/models.py:191
 msgid "Footer code"
 msgstr "ქვედა კოდექსი"
 
-#: core/models.py:203
+#: core/models.py:206
 msgid "External code"
 msgstr "გარე კოდი"
 
-#: core/models.py:219
+#: core/models.py:222
 msgid "404 Page Title"
 msgstr ""
 
-#: core/models.py:220
+#: core/models.py:223
 msgid "Title displayed on the 404 Not Found page."
 msgstr ""
 
-#: core/models.py:224
+#: core/models.py:227
 msgid "404 Page Description"
 msgstr ""
 
-#: core/models.py:225
+#: core/models.py:228
 msgid "Description displayed on the 404 Not Found page."
 msgstr ""
 
-#: core/models.py:233
+#: core/models.py:236
 msgid "404 Page Image"
 msgstr ""
 
-#: core/models.py:234
+#: core/models.py:237
 msgid "Image displayed on the 404 Not Found page."
 msgstr ""
 
-#: core/models.py:242
+#: core/models.py:245
 msgid "404 Page Cards"
 msgstr ""
 
-#: core/models.py:249
+#: core/models.py:252
 msgid "404 Page Banner"
 msgstr ""
 
-#: core/models.py:262
+#: core/models.py:265
 msgid "Page 404"
 msgstr ""
 
-#: core/models.py:273
+#: core/models.py:276
 msgid "Links"
 msgstr ""
 
-#: core/models.py:280
+#: core/models.py:283
 msgid "Navigations"
 msgstr ""
 
-#: core/models.py:290
+#: core/models.py:293
 msgid "Navigation"
 msgstr ""
 
-#: core/models.py:295 core/models.py:296
+#: core/models.py:298 core/models.py:299
 msgid "Footer"
 msgstr ""
 
-#: core/models.py:304
+#: core/models.py:307
 msgid "There can be only one footer instance."
 msgstr ""
 
@@ -1363,6 +1374,12 @@ msgstr "მარცხნივ გასწორებული"
 #: core/wagtail_hooks.py:101
 msgid "Right-aligned"
 msgstr "მარჯვნივ გასწორებული"
+
+#: gallery/templates/gallery/gallery_post_page.html:30
+#, fuzzy
+#| msgid "Show"
+msgid "Show more"
+msgstr "ჩვენება"
 
 #: home/models.py:21
 msgid "Main image for the home page."
@@ -1535,6 +1552,10 @@ msgstr ""
 #: subscription/views.py:33
 msgid "Subscriptions"
 msgstr ""
+
+#, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "ყველაფერი %(site_name)s შესახებ"
 
 #~ msgid "Find out all the benefits of premium placement in our catalog."
 #~ msgstr "გაიგეთ პრემიუმ განთავსების ყველა უპირატესობა ჩვენს კატალოგში."

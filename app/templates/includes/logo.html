@@ -10,8 +10,7 @@
         <img class="hidden-xl-u logo--mobile" src="{{ logo_mobile.url|default:logo.url }}" alt="Madloba">
       </div>
       <p class="logo__text hidden-lg-d">
-        {% wagtail_site as current_site %}
-        {% blocktrans with site_name=current_site.site_name %}All about {{ site_name }}{% endblocktrans %}
+        {{ settings.core.SiteSettings.slogan }}
       </p>
     </a>
   {% endif %}

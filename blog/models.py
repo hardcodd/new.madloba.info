@@ -4,10 +4,13 @@ from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase
-from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
 from wagtail.fields import StreamField
-from wagtail.models import Page, ParentalKey
+from wagtail.models import Page, ParentalKey, Orderable
+from wagtail.snippets.models import register_snippet
+from blog import blocks as blog_blocks
 
 from core import blocks
 from core.panels import Panels
@@ -91,6 +94,7 @@ class BlogPostPage(Panels, Page):
             ("html", blocks.HTMLBlock()),
             ("reviews", blocks.ReviewsBlock()),
             ("video", blocks.VideoBlock()),
+            ("gallery", blog_blocks.GalleryBlock()),
         ],
         blank=True,
         verbose_name=_("Content"),
@@ -109,6 +113,7 @@ class BlogPostPage(Panels, Page):
     def get_image(self):
         if self.image:
             return self.image
+        return None
 
     def save(self, *args, **kwargs):
         languages = getattr(settings, "LANGUAGES", ["en"])
@@ -123,3 +128,38 @@ class BlogPostPage(Panels, Page):
             cache.delete(key)
 
         return super().save(*args, **kwargs)
+
+
+@register_snippet
+class BlogGallery(ClusterableModel):
+    title = models.CharField(max_length=255)
+    panels = [
+        FieldPanel("title"),
+        MultipleChooserPanel("images", heading=_("Images"), chooser_field_name="image"),
+    ]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        cache.delete(make_template_fragment_key("blog-gallery-block", [self.pk]))
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        cache.delete(make_template_fragment_key("blog-gallery-block", [self.pk]))
+
+    class Meta:
+        verbose_name = _("Blog gallery")
+        verbose_name_plural = _("Blog galleries")
+
+
+class BlogGalleryItem(Orderable):
+    gallery = ParentalKey(BlogGallery, on_delete=models.CASCADE, related_name="images")
+    image = models.ForeignKey(
+        "wagtailimages.Image", on_delete=models.CASCADE, related_name="+"
+    )
+
+    panels = [
+        FieldPanel("image"),
+    ]

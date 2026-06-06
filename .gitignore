@@ -30,8 +30,10 @@ logs/
 
 export_catalog.py
 import_reviews.py
+export_organizations.py
 redirect.py
 update_catalog.py
 *.csv
 /*/migrations/
-/import_comments.py
+import_comments.py
+update_blog.py

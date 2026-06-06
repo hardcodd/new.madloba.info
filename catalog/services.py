@@ -12,12 +12,13 @@ from core.utils import is_catalog_city, is_page, paginate
 def get_working_hours_service(organization: Organization) -> str:
     """Render working hours for the organization."""
 
-    def format_time(value):
+    def format_time(time_value):
         """Return time in 00:00 format."""
-        if isinstance(value, time):
-            return value.strftime("%H:%M")
-        elif isinstance(value, str):
-            return value
+        if isinstance(time_value, time):
+            return time_value.strftime("%H:%M")
+        elif isinstance(time_value, str):
+            return time_value
+        return None
 
     def get_day_name(day_index: int) -> str:
         """Return day name for a given index."""
@@ -36,7 +37,7 @@ def get_working_hours_service(organization: Organization) -> str:
         """Append the formatted result to the result string."""
         if first_day == last_day:
             if start and end and start == "00:00" and end == "23:59":
-                day_str = f"{first_day}: Open 24 hours"
+                day_str = f"{first_day}: {_('Open 24 hours')}"
             elif start and end:
                 day_str = f"{first_day}: {start}–{end}"
             elif start:
@@ -49,7 +50,7 @@ def get_working_hours_service(organization: Organization) -> str:
                 day_str = first_day
         else:
             if start and end and start == "00:00" and end == "23:59":
-                day_str = f"{first_day}–{last_day}: Open 24 hours"
+                day_str = f"{first_day}–{last_day}: {_('Open 24 hours')}"
             elif start and end:
                 day_str = f"{first_day}–{last_day}: {start}–{end}"
             elif holiday:
@@ -236,7 +237,7 @@ def get_latest_organizations_service(parent=None, count=4):
 def get_paginated_organizations_service(context, parent=None, count=16):
     """Return paginated organizations"""
     request = context.get("request")
-    qs = Organization.objects.live()
+    qs = Organization.objects.live().defer_streamfields()
     if parent:
         qs = qs.descendant_of(parent)
     return paginate(request, qs, count)
@@ -290,7 +291,7 @@ def get_organization_status_service(organization: Organization):
         found_today = True
 
         if value.get("holiday"):
-            return _("Closed")
+            return {"code": "closed", "status": _("Closed")}
 
         start_t = _to_time(value.get("start"))
         end_t = _to_time(value.get("end"))
@@ -298,17 +299,19 @@ def get_organization_status_service(organization: Organization):
 
         # 24 часа
         if start_t == dtime(0, 0) and end_t in (dtime(23, 59), dtime(23, 59, 59)):
-            return _("Open 24 hours")
+            return {"code": "open", "status": _("Open 24 hours")}
 
         if _in_range(now_t, start_t, end_t):
             if last_client and (end_t is None or now_t <= end_t):
-                return _("Open until the last client")
+                return {"code": "open", "status": _("Open until the last client")}
             if end_t:
-                return _("Open until %(time)s") % {
-                    "time": to_12h(end_t.strftime("%H:%M"))
+                return {
+                    "code": "open",
+                    "status": _("Open until %(time)s")
+                    % {"time": to_12h(end_t.strftime("%H:%M"))},
                 }
-            return _("Open")
+            return {"code": "open", "status": _("Open")}
 
     if found_today:
-        return _("Closed")
-    return _("Unknown")
+        return {"code": "closed", "status": _("Closed")}
+    return {"code": "unknown", "status": _("Unknown")}

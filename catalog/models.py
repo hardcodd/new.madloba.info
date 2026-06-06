@@ -1,5 +1,6 @@
 from django import forms
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
@@ -50,29 +51,17 @@ class Language(models.Model):
 
 class OrganizationManager(PageManager):
     def get_queryset(self):
-        images = OrganizationImage.objects.filter(page=OuterRef("pk"))
         queryset = (
-            (
-                super()
-                .get_queryset()
-                .select_related(
-                    "premium_subscription",
-                )
-                .prefetch_related(
-                    "images",
-                    "rewards",
-                )
-            )
+            super()
+            .get_queryset()
             .annotate(
                 subscription_priority=models.F("premium_subscription__level"),
-                has_images=Exists(images),
             )
             .order_by(
                 "temporarily_closed",
                 F("subscription_priority").desc(nulls_last=True),
                 "-avg_rating_weight",
                 "-rating_score",
-                F("has_images").desc(),
                 "-first_published_at",
             )
         )
@@ -372,6 +361,11 @@ class Organization(Page):
         verbose_name=_("Q&A"),
     )
 
+    reviews = GenericRelation(
+        "reviews.Review",
+        related_query_name="organization",
+    )
+
     content_panels = [
         TitleFieldPanel("h1_title"),
         TitleFieldPanel("title", targets=["slug"]),
@@ -473,6 +467,12 @@ class Organization(Page):
             ],
         ),
     ]
+
+    def organization_type(self):
+        return self.get_parent().title
+
+    def city(self):
+        return self.get_parent().get_parent().title
 
     @property
     def get_image(self):

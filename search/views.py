@@ -17,7 +17,7 @@ def search(request):
 
     # Search
     if search_query:
-        search_results = Page.objects.live().search(search_query)
+        search_results = Page.objects.live().defer_streamfields().search(search_query)
 
         # To log this query for use with the "Promoted search results" module:
 

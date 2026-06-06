@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-21 21:14+0700\n"
-"PO-Revision-Date: 2026-05-21 21:26+0400\n"
+"POT-Creation-Date: 2026-06-05 18:14+0700\n"
+"PO-Revision-Date: 2026-06-04 16:29+0400\n"
 "Last-Translator: Alex Shubenkin <shubenkin.alexander@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -379,7 +379,7 @@ msgstr "გრძედი და გრძედი"
 msgid "Mark this city as popular."
 msgstr "მონიშნეთ ეს ქალაქი პოპულარულად."
 
-#: catalog/models.py:137 catalog/views.py:78
+#: catalog/models.py:137 catalog/views.py:98
 msgid "Cities"
 msgstr "ქალაქები"
 
@@ -423,7 +423,7 @@ msgstr ""
 msgid "Separate multiple phone numbers with a comma."
 msgstr ""
 
-#: catalog/models.py:278 catalog/templates/catalog/organization_page.html:176
+#: catalog/models.py:278 catalog/templates/catalog/organization_page.html:177
 #: core/models.py:72 home/models.py:129
 msgid "Social networks"
 msgstr "სოციალური ქსელები"
@@ -460,7 +460,7 @@ msgstr "სამუშაო საათები"
 msgid "Temporarily closed"
 msgstr "დროებით დახურულია"
 
-#: catalog/models.py:308 catalog/views.py:129
+#: catalog/models.py:308 catalog/views.py:149
 msgid "Languages"
 msgstr "ენები"
 
@@ -487,7 +487,7 @@ msgid "Located in"
 msgstr "მდებარეობს ქ"
 
 #: catalog/models.py:350 catalog/models.py:655
-#: catalog/templates/catalog/organization_page.html:57 catalog/views.py:121
+#: catalog/templates/catalog/organization_page.html:57 catalog/views.py:141
 msgid "Service types"
 msgstr "მომსახურების ტიპები"
 
@@ -549,7 +549,7 @@ msgid "Promote"
 msgstr "დაწინაურება"
 
 #: catalog/models.py:486 catalog/templates/catalog/organizations.html:23
-#: catalog/views.py:93
+#: catalog/views.py:113
 msgid "Organizations"
 msgstr "ორგანიზაციები"
 
@@ -569,7 +569,7 @@ msgstr "სათაური"
 msgid "Service type category"
 msgstr ""
 
-#: catalog/models.py:607 catalog/views.py:100
+#: catalog/models.py:607 catalog/views.py:120
 msgid "Service type categories"
 msgstr ""
 
@@ -585,68 +585,69 @@ msgstr ""
 msgid "Service type"
 msgstr ""
 
-#: catalog/services.py:25
+#: catalog/services.py:26
 msgid "Mon"
 msgstr "ორშ"
 
-#: catalog/services.py:26
+#: catalog/services.py:27
 msgid "Tue"
 msgstr "სამ"
 
-#: catalog/services.py:27
+#: catalog/services.py:28
 msgid "Wed"
 msgstr "ოთხ"
 
-#: catalog/services.py:28
+#: catalog/services.py:29
 msgid "Thu"
 msgstr "ხუთ"
 
-#: catalog/services.py:29
+#: catalog/services.py:30
 msgid "Fri"
 msgstr "პარ"
 
-#: catalog/services.py:30
+#: catalog/services.py:31
 msgid "Sat"
 msgstr "შაბ"
 
-#: catalog/services.py:31
+#: catalog/services.py:32
 msgid "Sun"
 msgstr "კვი"
 
-#: catalog/services.py:47 catalog/services.py:56 core/blocks.py:57
+#: catalog/services.py:40 catalog/services.py:53 catalog/services.py:302
+msgid "Open 24 hours"
+msgstr "ღიაა 24 საათის განმავლობაში"
+
+#: catalog/services.py:48 catalog/services.py:57 core/blocks.py:57
 msgid "Holiday"
 msgstr "დღესასწაული"
 
-#: catalog/services.py:86 catalog/services.py:88 core/blocks.py:70
+#: catalog/services.py:87 catalog/services.py:89 core/blocks.py:70
 msgid "Until the last client"
 msgstr ""
 
-#: catalog/services.py:293 catalog/services.py:313
+#: catalog/services.py:294 catalog/services.py:316
 msgid "Closed"
 msgstr "დახურულია"
 
-#: catalog/services.py:301
-msgid "Open 24 hours"
-msgstr ""
-
-#: catalog/services.py:305
+#: catalog/services.py:306
 msgid "Open until the last client"
 msgstr ""
 
-#: catalog/services.py:307
+#: catalog/services.py:310
 #, python-format
 msgid "Open until %(time)s"
 msgstr "ღიაა %(time)s საათამდე"
 
-#: catalog/services.py:310
+#: catalog/services.py:313
 msgid "Open"
 msgstr "გახსნა"
 
-#: catalog/services.py:314
+#: catalog/services.py:317
 msgid "Unknown"
 msgstr "უცნობი"
 
 #: catalog/templates/catalog/admin/import_example.html:10
+#: catalog/templates/catalog/admin/update_example.html:10
 msgid "All possible fields"
 msgstr ""
 
@@ -705,8 +706,8 @@ msgstr "ჩვენება"
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
 msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them"
-" to work better, knowing you can leave a review."
+"Tell the company you found their number on %(site_name)s — it motivates them "
+"to work better, knowing you can leave a review."
 msgstr ""
 "უთხარით კომპანიას, რომ მათი ნომერი იპოვეთ %(site_name)s — ეს მათ მოტივაციას "
 "აძლევს, უკეთ იმუშაონ, რადგან იციან, რომ შეგიძლიათ დატოვოთ შეფასება."
@@ -719,29 +720,29 @@ msgstr "ოფიციალური ვებსაიტი"
 msgid "E-mail"
 msgstr ""
 
-#: catalog/templates/catalog/organization_page.html:192
+#: catalog/templates/catalog/organization_page.html:193
 msgid "Coords and Plus Code"
 msgstr "კოორდინატები და პლუს კოდი"
 
-#: catalog/templates/catalog/organization_page.html:196
+#: catalog/templates/catalog/organization_page.html:197
 msgid "Copy coords"
 msgstr "კოორდინატების კოპირება"
 
-#: catalog/templates/catalog/organization_page.html:209
+#: catalog/templates/catalog/organization_page.html:210
 msgid "Copy plus code"
 msgstr "პლუს კოდის კოპირება"
 
-#: catalog/templates/catalog/organization_page.html:224
+#: catalog/templates/catalog/organization_page.html:225
 msgid "They speak languages"
 msgstr "ისინი ენებზე საუბრობენ"
 
-#: catalog/templates/catalog/organization_page.html:283
+#: catalog/templates/catalog/organization_page.html:288
 #: catalog/templates/catalog/organization_type_map.html:6
 #: catalog/templates/catalog/organization_type_map.html:10
 msgid "on map"
 msgstr "რუკაზე"
 
-#: catalog/templates/catalog/organization_page.html:284
+#: catalog/templates/catalog/organization_page.html:291
 msgid "Free audit maps"
 msgstr "უფასო აუდიტის რუკები"
 
@@ -769,27 +770,37 @@ msgstr ""
 msgid "[[By address]]: "
 msgstr "[[მისამართის მიხედვით]]:"
 
-#: catalog/views.py:86
+#: catalog/views.py:106
 msgid "Organizations types"
 msgstr "ორგანიზაციების ტიპები"
 
-#: catalog/views.py:109
+#: catalog/views.py:129
 msgid "Choose a category"
 msgstr ""
 
-#: catalog/views.py:110
+#: catalog/views.py:130
 msgid "Choose another category"
 msgstr ""
 
-#: catalog/views.py:111
+#: catalog/views.py:131
 msgid "Edit this category"
 msgstr ""
 
-#: catalog/views.py:141
+#: catalog/views.py:161
 msgid "Catalog"
 msgstr "კატალოგი"
 
-#: catalog/views.py:732
+#: catalog/views.py:617
+msgid "Published at"
+msgstr ""
+
+#: catalog/views.py:623
+#, fuzzy
+#| msgid "Updated at:"
+msgid "Updated at"
+msgstr "განახლებულია:"
+
+#: catalog/views.py:756
 msgid "Organizations report"
 msgstr ""
 
@@ -803,8 +814,8 @@ msgid "Publish this %s"
 msgstr ""
 
 #: comments/button.py:31 comments/views.py:196 comments/views.py:199
-#: comments/views.py:211 reviews/views.py:51 reviews/views.py:54
-#: reviews/views.py:66
+#: comments/views.py:211 reviews/views.py:54 reviews/views.py:57
+#: reviews/views.py:69
 msgid "Reject"
 msgstr ""
 
@@ -814,8 +825,8 @@ msgid "Reject this %s"
 msgstr ""
 
 #: comments/button.py:44 comments/templates/comments/comment_published.html:25
-#: comments/views.py:201 comments/views.py:206 reviews/views.py:56
-#: reviews/views.py:61
+#: comments/views.py:201 comments/views.py:206 reviews/views.py:59
+#: reviews/views.py:64
 msgid "Delete"
 msgstr "წაშლა"
 
@@ -829,7 +840,7 @@ msgid "Add comment ..."
 msgstr "კომენტარის დამატება..."
 
 #: comments/models.py:23 comments/views.py:257 reviews/models.py:18
-#: reviews/views.py:22
+#: reviews/views.py:25
 msgid "Published"
 msgstr ""
 
@@ -838,12 +849,12 @@ msgid "On moderation"
 msgstr ""
 
 #: comments/models.py:25 comments/views.py:265 reviews/models.py:19
-#: reviews/views.py:30
+#: reviews/views.py:33
 msgid "Rejected"
 msgstr ""
 
 #: comments/models.py:26 comments/views.py:269 reviews/models.py:20
-#: reviews/views.py:34
+#: reviews/views.py:37
 msgid "Deleted"
 msgstr ""
 
@@ -852,7 +863,7 @@ msgid "Parent"
 msgstr ""
 
 #: comments/models.py:41 comments/models.py:88 comments/models.py:105
-#: comments/views.py:291 reviews/views.py:123
+#: comments/views.py:291 reviews/views.py:126
 msgid "User"
 msgstr ""
 
@@ -967,19 +978,19 @@ msgid "Comment is too short!"
 msgstr ""
 
 #: comments/views.py:194 comments/views.py:204 comments/views.py:209
-#: reviews/views.py:49 reviews/views.py:59 reviews/views.py:64
+#: reviews/views.py:52 reviews/views.py:62 reviews/views.py:67
 msgid "Approve"
 msgstr ""
 
-#: comments/views.py:261 reviews/views.py:26
+#: comments/views.py:261 reviews/views.py:29
 msgid "On Moderation"
 msgstr ""
 
-#: comments/views.py:294 reviews/views.py:126
+#: comments/views.py:294 reviews/views.py:129
 msgid "App"
 msgstr ""
 
-#: comments/views.py:295 reviews/views.py:127
+#: comments/views.py:295 reviews/views.py:130
 msgid "Content Object"
 msgstr ""
 
@@ -1120,7 +1131,7 @@ msgstr ""
 msgid "Rating"
 msgstr ""
 
-#: core/blocks.py:274 core/blocks.py:279 reviews/views.py:116
+#: core/blocks.py:274 core/blocks.py:279 reviews/views.py:119
 msgid "Reviews"
 msgstr "მიმოხილვები"
 
@@ -1375,6 +1386,16 @@ msgstr "მარცხნივ გასწორებული"
 msgid "Right-aligned"
 msgstr "მარჯვნივ გასწორებული"
 
+#: export_organizations.py:76 export_organizations.py:83
+#: export_organizations.py:95
+msgid "Yes"
+msgstr ""
+
+#: export_organizations.py:76 export_organizations.py:83
+#: export_organizations.py:95
+msgid "No"
+msgstr ""
+
 #: gallery/templates/gallery/gallery_post_page.html:30
 #, fuzzy
 #| msgid "Show"
@@ -1469,32 +1490,38 @@ msgstr "გადაათრიეთ და ჩააგდეთ სურა
 msgid "click to upload"
 msgstr "დააწკაპუნეთ ასატვირთად"
 
+#: reviews/templates/reviews/reviews-list.html:13
+#, fuzzy
+#| msgid "Show"
+msgid "Show more reviews"
+msgstr "ჩვენება"
+
 #: reviews/templates/reviews/reviews.html:8
 msgid "Be the first to leave a review"
 msgstr "იყავით პირველი, ვინც დატოვებთ მიმოხილვას"
 
-#: reviews/views.py:151
+#: reviews/views.py:154
 msgid "Invalid content type."
 msgstr ""
 
-#: reviews/views.py:164
+#: reviews/views.py:167
 msgid "You have already submitted a review for this item."
 msgstr ""
 
-#: reviews/views.py:184
+#: reviews/views.py:187
 #, python-format
 msgid "Error saving review: %s"
 msgstr ""
 
-#: reviews/views.py:192
+#: reviews/views.py:195
 msgid "Only .jpg and .jpeg files are allowed."
 msgstr ""
 
-#: reviews/views.py:197
+#: reviews/views.py:200
 msgid "File size must be less than 2MB."
 msgstr ""
 
-#: reviews/views.py:215
+#: reviews/views.py:218
 msgid ""
 "Review submitted successfully. It will be published after admin approval."
 msgstr ""

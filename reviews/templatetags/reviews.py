@@ -1,5 +1,5 @@
 from django import template
-from django.db.models import Avg
+from django.core.paginator import Paginator
 
 from reviews.models import Review, ReviewStatus
 
@@ -18,16 +18,23 @@ def get_reviews_count(page):
     ).count()
 
 
-@register.simple_tag
-def get_reviews(page):
+@register.simple_tag(takes_context=True)
+def get_reviews(context, page):
     """
     Return the reviews for a given page.
     """
-    return Review.objects.filter(
+    request = context.get("request")
+    page_number = request.GET.get("page", 1)
+    page_number = int(page_number)
+
+    reviews = Review.objects.filter(
         content_type=page.content_type,
         object_id=page.pk,
         status=ReviewStatus.PUBLISHED,
     ).order_by("-created_at")
+
+    paginator = Paginator(reviews, 10)
+    return paginator.get_page(page_number)
 
 
 @register.simple_tag

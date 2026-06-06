@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.views import csrf_protect
+from django.core import signing
 from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, reverse
+from django.template.loader import render_to_string
 from django.utils.html import format_html
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
@@ -9,10 +11,11 @@ from django.views.decorators.http import require_POST
 from wagtail.admin.ui.tables import Column, UserColumn
 from wagtail.admin.viewsets.model import ModelViewSet
 from wagtail.images.models import Image
-from wagtail.models import ContentType
+from wagtail.models import ContentType, Page
 
 from core.utils import is_ajax
 from reviews.models import Review, ReviewImage, ReviewStatus
+from reviews.templatetags.reviews import get_reviews
 
 
 class StatusColumn(Column):
@@ -140,7 +143,7 @@ def add_review(request):
 
     images = request.FILES.getlist("images")
     comment = request.POST.get("comment")
-    rating = int(request.POST.get("rating"))
+    rating = int(request.POST.get("rating", 0))
     object_id = request.POST.get("object_id")
 
     try:
@@ -256,3 +259,27 @@ def publish_review(request, review_id):
     review.save()
     back_url = request.META["HTTP_REFERER"]
     return redirect(back_url)
+
+
+def load_more_reviews(request):
+    page_number = request.GET.get("page", 1)
+    page_number = int(page_number)
+    token = request.GET.get("token")
+
+    if not token:
+        return JsonResponse({"error": "Token is required"}, status=400)
+
+    page_pk = signing.loads(token)
+    page = Page.objects.get(pk=page_pk)
+
+    reviews = get_reviews({"page": page, "request": request}, page.specific)
+
+    return JsonResponse(
+        {
+            "reviews": [
+                render_to_string("reviews/review.html", {"review": r})
+                for r in reviews.object_list
+            ],
+            "page_number": page_number + 1 if reviews.has_next() else None,
+        }
+    )

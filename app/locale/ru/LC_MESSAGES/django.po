@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-21 21:14+0700\n"
-"PO-Revision-Date: 2026-05-21 21:49+0400\n"
+"POT-Creation-Date: 2026-06-05 18:14+0700\n"
+"PO-Revision-Date: 2026-06-06 14:56+0400\n"
 "Last-Translator: Alex Shubenkin <shubenkin.alexander@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -353,7 +353,6 @@ msgstr "Создано"
 
 #: blog/templates/blog/post_page.html:22
 #: catalog/templates/catalog/organization_page.html:28
-#| msgid "Updated in a day"
 msgid "Updated at:"
 msgstr "Обновлено"
 
@@ -397,7 +396,7 @@ msgstr "Широта и долгота"
 msgid "Mark this city as popular."
 msgstr "Отметить этот город как популярный."
 
-#: catalog/models.py:137 catalog/views.py:78
+#: catalog/models.py:137 catalog/views.py:98
 msgid "Cities"
 msgstr "Города"
 
@@ -443,7 +442,7 @@ msgstr "Номера телефонов"
 msgid "Separate multiple phone numbers with a comma."
 msgstr ""
 
-#: catalog/models.py:278 catalog/templates/catalog/organization_page.html:176
+#: catalog/models.py:278 catalog/templates/catalog/organization_page.html:177
 #: core/models.py:72 home/models.py:129
 msgid "Social networks"
 msgstr "Социальные сети"
@@ -482,7 +481,7 @@ msgstr "График работы"
 msgid "Temporarily closed"
 msgstr "Временно закрыто"
 
-#: catalog/models.py:308 catalog/views.py:129
+#: catalog/models.py:308 catalog/views.py:149
 msgid "Languages"
 msgstr "Языки"
 
@@ -509,7 +508,7 @@ msgid "Located in"
 msgstr "Располагается в"
 
 #: catalog/models.py:350 catalog/models.py:655
-#: catalog/templates/catalog/organization_page.html:57 catalog/views.py:121
+#: catalog/templates/catalog/organization_page.html:57 catalog/views.py:141
 msgid "Service types"
 msgstr "Типы услуг"
 
@@ -571,7 +570,7 @@ msgid "Promote"
 msgstr "Продвижение"
 
 #: catalog/models.py:486 catalog/templates/catalog/organizations.html:23
-#: catalog/views.py:93
+#: catalog/views.py:113
 msgid "Organizations"
 msgstr "Организации"
 
@@ -591,7 +590,7 @@ msgstr "Заголовок"
 msgid "Service type category"
 msgstr "Категория типа услуги"
 
-#: catalog/models.py:607 catalog/views.py:100
+#: catalog/models.py:607 catalog/views.py:120
 msgid "Service type categories"
 msgstr "Категории типов услуг"
 
@@ -607,72 +606,71 @@ msgstr "Данный тип услуги уже существует в данн
 msgid "Service type"
 msgstr "Тип услуги"
 
-#: catalog/services.py:25
+#: catalog/services.py:26
 msgid "Mon"
 msgstr "Пн"
 
-#: catalog/services.py:26
+#: catalog/services.py:27
 msgid "Tue"
 msgstr "Вт"
 
-#: catalog/services.py:27
+#: catalog/services.py:28
 msgid "Wed"
 msgstr "Ср"
 
-#: catalog/services.py:28
+#: catalog/services.py:29
 msgid "Thu"
 msgstr "Чт"
 
-#: catalog/services.py:29
+#: catalog/services.py:30
 msgid "Fri"
 msgstr "Пт"
 
-#: catalog/services.py:30
+#: catalog/services.py:31
 msgid "Sat"
 msgstr "Сб"
 
-#: catalog/services.py:31
+#: catalog/services.py:32
 msgid "Sun"
 msgstr "Вс"
 
-#: catalog/services.py:47 catalog/services.py:56 core/blocks.py:57
+#: catalog/services.py:40 catalog/services.py:53 catalog/services.py:302
+msgid "Open 24 hours"
+msgstr "Открыто круглосуточно"
+
+#: catalog/services.py:48 catalog/services.py:57 core/blocks.py:57
 #, fuzzy
 #| msgid "Friday"
 msgid "Holiday"
 msgstr "Пятница"
 
-#: catalog/services.py:86 catalog/services.py:88 core/blocks.py:70
+#: catalog/services.py:87 catalog/services.py:89 core/blocks.py:70
 msgid "Until the last client"
 msgstr "До последнего клиента"
 
-#: catalog/services.py:293 catalog/services.py:313
+#: catalog/services.py:294 catalog/services.py:316
 msgid "Closed"
 msgstr "Закрыто"
 
-#: catalog/services.py:301
-msgid "Open 24 hours"
-msgstr ""
-
-#: catalog/services.py:305
-#, fuzzy
-#| msgid "Until the last client"
+#: catalog/services.py:306
 msgid "Open until the last client"
 msgstr "До последнего клиента"
 
-#: catalog/services.py:307
+#: catalog/services.py:310
 #, python-format
 msgid "Open until %(time)s"
-msgstr ""
+msgstr "Открыто до %(time)s"
 
-#: catalog/services.py:310
+#: catalog/services.py:313
 msgid "Open"
 msgstr ""
 
-#: catalog/services.py:314
+#: catalog/services.py:317
 msgid "Unknown"
-msgstr ""
+msgstr "Неизвестно"
 
 #: catalog/templates/catalog/admin/import_example.html:10
+#: catalog/templates/catalog/admin/update_example.html:10
 msgid "All possible fields"
 msgstr ""
 
@@ -689,7 +687,6 @@ msgstr "Обновлено за сутки"
 
 #: catalog/templates/catalog/includes/organization-item.html:45
 #: catalog/templates/catalog/organization_page.html:17
-#| msgid "Temporarily closed"
 msgid "Temporarily Closed"
 msgstr "Временно закрыто"
 
@@ -718,7 +715,6 @@ msgid "E-post"
 msgstr ""
 
 #: catalog/templates/catalog/organization_page.html:104 core/blocks.py:260
-#| msgid "Reviews"
 msgid "Review"
 msgstr "Отзыв"
 
@@ -732,9 +728,6 @@ msgstr "Показать"
 
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
-#| msgid ""
-#| "Tell the company you found their number on Madloba — it motivates them to "
-#| "work better, knowing you can leave a review."
 msgid ""
 "Tell the company you found their number on %(site_name)s — it motivates them"
 " to work better, knowing you can leave a review."
@@ -750,30 +743,29 @@ msgstr "Официальный сайт"
 msgid "E-mail"
 msgstr ""
 
-#: catalog/templates/catalog/organization_page.html:192
+#: catalog/templates/catalog/organization_page.html:193
 msgid "Coords and Plus Code"
 msgstr "Координаты и плюс код"
 
-#: catalog/templates/catalog/organization_page.html:196
+#: catalog/templates/catalog/organization_page.html:197
 msgid "Copy coords"
 msgstr "Копировать координаты"
 
-#: catalog/templates/catalog/organization_page.html:209
+#: catalog/templates/catalog/organization_page.html:210
 msgid "Copy plus code"
 msgstr "Копировать плюс код"
 
-#: catalog/templates/catalog/organization_page.html:224
+#: catalog/templates/catalog/organization_page.html:225
 msgid "They speak languages"
 msgstr "Говорят на языках"
 
-#: catalog/templates/catalog/organization_page.html:283
+#: catalog/templates/catalog/organization_page.html:288
 #: catalog/templates/catalog/organization_type_map.html:6
 #: catalog/templates/catalog/organization_type_map.html:10
-#| msgid "Show on map"
 msgid "on map"
 msgstr "на карте"
 
-#: catalog/templates/catalog/organization_page.html:284
+#: catalog/templates/catalog/organization_page.html:291
 msgid "Free audit maps"
 msgstr "Бесплатный аудит карт"
 
@@ -799,33 +791,42 @@ msgstr "Страница списка организаций."
 
 #: catalog/templates/catalog/organizations.html:21
 msgid "[[By address]]: "
-msgstr ""
+msgstr "[[По адресу]]: "
 
-#: catalog/views.py:86
+#: catalog/views.py:106
 msgid "Organizations types"
 msgstr "Типы организаций"
 
-#: catalog/views.py:109
+#: catalog/views.py:129
 #, fuzzy
 #| msgid "Category"
 msgid "Choose a category"
 msgstr "Категория"
 
-#: catalog/views.py:110
+#: catalog/views.py:130
 msgid "Choose another category"
 msgstr ""
 
-#: catalog/views.py:111
+#: catalog/views.py:131
 #, fuzzy
 #| msgid "Service type category"
 msgid "Edit this category"
 msgstr "Категория типа услуги"
 
-#: catalog/views.py:141
+#: catalog/views.py:161
 msgid "Catalog"
 msgstr "Каталог"
 
-#: catalog/views.py:732
+#: catalog/views.py:617
+msgid "Published at"
+msgstr "Дата публикации"
+
+#: catalog/views.py:623
+#| msgid "Updated at:"
+msgid "Updated at"
+msgstr "Обновлено"
+
+#: catalog/views.py:756
 #, fuzzy
 #| msgid "Organizations list"
 msgid "Organizations report"
@@ -841,8 +842,8 @@ msgid "Publish this %s"
 msgstr ""
 
 #: comments/button.py:31 comments/views.py:196 comments/views.py:199
-#: comments/views.py:211 reviews/views.py:51 reviews/views.py:54
-#: reviews/views.py:66
+#: comments/views.py:211 reviews/views.py:54 reviews/views.py:57
+#: reviews/views.py:69
 msgid "Reject"
 msgstr "Отклонить"
 
@@ -852,8 +853,8 @@ msgid "Reject this %s"
 msgstr ""
 
 #: comments/button.py:44 comments/templates/comments/comment_published.html:25
-#: comments/views.py:201 comments/views.py:206 reviews/views.py:56
-#: reviews/views.py:61
+#: comments/views.py:201 comments/views.py:206 reviews/views.py:59
+#: reviews/views.py:64
 msgid "Delete"
 msgstr "Удалить"
 
@@ -867,7 +868,7 @@ msgid "Add comment ..."
 msgstr ""
 
 #: comments/models.py:23 comments/views.py:257 reviews/models.py:18
-#: reviews/views.py:22
+#: reviews/views.py:25
 msgid "Published"
 msgstr "Опубликовано"
 
@@ -878,12 +879,12 @@ msgid "On moderation"
 msgstr "Модерация"
 
 #: comments/models.py:25 comments/views.py:265 reviews/models.py:19
-#: reviews/views.py:30
+#: reviews/views.py:33
 msgid "Rejected"
 msgstr "Отклонено"
 
 #: comments/models.py:26 comments/views.py:269 reviews/models.py:20
-#: reviews/views.py:34
+#: reviews/views.py:37
 msgid "Deleted"
 msgstr "Удалено"
 
@@ -894,7 +895,7 @@ msgid "Parent"
 msgstr "Следующая страница"
 
 #: comments/models.py:41 comments/models.py:88 comments/models.py:105
-#: comments/views.py:291 reviews/views.py:123
+#: comments/views.py:291 reviews/views.py:126
 msgid "User"
 msgstr "Пользователь"
 
@@ -1023,21 +1024,19 @@ msgid "Comment is too short!"
 msgstr "Текст комментария"
 
 #: comments/views.py:194 comments/views.py:204 comments/views.py:209
-#: reviews/views.py:49 reviews/views.py:59 reviews/views.py:64
+#: reviews/views.py:52 reviews/views.py:62 reviews/views.py:67
 msgid "Approve"
 msgstr ""
 
-#: comments/views.py:261 reviews/views.py:26
-#| msgid "Moderation"
+#: comments/views.py:261 reviews/views.py:29
 msgid "On Moderation"
 msgstr "На модерации"
 
-#: comments/views.py:294 reviews/views.py:126
+#: comments/views.py:294 reviews/views.py:129
 msgid "App"
 msgstr ""
 
-#: comments/views.py:295 reviews/views.py:127
-#| msgid "Content"
+#: comments/views.py:295 reviews/views.py:130
 msgid "Content Object"
 msgstr ""
 
@@ -1186,7 +1185,7 @@ msgstr ""
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: core/blocks.py:274 core/blocks.py:279 reviews/views.py:116
+#: core/blocks.py:274 core/blocks.py:279 reviews/views.py:119
 msgid "Reviews"
 msgstr "Отзывы"
 
@@ -1454,6 +1453,16 @@ msgstr "По левому краю"
 msgid "Right-aligned"
 msgstr "По правому краю"
 
+#: export_organizations.py:76 export_organizations.py:83
+#: export_organizations.py:95
+msgid "Yes"
+msgstr ""
+
+#: export_organizations.py:76 export_organizations.py:83
+#: export_organizations.py:95
+msgid "No"
+msgstr ""
+
 #: gallery/templates/gallery/gallery_post_page.html:30
 #, fuzzy
 #| msgid "Show"
@@ -1560,32 +1569,36 @@ msgstr "Перетащите изображения сюда или"
 msgid "click to upload"
 msgstr "нажмите, чтобы загрузить"
 
+#: reviews/templates/reviews/reviews-list.html:13
+msgid "Show more reviews"
+msgstr "Показать ещё отзывы"
+
 #: reviews/templates/reviews/reviews.html:8
 msgid "Be the first to leave a review"
 msgstr "Оставьте отзыв первым"
 
-#: reviews/views.py:151
+#: reviews/views.py:154
 msgid "Invalid content type."
 msgstr "Недопустимый тип контента."
 
-#: reviews/views.py:164
+#: reviews/views.py:167
 msgid "You have already submitted a review for this item."
 msgstr ""
 
-#: reviews/views.py:184
+#: reviews/views.py:187
 #, python-format
 msgid "Error saving review: %s"
 msgstr "Ошибка при сохранении отзыва: %s"
 
-#: reviews/views.py:192
+#: reviews/views.py:195
 msgid "Only .jpg and .jpeg files are allowed."
 msgstr "Разрешены только файлы .jpg и .jpeg."
 
-#: reviews/views.py:197
+#: reviews/views.py:200
 msgid "File size must be less than 2MB."
 msgstr "Размер файла должен быть менее 2 МБ."
 
-#: reviews/views.py:215
+#: reviews/views.py:218
 msgid ""
 "Review submitted successfully. It will be published after admin approval."
 msgstr ""

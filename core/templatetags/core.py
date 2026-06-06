@@ -7,6 +7,7 @@ from functools import lru_cache
 import requests
 from django import template
 from django.conf import settings
+from django.core import signing
 from django.forms.renderers import get_template
 from django.template.base import mark_safe
 from django.template.exceptions import TemplateDoesNotExist
@@ -389,3 +390,8 @@ def get_static_map(page):
             return local_static_map_url
 
     return src
+
+
+@register.simple_tag(name="signing")
+def signing_page(value):
+    return signing.dumps(value)

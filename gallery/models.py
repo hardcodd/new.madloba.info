@@ -1,17 +1,16 @@
 import json
 
 from django.db import models
-from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import MultipleChooserPanel, FieldPanel
-from wagtail.fields import RichTextField
-from wagtail.models import Page, Orderable
 from django.utils.translation import gettext_lazy as _
+from modelcluster.fields import ParentalKey
+from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
+from wagtail.fields import RichTextField
+from wagtail.models import Orderable, Page
 
 from core.panels import Panels
-from core.utils import is_ajax
 
 
-class GalleryIndexPage(Page):
+class GalleryIndexPage(Panels, Page):
     parent_page_types = ["home.HomePage"]
     subpage_types = ["gallery.GalleryCategoryPage"]
     max_count = 1
@@ -23,7 +22,7 @@ class GalleryIndexPage(Page):
     ]
 
 
-class GalleryCategoryPage(Page):
+class GalleryCategoryPage(Panels, Page):
     parent_page_types = ["gallery.GalleryIndexPage", "gallery.GalleryCategoryPage"]
     subpage_types = ["gallery.GalleryCategoryPage", "gallery.GalleryPostPage"]
 
@@ -42,7 +41,7 @@ class GalleryCategoryPage(Page):
     ]
 
 
-class GalleryPostPage(Page):
+class GalleryPostPage(Panels, Page):
     parent_page_types = ["gallery.GalleryCategoryPage"]
     subpage_types = []
 

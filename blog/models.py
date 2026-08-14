@@ -30,6 +30,10 @@ class BlogIndexPage(Panels, Page):
         FieldPanel("subtitle"),
     ]
 
+    class Meta(Page.Meta):
+        verbose_name = _("Blog index page")
+        verbose_name_plural = _("Blog index pages")
+
 
 class BlogCategoryPage(Panels, Page):
     parent_page_types = ["blog.BlogIndexPage", "blog.BlogCategoryPage"]
@@ -55,6 +59,10 @@ class BlogCategoryPage(Panels, Page):
     content_panels = Panels.content_panels + [
         FieldPanel("subtitle"),
     ]
+
+    class Meta(Page.Meta):
+        verbose_name = _("Blog category page")
+        verbose_name_plural = _("Blog category pages")
 
 
 class BlogTag(TaggedItemBase):
@@ -108,6 +116,10 @@ class BlogPostPage(Panels, Page):
         FieldPanel("tags"),
         FieldPanel("content"),
     ]
+
+    class Meta(Page.Meta):
+        verbose_name = _("Blog post page")
+        verbose_name_plural = _("Blog post pages")
 
     @property
     def get_image(self):

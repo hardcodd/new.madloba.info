@@ -225,6 +225,18 @@
       "publicPath": "/static/madloba-admin.js",
       "sourceFilename": "static/madloba-admin.js"
     },
+    "madloba-export.css": {
+      "name": "madloba-export.css",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/madloba-export.css",
+      "publicPath": "/static/madloba-export.css",
+      "sourceFilename": "static/madloba-export.css"
+    },
+    "madloba-export.js": {
+      "name": "madloba-export.js",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/madloba-export.js",
+      "publicPath": "/static/madloba-export.js",
+      "sourceFilename": "static/madloba-export.js"
+    },
     "madloba-import.js": {
       "name": "madloba-import.js",
       "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/madloba-import.js",

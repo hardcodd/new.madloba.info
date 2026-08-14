@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: core/templates/core/import_pages.html:93
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-05 18:14+0700\n"
+"POT-Creation-Date: 2026-08-14 19:06+0700\n"
 "PO-Revision-Date: 2026-07-28 18:51+0400\n"
 "Last-Translator: Alex Shubenkin <shubenkin.alexander@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,9 +45,7 @@ msgid "Cookie notice"
 msgstr ""
 
 #: app/templates/includes/cookie_consent.html:6
-msgid ""
-"We use cookies to improve your experience, analyze traffic, and personalize "
-"content."
+msgid "We use cookies to improve your experience, analyze traffic, and personalize content."
 msgstr ""
 
 #: app/templates/includes/cookie_consent.html:9
@@ -130,12 +129,8 @@ msgid "Select the city you are interested in"
 msgstr "Выберите интересующий вас город"
 
 #: app/templates/includes/hero-banner.html:9
-msgid ""
-"After selecting a city, you will be taken to its page and can start "
-"searching for the establishment or company you need."
-msgstr ""
-"После выбора города вы попадете на его страницу и сможете начать поиск "
-"нужного заведения или компании."
+msgid "After selecting a city, you will be taken to its page and can start searching for the establishment or company you need."
+msgstr "После выбора города вы попадете на его страницу и сможете начать поиск нужного заведения или компании."
 
 #: app/templates/includes/hero-counters.html:13
 msgid "Organizations in catalog"
@@ -193,19 +188,23 @@ msgstr "Только те места, которые мы проверили, п
 
 #: authors/models.py:14
 msgid "Authors index page"
-msgstr ""
+msgstr "Страница списка авторов"
 
-#: authors/models.py:28
+#: authors/models.py:15
+msgid "Authors index pages"
+msgstr "Страницы списка авторов"
+
+#: authors/models.py:29
 msgid "post"
 msgstr ""
 
-#: authors/models.py:39 core/blocks.py:245
+#: authors/models.py:40 core/blocks.py:245
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
-#: authors/models.py:40
+#: authors/models.py:41
 msgid "Authors"
-msgstr ""
+msgstr "Авторы"
 
 #: authors/templates/authors/author_page.html:21
 msgid "Total publications:"
@@ -239,11 +238,9 @@ msgstr ""
 msgid "Count"
 msgstr "Количество"
 
-#: blog/blocks.py:24
-#, fuzzy
-#| msgid "Service type categories"
+#: blog/blocks.py:24 blog/models.py:64
 msgid "Blog category page"
-msgstr "Категории типов услуг"
+msgstr "Страница категории блога"
 
 #: blog/blocks.py:29
 #, fuzzy
@@ -251,19 +248,18 @@ msgstr "Категории типов услуг"
 msgid "Latest blog posts from category"
 msgstr "Последние организации из города"
 
-#: blog/blocks.py:37
+#: blog/blocks.py:37 blog/models.py:34
 msgid "Blog index page"
-msgstr ""
+msgstr "Главная страница блога"
 
 #: blog/blocks.py:42
 msgid "Latest blog posts"
 msgstr ""
 
-#: blog/blocks.py:50 catalog/blocks.py:49
-#, fuzzy
-#| msgid "Next page"
+#: blog/blocks.py:50 catalog/blocks.py:49 core/export_views.py:50
+#: core/export_views.py:53 core/templates/core/export_pages.html:100
 msgid "Parent page"
-msgstr "Следующая страница"
+msgstr "Родительская страница"
 
 #: blog/blocks.py:56 catalog/blocks.py:55
 #, fuzzy
@@ -275,44 +271,60 @@ msgstr "Похожие организации"
 msgid "Gallery"
 msgstr ""
 
-#: blog/models.py:26 blog/models.py:41
+#: blog/models.py:26 blog/models.py:45
 #, fuzzy
 #| msgid "h1 title"
 msgid "Subtitle"
 msgstr "h1 заголовок"
 
-#: blog/models.py:85 catalog/models.py:152 catalog/models.py:515
-#: catalog/models.py:523 core/blocks.py:111 core/blocks.py:122
+#: blog/models.py:35
+msgid "Blog index pages"
+msgstr "Главные страницы блога"
+
+#: blog/models.py:65
+msgid "Blog category pages"
+msgstr "Страницы категорий блога"
+
+#: blog/models.py:93 catalog/models.py:141 catalog/models.py:517
+#: catalog/models.py:525 core/blocks.py:111 core/blocks.py:122
 #: core/blocks.py:139 core/blocks.py:150 core/blocks.py:209 core/blocks.py:302
-#: gallery/models.py:67 gallery/models.py:75 home/models.py:20
+#: gallery/models.py:78 gallery/models.py:86 home/models.py:20
 #: reviews/models.py:89 reviews/models.py:97
 msgid "Image"
 msgstr "Изображение"
 
-#: blog/models.py:90 catalog/models.py:101 catalog/models.py:159
+#: blog/models.py:98 catalog/models.py:90 catalog/models.py:148
 #: core/blocks.py:301 home/models.py:26 home/models.py:58 home/models.py:88
 msgid "Text"
 msgstr "Текст"
 
-#: blog/models.py:100 catalog/models.py:108 catalog/models.py:166
+#: blog/models.py:108 catalog/models.py:97 catalog/models.py:155
 #: core/blocks.py:162 home/models.py:35 home/models.py:67 home/models.py:97
 #: home/models.py:116
 msgid "Content"
 msgstr "Контент"
 
-#: blog/models.py:138 catalog/models.py:413 catalog/models.py:454
-#: catalog/models.py:524 gallery/models.py:53 gallery/models.py:76
+#: blog/models.py:121
+msgid "Blog post page"
+msgstr "Страница публикации блога"
+
+#: blog/models.py:122
+msgid "Blog post pages"
+msgstr "Страницы публикаций блога"
+
+#: blog/models.py:150 catalog/models.py:409 catalog/models.py:450
+#: catalog/models.py:526 gallery/models.py:60 gallery/models.py:87
 #: reviews/models.py:70 reviews/models.py:98
 msgid "Images"
 msgstr "Изображения"
 
-#: blog/models.py:153
+#: blog/models.py:165
 #, fuzzy
 #| msgid "Service type categories"
 msgid "Blog gallery"
 msgstr "Категории типов услуг"
 
-#: blog/models.py:154
+#: blog/models.py:166
 msgid "Blog galleries"
 msgstr ""
 
@@ -356,11 +368,11 @@ msgstr "Создано"
 msgid "Updated at:"
 msgstr "Обновлено"
 
-#: catalog/blocks.py:15 catalog/models.py:485 subscription/models.py:18
+#: catalog/blocks.py:15 catalog/models.py:487 subscription/models.py:18
 msgid "Organization"
 msgstr "Организация"
 
-#: catalog/blocks.py:23 catalog/models.py:136
+#: catalog/blocks.py:23 catalog/models.py:125 catalog/views.py:648
 msgid "City"
 msgstr "Город"
 
@@ -368,7 +380,7 @@ msgstr "Город"
 msgid "Latest organizations from city"
 msgstr "Последние организации из города"
 
-#: catalog/blocks.py:36 catalog/models.py:225
+#: catalog/blocks.py:36 catalog/models.py:214 catalog/views.py:651
 msgid "Organization type"
 msgstr "Тип организации"
 
@@ -376,295 +388,300 @@ msgstr "Тип организации"
 msgid "Latest organizations from organization type"
 msgstr "Последние организации из типа организации"
 
-#: catalog/models.py:36 catalog/models.py:543
+#: catalog/models.py:37 catalog/models.py:545
 msgid "Icon"
 msgstr "Иконка"
 
-#: catalog/models.py:37 catalog/models.py:561
+#: catalog/models.py:38 catalog/models.py:563
 msgid "Use 100x100px image."
 msgstr "Используйте изображение 100x100 пикселей."
 
-#: catalog/models.py:89
+#: catalog/models.py:78
 msgid "Popular"
 msgstr "Популярный"
 
-#: catalog/models.py:96 catalog/models.py:330
+#: catalog/models.py:85 catalog/models.py:319
 msgid "Latitude and longitude"
 msgstr "Широта и долгота"
 
-#: catalog/models.py:119
+#: catalog/models.py:108
 msgid "Mark this city as popular."
 msgstr "Отметить этот город как популярный."
 
-#: catalog/models.py:137 catalog/views.py:98
+#: catalog/models.py:126 catalog/views.py:118
 msgid "Cities"
 msgstr "Города"
 
-#: catalog/models.py:146
+#: catalog/models.py:135
 msgid "Noindex"
 msgstr ""
 
-#: catalog/models.py:226
+#: catalog/models.py:215
 msgid "Organization types"
 msgstr "Типы организаций"
 
-#: catalog/models.py:237
+#: catalog/models.py:226
 msgid "h1 title"
 msgstr "h1 заголовок"
 
-#: catalog/models.py:243
+#: catalog/models.py:232
 msgid "TIN"
 msgstr "ИНН"
 
-#: catalog/models.py:249
+#: catalog/models.py:238
 msgid "Legal name"
 msgstr "Юридическое название"
 
-#: catalog/models.py:253
+#: catalog/models.py:242
 msgid "Verified"
 msgstr "Проверено"
 
-#: catalog/models.py:260
+#: catalog/models.py:249
 msgid "Plus code"
 msgstr "Плюс код"
 
-#: catalog/models.py:266
+#: catalog/models.py:255
 msgid "Email"
 msgstr ""
 
-#: catalog/models.py:272
-#, fuzzy
-#| msgid "Phone numbers"
+#: catalog/models.py:261
 msgid "Phones"
-msgstr "Номера телефонов"
+msgstr "Телефоны"
 
-#: catalog/models.py:273
+#: catalog/models.py:262
 msgid "Separate multiple phone numbers with a comma."
 msgstr ""
 
-#: catalog/models.py:278 catalog/templates/catalog/organization_page.html:177
+#: catalog/models.py:267 catalog/templates/catalog/organization_page.html:177
 #: core/models.py:72 home/models.py:129
 msgid "Social networks"
 msgstr "Социальные сети"
 
-#: catalog/models.py:279 core/models.py:73 home/models.py:130
+#: catalog/models.py:268 core/models.py:73 home/models.py:130
 msgid "Enter one social network link per line."
 msgstr ""
 
-#: catalog/models.py:284
+#: catalog/models.py:273
 msgid "Website links"
 msgstr "Ссылки на сайты"
 
-#: catalog/models.py:285
+#: catalog/models.py:274
 msgid "Enter one website link per line."
 msgstr ""
 
-#: catalog/models.py:289
-#, fuzzy
-#| msgid "Website links"
+#: catalog/models.py:278
 msgid "Show website links as text"
-msgstr "Ссылки на сайты"
+msgstr "Показывать ссылки на сайты как текст"
 
-#: catalog/models.py:291
+#: catalog/models.py:280
 msgid "Show website links as plain text instead of clickable links."
 msgstr ""
 
-#: catalog/models.py:295 core/blocks.py:53
+#: catalog/models.py:284 core/blocks.py:53
 msgid "Day"
 msgstr "День"
 
-#: catalog/models.py:297 catalog/templates/catalog/organization_page.html:167
+#: catalog/models.py:286 catalog/templates/catalog/organization_page.html:167
 msgid "Working hours"
 msgstr "График работы"
 
-#: catalog/models.py:301
+#: catalog/models.py:290
 msgid "Temporarily closed"
 msgstr "Временно закрыто"
 
-#: catalog/models.py:308 catalog/views.py:149
+#: catalog/models.py:297 catalog/views.py:169
 msgid "Languages"
 msgstr "Языки"
 
-#: catalog/models.py:313 catalog/models.py:451 catalog/models.py:536
+#: catalog/models.py:302 catalog/models.py:447 catalog/models.py:538
 #: catalog/templates/catalog/organization_page.html:51 core/blocks.py:138
 #: core/blocks.py:149 core/blocks.py:208 core/blocks.py:287
 msgid "Description"
 msgstr "Описание"
 
-#: catalog/models.py:319 catalog/templates/catalog/organization_page.html:112
+#: catalog/models.py:308 catalog/templates/catalog/organization_page.html:112
 msgid "Address"
 msgstr "Адрес"
 
-#: catalog/models.py:324 catalog/templates/catalog/organization_page.html:54
+#: catalog/models.py:313 catalog/templates/catalog/organization_page.html:54
 msgid "How to arrive"
 msgstr "Как добраться"
 
-#: catalog/models.py:334
+#: catalog/models.py:323
 msgid "Show on map"
 msgstr "Показывать на карте"
 
-#: catalog/models.py:344
+#: catalog/models.py:333
 msgid "Located in"
 msgstr "Располагается в"
 
-#: catalog/models.py:350 catalog/models.py:655
-#: catalog/templates/catalog/organization_page.html:57 catalog/views.py:141
+#: catalog/models.py:339 catalog/models.py:657
+#: catalog/templates/catalog/organization_page.html:57 catalog/views.py:161
 msgid "Service types"
 msgstr "Типы услуг"
 
-#: catalog/models.py:364
-msgid "Average Rating Weight"
-msgstr ""
+#: catalog/models.py:346
+msgid "Average rating"
+msgstr "Средний рейтинг"
 
-#: catalog/models.py:365
+#: catalog/models.py:352
+msgid "Rating score"
+msgstr "Рейтинговый балл"
+
+#: catalog/models.py:355
+msgid "Average Rating Weight"
+msgstr "Вес среднего рейтинга"
+
+#: catalog/models.py:356
 msgid "From 115 to 0"
 msgstr ""
 
-#: catalog/models.py:372 catalog/models.py:452
+#: catalog/models.py:363 catalog/models.py:448
 msgid "Q&A"
 msgstr ""
 
-#: catalog/models.py:385
+#: catalog/models.py:381
 msgid "The languages spoken in the organization."
 msgstr "Языки, на которых говорят в организации."
 
-#: catalog/models.py:400
+#: catalog/models.py:396
 msgid "Show this organization on the map."
 msgstr "Показать эту организацию на карте."
 
-#: catalog/models.py:406
+#: catalog/models.py:402
 msgid "The organization is located in building of another organization."
 msgstr "Организация расположена в здании другой организации."
 
-#: catalog/models.py:427 catalog/models.py:455 catalog/models.py:570
-#: catalog/models.py:591
+#: catalog/models.py:423 catalog/models.py:451 catalog/models.py:572
+#: catalog/models.py:593
 msgid "Rewards"
 msgstr "Награды"
 
-#: catalog/models.py:435
+#: catalog/models.py:431
 msgid "Mark this organization as verified."
 msgstr "Отметить эту организацию как проверенную."
 
-#: catalog/models.py:439
+#: catalog/models.py:435
 msgid "Mark this organization as temporarily closed."
 msgstr "Отметить эту организацию как временно закрытую."
 
-#: catalog/models.py:443
+#: catalog/models.py:439
 msgid "Higher weight increases the ranking. From 115 to 0."
 msgstr ""
 
-#: catalog/models.py:449 catalog/templates/catalog/organization_page.html:49
+#: catalog/models.py:445 catalog/templates/catalog/organization_page.html:49
 msgid "General"
 msgstr "Основное"
 
-#: catalog/models.py:450
+#: catalog/models.py:446
 msgid "Contacts"
 msgstr "Контакты"
 
-#: catalog/models.py:453
+#: catalog/models.py:449
 msgid "Location"
 msgstr "Локация"
 
-#: catalog/models.py:456
+#: catalog/models.py:452
 msgid "Promote"
 msgstr "Продвижение"
 
-#: catalog/models.py:486 catalog/templates/catalog/organizations.html:23
-#: catalog/views.py:113
+#: catalog/models.py:488 catalog/templates/catalog/organizations.html:23
+#: catalog/views.py:133
 msgid "Organizations"
 msgstr "Организации"
 
-#: catalog/models.py:533 catalog/models.py:569 catalog/models.py:582
-#: catalog/models.py:590
+#: catalog/models.py:535 catalog/models.py:571 catalog/models.py:584
+#: catalog/models.py:592
 msgid "Reward"
 msgstr "Награда"
 
-#: catalog/models.py:599 catalog/models.py:617 core/blocks.py:82
+#: catalog/models.py:601 catalog/models.py:619 core/blocks.py:82
 #: core/blocks.py:92 core/blocks.py:110 core/blocks.py:121 core/blocks.py:137
 #: core/blocks.py:148 core/blocks.py:176 core/blocks.py:205 core/blocks.py:267
-#: core/blocks.py:286 core/blocks.py:316 core/models.py:275 home/models.py:112
+#: core/blocks.py:286 core/blocks.py:316 core/export_views.py:54
+#: core/models.py:275 home/models.py:112
 msgid "Title"
 msgstr "Заголовок"
 
-#: catalog/models.py:606
+#: catalog/models.py:608
 msgid "Service type category"
 msgstr "Категория типа услуги"
 
-#: catalog/models.py:607 catalog/views.py:120
+#: catalog/models.py:609 catalog/views.py:140
 msgid "Service type categories"
 msgstr "Категории типов услуг"
 
-#: catalog/models.py:624
+#: catalog/models.py:626
 msgid "Category"
 msgstr "Категория"
 
-#: catalog/models.py:650
+#: catalog/models.py:652
 msgid "This service type already exists in this category."
 msgstr "Данный тип услуги уже существует в данной категории."
 
-#: catalog/models.py:654
+#: catalog/models.py:656
 msgid "Service type"
 msgstr "Тип услуги"
 
-#: catalog/services.py:26
+#: catalog/services.py:28
 msgid "Mon"
 msgstr "Пн"
 
-#: catalog/services.py:27
+#: catalog/services.py:29
 msgid "Tue"
 msgstr "Вт"
 
-#: catalog/services.py:28
+#: catalog/services.py:30
 msgid "Wed"
 msgstr "Ср"
 
-#: catalog/services.py:29
+#: catalog/services.py:31
 msgid "Thu"
 msgstr "Чт"
 
-#: catalog/services.py:30
+#: catalog/services.py:32
 msgid "Fri"
 msgstr "Пт"
 
-#: catalog/services.py:31
+#: catalog/services.py:33
 msgid "Sat"
 msgstr "Сб"
 
-#: catalog/services.py:32
+#: catalog/services.py:34
 msgid "Sun"
 msgstr "Вс"
 
-#: catalog/services.py:40 catalog/services.py:53 catalog/services.py:302
-msgid "Open 24 hours"
-msgstr "Открыто круглосуточно"
-
-#: catalog/services.py:48 catalog/services.py:57 core/blocks.py:57
-#| msgid "Friday"
+#: catalog/services.py:55 core/blocks.py:57
 msgid "Holiday"
 msgstr "Выходной"
 
-#: catalog/services.py:87 catalog/services.py:89 core/blocks.py:70
+#: catalog/services.py:57 catalog/services.py:337
+msgid "Open 24 hours"
+msgstr "Открыто круглосуточно"
+
+#: catalog/services.py:96 catalog/services.py:98 core/blocks.py:70
 msgid "Until the last client"
 msgstr "До последнего клиента"
 
-#: catalog/services.py:294 catalog/services.py:316
+#: catalog/services.py:329 catalog/services.py:351
 msgid "Closed"
 msgstr "Закрыто"
 
-#: catalog/services.py:306
+#: catalog/services.py:341
 msgid "Open until the last client"
 msgstr "До последнего клиента"
 
-#: catalog/services.py:310
+#: catalog/services.py:345
 #, python-format
 msgid "Open until %(time)s"
 msgstr "Открыто до %(time)s"
 
-#: catalog/services.py:313
+#: catalog/services.py:348
 msgid "Open"
 msgstr ""
 
-#: catalog/services.py:317
+#: catalog/services.py:352 catalog/views.py:803 catalog/views.py:804
+#: catalog/views.py:805
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -673,12 +690,18 @@ msgstr "Неизвестно"
 msgid "All possible fields"
 msgstr ""
 
-#: catalog/templates/catalog/admin/import_organizations.html:77
+#: catalog/templates/catalog/admin/import_organizations.html:78
+#: catalog/templates/catalog/admin/import_reviews.html:78
 #: comments/templates/comments/admin/import_comments.html:36
+#: core/templates/core/import_pages.html:80
 msgid "Import"
 msgstr ""
 
-#: catalog/templates/catalog/admin/update_organizations.html:77
+#: catalog/templates/catalog/admin/import_reviews_example.html:10
+msgid "All required fields"
+msgstr ""
+
+#: catalog/templates/catalog/admin/update_organizations.html:78
 #, fuzzy
 #| msgid "Updated in a day"
 msgid "Update"
@@ -727,12 +750,8 @@ msgstr "Показать"
 
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
-msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them"
-" to work better, knowing you can leave a review."
-msgstr ""
-" Скажите компании, что нашли номер на %(site_name)s — это мотивирует их "
-"работать лучше, зная, что вы можете оставить отзыв."
+msgid "Tell the company you found their number on %(site_name)s — it motivates them to work better, knowing you can leave a review."
+msgstr " Скажите компании, что нашли номер на %(site_name)s — это мотивирует их работать лучше, зная, что вы можете оставить отзыв."
 
 #: catalog/templates/catalog/organization_page.html:138
 msgid "Official website"
@@ -792,40 +811,39 @@ msgstr "Страница списка организаций."
 msgid "[[By address]]: "
 msgstr "[[По адресу]]: "
 
-#: catalog/views.py:106
+#: catalog/views.py:126
 msgid "Organizations types"
 msgstr "Типы организаций"
 
-#: catalog/views.py:129
+#: catalog/views.py:149
 #, fuzzy
 #| msgid "Category"
 msgid "Choose a category"
 msgstr "Категория"
 
-#: catalog/views.py:130
+#: catalog/views.py:150
 msgid "Choose another category"
 msgstr ""
 
-#: catalog/views.py:131
+#: catalog/views.py:151
 #, fuzzy
 #| msgid "Service type category"
 msgid "Edit this category"
 msgstr "Категория типа услуги"
 
-#: catalog/views.py:161
+#: catalog/views.py:181
 msgid "Catalog"
 msgstr "Каталог"
 
-#: catalog/views.py:617
+#: catalog/views.py:637
 msgid "Published at"
 msgstr "Дата публикации"
 
-#: catalog/views.py:623
-#| msgid "Updated at:"
+#: catalog/views.py:643
 msgid "Updated at"
 msgstr "Обновлено"
 
-#: catalog/views.py:756
+#: catalog/views.py:863
 #, fuzzy
 #| msgid "Organizations list"
 msgid "Organizations report"
@@ -866,7 +884,8 @@ msgstr ""
 msgid "Add comment ..."
 msgstr ""
 
-#: comments/models.py:23 comments/views.py:257 reviews/models.py:18
+#: comments/models.py:23 comments/views.py:257
+#: core/templates/core/export_pages.html:120 reviews/models.py:18
 #: reviews/views.py:25
 msgid "Published"
 msgstr "Опубликовано"
@@ -908,7 +927,7 @@ msgstr "Адрес"
 msgid "Created at"
 msgstr "Создано"
 
-#: comments/models.py:51
+#: comments/models.py:51 core/templates/core/import_pages.html:92
 msgid "Status"
 msgstr "Статус"
 
@@ -1098,6 +1117,7 @@ msgid "Page"
 msgstr "Страница"
 
 #: core/blocks.py:100 core/blocks.py:152 core/blocks.py:164 core/blocks.py:213
+#: core/export_views.py:49
 msgid "URL"
 msgstr "URL-адрес"
 
@@ -1242,6 +1262,42 @@ msgstr "Карточки"
 msgid "Section with cards"
 msgstr "Секция с карточками"
 
+#: core/export_views.py:56
+msgid "Reviews count"
+msgstr "Количество отзывов"
+
+#: core/export_views.py:163
+msgid "Invalid export job ID"
+msgstr "Недопустимый идентификатор задачи экспорта"
+
+#: core/export_views.py:211 core/export_views.py:214 core/export_views.py:353
+#: core/export_views.py:606 core/views.py:83
+msgid "Invalid page type"
+msgstr "Недопустимый тип страницы"
+
+#: core/export_views.py:589
+#, python-format
+msgid "Invalid JSON: %(error)s"
+msgstr "Некорректный JSON: %(error)s"
+
+#: core/export_views.py:598
+msgid "Page type is required"
+msgstr "Необходимо выбрать тип страницы"
+
+#: core/export_views.py:601
+msgid "Fields are required"
+msgstr "Необходимо выбрать поля"
+
+#: core/export_views.py:645
+msgid "Export job was not found"
+msgstr "Задача экспорта не найдена"
+
+#: core/import_views.py:10
+#, fuzzy
+#| msgid "Next page"
+msgid "parent id"
+msgstr "Следующая страница"
+
 #: core/models.py:36
 msgid "Site logo"
 msgstr "Логотип сайта"
@@ -1357,12 +1413,8 @@ msgid "Robots.txt"
 msgstr ""
 
 #: core/models.py:172
-msgid ""
-"Add external code snippets e.g. Google Analytics, Facebook Pixel, etc... to "
-"the header, body, or footer of your site."
-msgstr ""
-"Добавьте внешние фрагменты кода, например Google Analytics, Facebook Pixel и"
-" т. д., в header, body или footer вашего сайта."
+msgid "Add external code snippets e.g. Google Analytics, Facebook Pixel, etc... to the header, body, or footer of your site."
+msgstr "Добавьте внешние фрагменты кода, например Google Analytics, Facebook Pixel и т. д., в header, body или footer вашего сайта."
 
 #: core/models.py:179
 msgid "Header code"
@@ -1440,17 +1492,214 @@ msgstr "Футер"
 msgid "There can be only one footer instance."
 msgstr "Может быть только один экземпляр нижнего колонтитула."
 
-#: core/wagtail_hooks.py:95
+#: core/templates/core/export_pages.html:6
+#: core/templates/core/export_pages.html:15 core/wagtail_hooks.py:275
+msgid "Export pages"
+msgstr "Экспорт страниц"
+
+#: core/templates/core/export_pages.html:32
+#: core/templates/core/import_pages.html:23
+msgid "Page type"
+msgstr "Тип страницы"
+
+#: core/templates/core/export_pages.html:47
+msgid "Choose the kind of pages you want to export."
+msgstr "Выберите тип страниц для экспорта."
+
+#: core/templates/core/export_pages.html:52
+msgid "Filters"
+msgstr "Фильтры"
+
+#: core/templates/core/export_pages.html:53
+msgid "Narrow the export if you only need part of the selected page type."
+msgstr "Ограничьте выборку, если нужны не все страницы выбранного типа."
+
+#: core/templates/core/export_pages.html:57
+msgid "Created from"
+msgstr "Создано с"
+
+#: core/templates/core/export_pages.html:68
+msgid "Created to"
+msgstr "Создано по"
+
+#: core/templates/core/export_pages.html:79
+msgid "Updated from"
+msgstr "Обновлено с"
+
+#: core/templates/core/export_pages.html:90
+msgid "Updated to"
+msgstr "Обновлено по"
+
+#: core/templates/core/export_pages.html:105
+msgid "Search parent page"
+msgstr "Поиск родительской страницы"
+
+#: core/templates/core/export_pages.html:113
+msgid "Published status"
+msgstr "Статус публикации"
+
+#: core/templates/core/export_pages.html:119
+msgid "Any"
+msgstr "Любой"
+
+#: core/templates/core/export_pages.html:121
+msgid "Unpublished"
+msgstr "Не опубликовано"
+
+#: core/templates/core/export_pages.html:132
+msgid "Fields"
+msgstr "Поля"
+
+#: core/templates/core/export_pages.html:135
+msgid "Select the columns to include in the CSV file."
+msgstr "Выберите столбцы для включения в CSV-файл."
+
+#: core/templates/core/export_pages.html:140
+msgid "Select all"
+msgstr "Выбрать все"
+
+#: core/templates/core/export_pages.html:143
+msgid "Clear choice"
+msgstr "Очистить выбор"
+
+#: core/templates/core/export_pages.html:148
+msgid "Choose page type first."
+msgstr "Сначала выберите тип страницы."
+
+#: core/templates/core/export_pages.html:155
+msgid "Start export"
+msgstr "Начать экспорт"
+
+#: core/templates/core/export_pages.html:157
+msgid "The CSV file will be available here when the export is complete."
+msgstr "CSV-файл будет доступен здесь после завершения экспорта."
+
+#: core/templates/core/export_pages.html:163
+msgid "Export progress"
+msgstr "Ход экспорта"
+
+#: core/templates/core/export_pages.html:170
+msgid "Download file"
+msgstr "Скачать файл"
+
+#: core/templates/core/import_pages.html:53
+#, fuzzy
+#| msgid "Service type"
+msgid "Select page type"
+msgstr "Тип услуги"
+
+#: core/templates/core/import_pages.html:68
+msgid "Unique"
+msgstr ""
+
+#: core/templates/core/import_pages.html:69
+msgid "Page Fields"
+msgstr ""
+
+#: core/templates/core/import_pages.html:70
+msgid "CSV Fields"
+msgstr ""
+
+#: core/views.py:103
+#, python-format
+msgid "Field handler %(handler_name)r is not callable"
+msgstr ""
+
+#: core/views.py:111
+#, python-format
+msgid "No handler found for field %(field)r; tried: %(handler_names)s"
+msgstr ""
+
+#: core/views.py:153
+#, python-format
+msgid "Unknown unique field: %(fields)s"
+msgid_plural "Unknown unique fields: %(fields)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: core/views.py:163
+#, python-format
+msgid "Field %(fields)s cannot be empty"
+msgid_plural "Fields %(fields)s cannot be empty"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: core/views.py:173
+#, python-format
+msgid "Field %(fields)s must be unique"
+msgid_plural "Fields %(fields)s must be unique"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: core/views.py:197
+#, python-format
+msgid "Object %(obj)s does not have field %(field)r"
+msgstr ""
+
+#: core/views.py:202
+#, python-format
+msgid "Error setting field %(field)r: %(error)s"
+msgstr ""
+
+#: core/views.py:207
+#, python-format
+msgid "Set field %(field)r to %(value)r on %(obj)r"
+msgstr ""
+
+#: core/views.py:260
+msgid "Field mapping was not provided"
+msgstr ""
+
+#: core/views.py:269
+#, python-format
+msgid "CSV fields not found: %(missing_csv_fields)s"
+msgstr ""
+
+#: core/views.py:308
+msgid "Page type does not match existing page"
+msgstr ""
+
+#: core/views.py:311 core/views.py:333
+msgid "Permission denied"
+msgstr ""
+
+#: core/views.py:321
+msgid "Updated successfully"
+msgstr ""
+
+#: core/views.py:338
+msgid "Page type is not allowed under this parent"
+msgstr ""
+
+#: core/views.py:354
+msgid "Imported successfully"
+msgstr ""
+
+#: core/wagtail_hooks.py:99
 msgid "Full width"
 msgstr "На всю ширину"
 
-#: core/wagtail_hooks.py:98
+#: core/wagtail_hooks.py:102
 msgid "Left-aligned"
 msgstr "По левому краю"
 
-#: core/wagtail_hooks.py:101
+#: core/wagtail_hooks.py:105
 msgid "Right-aligned"
 msgstr "По правому краю"
+
+#: core/wagtail_hooks.py:270
+msgid "Import pages"
+msgstr "Импорт страниц"
+
+#: core/wagtail_hooks.py:282
+msgid "Import / Export"
+msgstr "Импорт / экспорт"
 
 #: export_organizations.py:76 export_organizations.py:83
 #: export_organizations.py:95
@@ -1461,6 +1710,30 @@ msgstr ""
 #: export_organizations.py:95
 msgid "No"
 msgstr ""
+
+#: gallery/models.py:25
+msgid "Gallery index page"
+msgstr "Главная страница галереи"
+
+#: gallery/models.py:26
+msgid "Gallery index pages"
+msgstr "Главные страницы галереи"
+
+#: gallery/models.py:48
+msgid "Gallery category page"
+msgstr "Страница категории галереи"
+
+#: gallery/models.py:49
+msgid "Gallery category pages"
+msgstr "Страницы категорий галереи"
+
+#: gallery/models.py:64
+msgid "Gallery post page"
+msgstr "Страница публикации галереи"
+
+#: gallery/models.py:65
+msgid "Gallery post pages"
+msgstr "Страницы публикаций галереи"
 
 #: gallery/templates/gallery/gallery_post_page.html:30
 #, fuzzy
@@ -1481,16 +1754,12 @@ msgid "Home pages"
 msgstr "Главные страницы"
 
 #: home/models.py:75
-#, fuzzy
-#| msgid "Last page"
 msgid "Flat page"
-msgstr "Последняя страница"
+msgstr "Обычная страница"
 
 #: home/models.py:76
-#, fuzzy
-#| msgid "Last page"
 msgid "Flat pages"
-msgstr "Последняя страница"
+msgstr "Обычные страницы"
 
 #: home/models.py:102
 #, fuzzy
@@ -1507,16 +1776,36 @@ msgid "Tabs"
 msgstr ""
 
 #: home/models.py:141
-#, fuzzy
-#| msgid "Contacts"
 msgid "Contact page"
-msgstr "Контакты"
+msgstr "Контактная страница"
 
 #: home/models.py:142
-#, fuzzy
-#| msgid "Contacts"
 msgid "Contact pages"
-msgstr "Контакты"
+msgstr "Контактные страницы"
+
+#: ratings/models.py:17
+msgid "Overviews index page"
+msgstr "Главная страница обзоров"
+
+#: ratings/models.py:18
+msgid "Overviews index pages"
+msgstr "Главные страницы обзоров"
+
+#: ratings/models.py:32
+msgid "Overviews category page"
+msgstr "Страница категории обзоров"
+
+#: ratings/models.py:33
+msgid "Overviews category pages"
+msgstr "Страницы категорий обзоров"
+
+#: ratings/models.py:69
+msgid "Overviews post page"
+msgstr "Страница обзора"
+
+#: ratings/models.py:70
+msgid "Overviews post pages"
+msgstr "Страницы обзоров"
 
 #: ratings/templates/ratings/blocks/rating_block.html:7
 msgid "of"
@@ -1598,11 +1887,8 @@ msgid "File size must be less than 2MB."
 msgstr "Размер файла должен быть менее 2 МБ."
 
 #: reviews/views.py:218
-msgid ""
-"Review submitted successfully. It will be published after admin approval."
-msgstr ""
-"Отзыв успешно отправлен. Он будет опубликован после одобрения "
-"администратором."
+msgid "Review submitted successfully. It will be published after admin approval."
+msgstr "Отзыв успешно отправлен. Он будет опубликован после одобрения администратором."
 
 #: reviews/wagtail_hooks.py:29
 msgid "There are reviews pending moderation."

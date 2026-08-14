@@ -116,6 +116,11 @@ def import_admin_js():
     return format_html('<script src="{}"></script>', static("madloba-import.js"))
 
 
+@hooks.register("insert_global_admin_js")  # type: ignore
+def export_admin_js():
+    return format_html('<script src="{}"></script>', static("madloba-export.js"))
+
+
 @hooks.register("insert_global_admin_css")  # type: ignore
 def global_admin_css():
     return format_html('<link rel="stylesheet" href="{}">', static("madloba-admin.css"))
@@ -262,16 +267,16 @@ def register_import_export_pages_menu_item():
     submenu = Menu(
         items=[
             MenuItem(
-                "Import pages",
+                _("Import pages"),
                 reverse("import-pages"),
                 icon_name="order-down",
             ),
             MenuItem(
-                "Export pages",
+                _("Export pages"),
                 reverse("export-pages"),
                 icon_name="order-up",
             ),
         ]
     )
 
-    return SubmenuMenuItem("Import / Export", submenu, icon_name="resubmit")
+    return SubmenuMenuItem(_("Import / Export"), submenu, icon_name="resubmit")

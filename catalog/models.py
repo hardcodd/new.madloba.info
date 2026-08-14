@@ -343,11 +343,13 @@ class Organization(Page):
         max_digits=3,
         decimal_places=2,
         default=0,
+        verbose_name=_("Average rating"),
     )
     rating_score = models.DecimalField(
         max_digits=3,
         decimal_places=2,
         default=0,
+        verbose_name=_("Rating score"),
     )
     avg_rating_weight = models.SmallIntegerField(
         verbose_name=_("Average Rating Weight"),

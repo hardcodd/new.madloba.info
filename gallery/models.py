@@ -21,6 +21,10 @@ class GalleryIndexPage(Panels, Page):
         FieldPanel("description"),
     ]
 
+    class Meta(Page.Meta):
+        verbose_name = _("Gallery index page")
+        verbose_name_plural = _("Gallery index pages")
+
 
 class GalleryCategoryPage(Panels, Page):
     parent_page_types = ["gallery.GalleryIndexPage", "gallery.GalleryCategoryPage"]
@@ -40,6 +44,10 @@ class GalleryCategoryPage(Panels, Page):
         FieldPanel("description"),
     ]
 
+    class Meta(Page.Meta):
+        verbose_name = _("Gallery category page")
+        verbose_name_plural = _("Gallery category pages")
+
 
 class GalleryPostPage(Panels, Page):
     parent_page_types = ["gallery.GalleryCategoryPage"]
@@ -51,6 +59,10 @@ class GalleryPostPage(Panels, Page):
         FieldPanel("description"),
         MultipleChooserPanel("images", heading=_("Images"), chooser_field_name="image"),
     ]
+
+    class Meta(Page.Meta):
+        verbose_name = _("Gallery post page")
+        verbose_name_plural = _("Gallery post pages")
 
 
 class GalleryImage(Orderable):

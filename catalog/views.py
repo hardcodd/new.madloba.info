@@ -1,9 +1,12 @@
 import json
+from datetime import datetime
 from functools import reduce
 
 import django_filters
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import permission_required
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.aggregates import StringAgg
 from django.db.models import (
     CharField,
@@ -17,7 +20,10 @@ from django.db.models import (
 from django.db.models.functions import Cast, Coalesce, Concat, JSONObject
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
+from django.utils import timezone
+from django.utils.dateparse import parse_date, parse_datetime
 from django.utils.html import strip_tags
+from django.utils.timezone import make_aware
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.filters import DateRangePickerWidget, WagtailFilterSet
 from wagtail.admin.views.reports import PageReportView
@@ -40,7 +46,7 @@ from catalog.models import (
 from catalog.utils import get_start_end_day, to_12h
 from core.models import SiteSettings
 from core.utils import get_weekday_name, get_weekday_number, is_ajax, paginate
-from reviews.models import Review
+from reviews.models import Review, ReviewStatus
 
 
 def search_cities(request):
@@ -645,6 +651,47 @@ class OrganizationReportFilters(WagtailFilterSet):
     organization_type = django_filters.CharFilter(label=_("Organization type"))
 
     def filter_queryset(self, queryset):
+        live = self.data.get("live")
+        if live:
+            live = live == "true"
+            queryset = queryset.filter(live=live)
+
+        published_at_from = self.data.get("published_at_from")
+        published_at_to = self.data.get("published_at_to")
+        updated_at_from = self.data.get("updated_at_from")
+        updated_at_to = self.data.get("updated_at_to")
+
+        if published_at_from:
+            published_at_from = published_at_from.strip()
+            queryset = queryset.filter(
+                first_published_at__gte=make_aware(
+                    datetime.strptime(published_at_from, "%Y-%m-%d")
+                )
+            )
+        if published_at_to:
+            published_at_to = published_at_to.strip()
+            queryset = queryset.filter(
+                first_published_at__lte=make_aware(
+                    datetime.strptime(published_at_to, "%Y-%m-%d")
+                )
+            )
+
+        if updated_at_from:
+            updated_at_from = updated_at_from.strip()
+            queryset = queryset.filter(
+                latest_revision_created_at__gte=make_aware(
+                    datetime.strptime(updated_at_from, "%Y-%m-%d")
+                )
+            )
+
+        if updated_at_to:
+            updated_at_to = updated_at_to.strip()
+            queryset = queryset.filter(
+                latest_revision_created_at__lte=make_aware(
+                    datetime.strptime(updated_at_to, "%Y-%m-%d")
+                )
+            )
+
         city = self.data.get("city")
         if city:
             city = city.strip()
@@ -919,3 +966,91 @@ def get_organizations_data(request):
         return JsonResponse(data, safe=False)
 
     raise Http404
+
+
+def parse_csv_datetime(value):
+    value = (value or "").strip()
+    if not value:
+        return None
+
+    dt = parse_datetime(value)
+    if dt is not None:
+        if timezone.is_naive(dt):
+            dt = timezone.make_aware(dt, timezone.get_current_timezone())
+        return dt
+
+    d = parse_date(value)
+    if d is not None:
+        dt = datetime.combine(d, datetime.min.time())
+        return timezone.make_aware(dt, timezone.get_current_timezone())
+
+    raise ValueError(f"Invalid date format: {value}")
+
+
+@permission_required("reviews.add_reviews")
+def import_review(request):
+    if not request.method == "POST":
+        raise Http404
+
+    try:
+        data = json.loads(request.body.decode("utf-8"))
+    except json.JSONDecodeError:
+        return JsonResponse({"message": "Invalid JSON"}, status=400)
+
+    data_fields = data.keys()
+
+    try:
+        org_id = int(data.get("id"))
+        org = Organization.objects.get(id=org_id)
+    except (ValueError, Organization.DoesNotExist):
+        return JsonResponse({"success": False, "message": "Invalid ID"}, status=400)
+
+    organization_id = int(data["id"])
+    comment = (data.get("text") or "").strip()
+    raw_user = (data.get("user") or "").strip()
+    username = raw_user.split("/")[-1].strip()
+    full_name = raw_user.split("/")[0].strip()
+    rating = int(data["rate"])
+    created_at = parse_csv_datetime(data.get("date"))
+
+    User = get_user_model()
+
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        user = User.objects.create_user(
+            username=username,
+            first_name=full_name,
+        )
+
+    try:
+        organization = Organization.objects.get(id=organization_id)
+    except Organization.DoesNotExist:
+        return JsonResponse(
+            {"success": False, "message": "Organization not found"}, status=400
+        )
+
+    # Check if review exists then skip
+    if Review.objects.filter(user=user, object_id=organization_id).exists():
+        return JsonResponse(
+            {"success": False, "message": "Review already exists"}, status=400
+        )
+
+    organization_ct = ContentType.objects.get_for_model(Organization)
+
+    review = Review.objects.create(
+        user=user,
+        content_type=organization_ct,
+        object_id=organization.id,
+        status=ReviewStatus.PUBLISHED,
+        comment=comment,
+        rating=rating,
+        go_live_at=created_at,
+    )
+
+    if created_at is not None:
+        Review.objects.filter(pk=review.pk).update(created_at=created_at)
+
+    return JsonResponse(
+        {"success": True, "message": "Review created successfully"}, status=200
+    )

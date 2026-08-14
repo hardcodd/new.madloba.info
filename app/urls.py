@@ -46,6 +46,7 @@ if "rosetta" in settings.INSTALLED_APPS:
     )
 
 urlpatterns += i18n_patterns(
+    path("core/", include("core.urls"), name="core"),
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path("search/", search_views.search, name="search"),
     path("catalog/", include("catalog.urls"), name="catalog"),

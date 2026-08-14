@@ -12,16 +12,18 @@ from core.utils import is_catalog_city, is_page, paginate
 def get_working_hours_service(organization: Organization) -> str:
     """Render working hours for the organization."""
 
-    def format_time(time_value):
-        """Return time in 00:00 format."""
+    def format_time(time_value: time | str | None) -> str | None:
+        """Return time in HH:MM format."""
         if isinstance(time_value, time):
             return time_value.strftime("%H:%M")
-        elif isinstance(time_value, str):
+
+        if isinstance(time_value, str):
             return time_value
+
         return None
 
     def get_day_name(day_index: int) -> str:
-        """Return day name for a given index."""
+        """Return the translated short day name for the given index."""
         days = [
             _("Mon"),
             _("Tue"),
@@ -31,85 +33,118 @@ def get_working_hours_service(organization: Organization) -> str:
             _("Sat"),
             _("Sun"),
         ]
+
         return str(days[day_index - 1])
 
-    def append_result(first_day, last_day, start, end, holiday) -> None:
-        """Append the formatted result to the result string."""
-        if first_day == last_day:
-            if start and end and start == "00:00" and end == "23:59":
-                day_str = f"{first_day}: {_('Open 24 hours')}"
-            elif start and end:
-                day_str = f"{first_day}: {start}–{end}"
-            elif start:
-                day_str = f"{first_day}: {start}"
-            elif end:
-                day_str = f"{first_day}: {end}"
-            elif holiday:
-                day_str = f"{first_day}: {_('Holiday')}"
-            else:
-                day_str = first_day
-        else:
-            if start and end and start == "00:00" and end == "23:59":
-                day_str = f"{first_day}–{last_day}: {_('Open 24 hours')}"
-            elif start and end:
-                day_str = f"{first_day}–{last_day}: {start}–{end}"
-            elif holiday:
-                day_str = f"{first_day}–{last_day}: {_('Holiday')}"
-            elif start:
-                day_str = f"{first_day}–{last_day}: {start}"
-            elif end:
-                day_str = f"{first_day}–{last_day}: {end}"
-            else:
-                day_str = f"{first_day}–{last_day}"
+    def append_result(
+        first_day: str,
+        last_day: str,
+        start: str | None,
+        end: str | None,
+        holiday: bool,
+    ) -> None:
+        """Append a formatted group of working days to the result."""
         nonlocal result
+
+        if first_day == last_day:
+            day_range = first_day
+        else:
+            day_range = f"{first_day}–{last_day}"
+
+        if holiday:
+            day_str = f"{day_range}: {_('Holiday')}"
+        elif start == "00:00" and end == "23:59":
+            day_str = f"{day_range}: {_('Open 24 hours')}"
+        elif start and end:
+            day_str = f"{day_range}: {start}–{end}"
+        elif start:
+            day_str = f"{day_range}: {start}"
+        elif end:
+            day_str = f"{day_range}: {end}"
+        else:
+            day_str = day_range
+
         if result:
             result += ", "
+
         result += day_str
 
-    first_day = None
-    first_start = None
-    first_end = None
-    previous_day = None
-    previous_start = None
-    previous_end = None
+    first_day: str | None = None
+    first_start: str | None = None
+    first_end: str | None = None
+    first_holiday = False
+
+    previous_day: str | None = None
+    previous_start: str | None = None
+    previous_end: str | None = None
+    previous_holiday = False
+
     result = ""
 
     for block in organization.working_hours:  # type: ignore
         value = dict(block.value)
+
         day = get_day_name(int(value["day"]))
-        start = format_time(value["start"])
-        end = format_time(value["end"])
-        last_client = value["last_client"]
-        holiday = value["holiday"]
+        start = format_time(value.get("start"))
+        end = format_time(value.get("end"))
+
+        last_client = bool(value.get("last_client"))
+        holiday = bool(value.get("holiday"))
 
         if last_client:
             if end:
-                end += f" ({_('Until the last client')})"
+                end = f"{end} ({_('Until the last client')})"
             else:
-                end = _("Until the last client")
+                end = str(_("Until the last client"))
 
         if first_day is None:
             first_day = day
             first_start = start
             first_end = end
+            first_holiday = holiday
+
             previous_day = day
             previous_start = start
             previous_end = end
+            previous_holiday = holiday
             continue
 
-        if start == previous_start and end == previous_end:
+        same_schedule = (
+            start == previous_start
+            and end == previous_end
+            and holiday == previous_holiday
+        )
+
+        if same_schedule:
             previous_day = day
-        else:
-            append_result(first_day, previous_day, first_start, first_end, holiday)
-            first_day = day
-            first_start = start
-            first_end = end
-            previous_day = day
-            previous_start = start
-            previous_end = end
+            continue
+
+        append_result(
+            first_day=first_day,
+            last_day=previous_day or first_day,
+            start=first_start,
+            end=first_end,
+            holiday=first_holiday,
+        )
+
+        first_day = day
+        first_start = start
+        first_end = end
+        first_holiday = holiday
+
+        previous_day = day
+        previous_start = start
+        previous_end = end
+        previous_holiday = holiday
 
     if first_day is not None:
-        append_result(first_day, previous_day, first_start, first_end, holiday)
+        append_result(
+            first_day=first_day,
+            last_day=previous_day or first_day,
+            start=first_start,
+            end=first_end,
+            holiday=first_holiday,
+        )
 
     return result
 

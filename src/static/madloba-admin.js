@@ -159,7 +159,7 @@ const importSequentially = async (url, data, csrf, progressBar) => {
 	);
 };
 
-// ======= INITIALIZATION =============================================
+// ======= INITIALIZATION IMPORT / UPDATE ORGANIZATIONS =============================================
 document.addEventListener("DOMContentLoaded", () => {
 	const form = document.querySelector("#import-organizations-form");
 	if (!form) return;
@@ -181,7 +181,43 @@ document.addEventListener("DOMContentLoaded", () => {
 			complete: async (result) => {
 				const rows = result?.data?.filter(Boolean) || [];
 				await renderTable(rows, progress, progressBar);
-				// IMPORTANT: send sequentially
+				// IMPORTANT: send it sequentially
+				await importSequentially(form.action, rows, csrf, progressBar);
+			},
+			error: (err) => alert("Parsing error: " + err.message),
+		});
+	});
+});
+
+// ======= INITIALIZATION IMPORT REVIEWS =============================================
+document.addEventListener("DOMContentLoaded", () => {
+	const form = document.querySelector("#import-reviews-form");
+	if (!form) return;
+
+	const csrf = form.querySelector("input[name='csrfmiddlewaretoken']");
+	const progress = document.querySelector("#import-progress");
+	const progressBar = document.querySelector(".bar");
+
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		const file = form.file?.files?.[0];
+		if (!file) return;
+
+		Papa.parse(file, {
+			header: true,
+			skipEmptyLines: true,
+			encoding: "utf-8",
+			complete: async (result) => {
+				const rows = (result?.data || []).filter(Boolean).map((row) => ({
+					id: row.id,
+					user: row.user,
+					rate: row.rate,
+					date: row.date,
+					text: row.text,
+				}));
+				await renderTable(rows, progress, progressBar);
+				// IMPORTANT: send it sequentially
 				await importSequentially(form.action, rows, csrf, progressBar);
 			},
 			error: (err) => alert("Parsing error: " + err.message),

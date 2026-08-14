@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     get_organizations_data,
     import_organization,
+    import_review,
     organizations,
     search_cities,
     update_organization,
@@ -17,4 +18,5 @@ urlpatterns = [
     path(
         "get-organizations-data/", get_organizations_data, name="get_organizations_data"
     ),
+    path("import-review/", import_review, name="import_review"),
 ]

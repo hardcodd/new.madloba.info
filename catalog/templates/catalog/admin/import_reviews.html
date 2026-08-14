@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block titletag %}Update Organizations{% endblock %}
+{% block titletag %}Import Reviews{% endblock %}
 {% block extra_js %}
 	{{ block.super }}
 	<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -50,12 +50,12 @@
 {% endblock extra_css %}
 
 {% block content %}
-	{% with "Update Organizations" as title %}
+	{% with "Import Reviews" as title %}
 		{% include "wagtailadmin/shared/header.html" with title=title icon="briefcase-solid" %}
 	{% endwith %}
 
 	<div class="nice-padding">
-		<form id="import-organizations-form" action="/en/catalog/update-organization/" method="POST" enctype="multipart/form-data">
+		<form id="import-reviews-form" action="/en/catalog/import-review/" method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			<fieldset>
 				<ul class="fields">
@@ -75,14 +75,14 @@
 					</li>
 				</ul>
 
-				<button type="submit" class="button">{% trans "Update" %}</button>
+				<button type="submit" class="button">{% trans "Import" %}</button>
 			</fieldset>
 		</form>
 	</div>
 
 	<div class="nice-padding">
 		<div id="import-progress" class="progress">
-			<div class="bar" style="width: 0%">0%</div>
+			<div class="bar" style="width: 0">0%</div>
 		</div>
 	</div>
 
@@ -90,7 +90,7 @@
 		<div class="table-listing-wrapper">
 			<table class="listing csv-table">
 			</table>
-			{% include "catalog/admin/update_example.html" %}
+			{% include "catalog/admin/import_reviews_example.html" %}
 		</div>
 	</div>
 {% endblock %}

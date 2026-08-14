@@ -2,7 +2,11 @@ from django.urls import path, reverse
 from wagtail import hooks
 from wagtail.admin.menu import AdminOnlyMenuItem, Menu, MenuItem, SubmenuMenuItem
 
-from catalog.admin_views import import_organizations, update_organizations
+from catalog.admin_views import (
+    import_organizations,
+    import_reviews,
+    update_organizations,
+)
 from catalog.views import (
     CatalogViewSetGroup,
     OrganizationReportView,
@@ -29,6 +33,7 @@ def register_import_update_catalog():
         path(
             "update-organizations/", update_organizations, name="update-organizations"
         ),
+        path("import-reviews/", import_reviews, name="import-reviews"),
     ]
 
 
@@ -45,6 +50,11 @@ def register_import_update_catalog_menu_item():
                 "Update organizations",
                 reverse("update-organizations"),
                 icon_name="briefcase-solid",
+            ),
+            MenuItem(
+                "Import reviews",
+                reverse("import-reviews"),
+                icon_name="pick",
             ),
         ]
     )

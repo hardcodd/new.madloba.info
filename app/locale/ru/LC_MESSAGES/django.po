@@ -695,11 +695,11 @@ msgstr ""
 #: comments/templates/comments/admin/import_comments.html:36
 #: core/templates/core/import_pages.html:80
 msgid "Import"
-msgstr ""
+msgstr "Импортировать"
 
 #: catalog/templates/catalog/admin/import_reviews_example.html:10
 msgid "All required fields"
-msgstr ""
+msgstr "Обязательные поля"
 
 #: catalog/templates/catalog/admin/update_organizations.html:78
 #, fuzzy
@@ -891,10 +891,8 @@ msgid "Published"
 msgstr "Опубликовано"
 
 #: comments/models.py:24
-#, fuzzy
-#| msgid "Moderation"
 msgid "On moderation"
-msgstr "Модерация"
+msgstr "На модерации"
 
 #: comments/models.py:25 comments/views.py:265 reviews/models.py:19
 #: reviews/views.py:33
@@ -947,20 +945,25 @@ msgid "Comment"
 msgstr "Комментарий"
 
 #: comments/models.py:66 comments/views.py:282
-#, fuzzy
-#| msgid "Comment"
 msgid "Comments"
-msgstr "Комментарий"
+msgstr "Комментарии"
+
+msgid "All comments"
+msgstr "Все комментарии"
+
+msgid "Pinned"
+msgstr "Закреплён"
+
+msgid "Unavailable"
+msgstr "Недоступно"
 
 #: comments/models.py:98 comments/models.py:106
 msgid "Object"
 msgstr ""
 
 #: comments/templates/comments/admin/import_comments.html:12
-#, fuzzy
-#| msgid "Comment"
 msgid "Import Comments"
-msgstr "Комментарий"
+msgstr "Импорт комментариев"
 
 #: comments/templates/comments/admin/import_comments.html:16
 msgid "It takes a several minutes do not reload the page!"
@@ -968,7 +971,7 @@ msgstr ""
 
 #: comments/templates/comments/admin/import_comments.html:27
 msgid "CSV File"
-msgstr ""
+msgstr "CSV-файл"
 
 #: comments/templates/comments/admin/import_example.html:13
 #, fuzzy
@@ -982,7 +985,7 @@ msgstr "Название"
 
 #: comments/templates/comments/admin/import_example.html:33
 msgid "CSV File (Minimal example)"
-msgstr ""
+msgstr "Минимальный пример CSV-файла"
 
 #: comments/templates/comments/comment_deleted.html:12
 #: comments/templates/comments/comment_on_moderation.html:12
@@ -1056,7 +1059,7 @@ msgstr ""
 
 #: comments/views.py:295 reviews/views.py:130
 msgid "Content Object"
-msgstr ""
+msgstr "Объект"
 
 #: comments/wagtail_hooks.py:24 reviews/models.py:17
 #: reviews/wagtail_hooks.py:25
@@ -1207,6 +1210,12 @@ msgstr "Рейтинг"
 #: core/blocks.py:274 core/blocks.py:279 reviews/views.py:119
 msgid "Reviews"
 msgstr "Отзывы"
+
+msgid "All reviews"
+msgstr "Все отзывы"
+
+msgid "Add review"
+msgstr "Добавить отзыв"
 
 #: core/blocks.py:284
 msgid "Video url"
@@ -1941,6 +1950,95 @@ msgstr "Премиум подписки"
 #: subscription/views.py:33
 msgid "Subscriptions"
 msgstr "Подписки"
+
+#: catalog/templates/catalog/admin/import_reviews.html
+msgid "Import Reviews"
+msgstr "Импорт отзывов"
+
+#: catalog/templates/catalog/admin/import_reviews_example.html
+msgid "Key"
+msgstr "Поле"
+
+#: catalog/templates/catalog/admin/import_reviews_example.html
+msgid "Page ID"
+msgstr "ID страницы"
+
+#: catalog/templates/catalog/admin/import_reviews_example.html
+msgid "Review text"
+msgstr "Текст отзыва"
+
+#: catalog/templates/catalog/admin/import_reviews_example.html
+msgid "Date of publication in format"
+msgstr "Дата публикации в формате"
+
+#: comments/templates/comments/admin/import_example.html
+msgid "Example comment text"
+msgstr "Пример текста комментария"
+
+#: catalog/wagtail_hooks.py
+msgid "Import comments"
+msgstr "Импорт комментариев"
+
+#: comments/views.py reviews/views.py
+msgid "Invalid JSON."
+msgstr "Некорректный JSON."
+
+#: comments/services.py reviews/services.py
+msgid "Username is required."
+msgstr "Имя пользователя обязательно."
+
+#: comments/services.py reviews/services.py
+#, python-format
+msgid "Username must contain at most %(max_length)s characters."
+msgstr "Имя пользователя должно содержать не более %(max_length)s символов."
+
+#: comments/services.py reviews/services.py
+#, python-format
+msgid "Full name must contain at most %(max_length)s characters."
+msgstr "Полное имя должно содержать не более %(max_length)s символов."
+
+#: comments/services.py reviews/services.py
+msgid "Page not found."
+msgstr "Страница не найдена."
+
+#: comments/services.py reviews/services.py
+msgid "A JSON object is required."
+msgstr "Ожидается JSON-объект."
+
+#: comments/services.py reviews/services.py
+#, python-format
+msgid "%(field_name)s must be a string."
+msgstr "Поле %(field_name)s должно быть строкой."
+
+#: comments/services.py reviews/services.py
+#, python-format
+msgid "%(field_name)s must be an integer."
+msgstr "Поле %(field_name)s должно быть целым числом."
+
+#: comments/services.py
+msgid "Comment already exists."
+msgstr "Комментарий уже существует."
+
+#: reviews/services.py
+msgid "Review already exists."
+msgstr "Отзыв уже существует."
+
+#: comments/services.py reviews/services.py
+msgid "A non-empty list of rows is required."
+msgstr "Требуется непустой список строк."
+
+#: comments/services.py reviews/services.py
+#, python-format
+msgid "A batch may contain at most %(max_size)s rows."
+msgstr "Пакет может содержать не более %(max_size)s строк."
+
+#: comments/services.py comments/views.py
+msgid "Comment created successfully."
+msgstr "Комментарий успешно создан."
+
+#: reviews/services.py reviews/views.py
+msgid "Review created successfully."
+msgstr "Отзыв успешно создан."
 
 #, fuzzy, python-format
 #~ msgid "All about %(site_name)s"

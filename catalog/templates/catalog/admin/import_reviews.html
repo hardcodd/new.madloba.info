@@ -2,95 +2,53 @@
 
 {% load i18n %}
 
-{% block titletag %}Import Reviews{% endblock %}
+{% block titletag %}
+  {% trans "Import Reviews" %}
+{% endblock %}
 {% block extra_js %}
-	{{ block.super }}
-	<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  {{ block.super }}
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" integrity="sha384-D/t0ZMqQW31H3az8ktEiNb39wyKnS82iFY52QPACM+IjKW3jDUhyIgh2PApRqJZs" crossorigin="anonymous"></script>
 {% endblock extra_js %}
 
-{% block extra_css %}
-	<style>
-		table.listing th {
-			font-weight: bold;
-		}
-
-		table.listing td {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		table.listing td.status-message {
-			font-weight: bold;
-			font-style: italic;
-			white-space: normal;
-			max-width: none;
-			width: 250px;
-			display: block;
-		}
-
-		table.listing tr.success {
-			color: #007d7e;
-		}
-
-		table.listing tr.error {
-			color: #ca3b3b;
-			font-weight: bold;
-		}
-
-		table.listing tr.warning {
-			color: #e6a700;
-		}
-
-		.table-listing-wrapper {
-			width: 100%;
-			overflow-x: auto;
-		}
-	</style>
-{% endblock extra_css %}
-
 {% block content %}
-	{% with "Import Reviews" as title %}
-		{% include "wagtailadmin/shared/header.html" with title=title icon="briefcase-solid" %}
-	{% endwith %}
+  {% trans "Import Reviews" as title %}
+  {% include "wagtailadmin/shared/header.html" with title=title icon="upload" %}
 
-	<div class="nice-padding">
-		<form id="import-reviews-form" action="/en/catalog/import-review/" method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
-			<fieldset>
-				<ul class="fields">
-					<li>
-						<div class="w-field__wrapper " data-field-wrapper="">
-							<label class="w-field__label" for="id_file" id="id_file-label">
-								CSV File<span class="w-required-mark">*</span>
-							</label>
-							<div class="w-field w-field--file_field w-field--file_input" data-field="" data-contentpath="file">
-								<div class="w-field__errors" data-field-errors=""></div>
-								<div class="w-field__help" data-field-help=""></div>
-								<div class="w-field__input" data-field-input="">
-									<input type="file" name="file" id="id_file" accept=".csv" required>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
+  <div class="nice-padding">
+    <form id="import-reviews-form" action="{% url 'reviews:import_review' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset>
+        <ul class="fields">
+          <li>
+            <div class="w-field__wrapper " data-field-wrapper="">
+              <label class="w-field__label" for="id_file" id="id_file-label">
+                {% trans "CSV File" %}<span class="w-required-mark">*</span>
+              </label>
+              <div class="w-field w-field--file_field w-field--file_input" data-field="" data-contentpath="file">
+                <div class="w-field__errors" data-field-errors=""></div>
+                <div class="w-field__help" data-field-help=""></div>
+                <div class="w-field__input" data-field-input="">
+                  <input type="file" name="file" id="id_file" accept=".csv" required>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
 
-				<button type="submit" class="button">{% trans "Import" %}</button>
-			</fieldset>
-		</form>
-	</div>
+        <button type="submit" class="button">{% trans "Import" %}</button>
+      </fieldset>
+    </form>
+  </div>
 
-	<div class="nice-padding">
-		<div id="import-progress" class="progress">
-			<div class="bar" style="width: 0">0%</div>
-		</div>
-	</div>
+  <div class="nice-padding">
+    <div id="import-progress" class="progress">
+      <div class="bar">0%</div>
+    </div>
+  </div>
 
-	<div class="nice-padding">
-		<div class="table-listing-wrapper">
-			<table class="listing csv-table">
-			</table>
-			{% include "catalog/admin/import_reviews_example.html" %}
-		</div>
-	</div>
+  <div class="nice-padding">
+    <table class="listing csv-table">
+    </table>
+    {% include "catalog/admin/import_reviews_example.html" %}
+  </div>
 {% endblock %}

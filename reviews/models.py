@@ -100,14 +100,19 @@ class ReviewImage(Orderable):
 
 @receiver(post_save, sender=Review)
 def update_organization_rating_after_add_review(sender, instance, *args, **kwargs):
-    update_avg_rating(sender, instance, **kwargs)
-    update_rating_score(sender, instance, *args, **kwargs)
+    if getattr(instance, "_defer_rating_update", False):
+        return
+    update_review_ratings(instance)
 
 
 @receiver(post_delete, sender=Review)
 def update_organization_rating_after_delete_review(sender, instance, *args, **kwargs):
-    update_avg_rating(sender, instance, **kwargs)
-    update_rating_score(sender, instance, *args, **kwargs)
+    update_review_ratings(instance)
+
+
+def update_review_ratings(instance):
+    update_avg_rating(Review, instance)
+    update_rating_score(Review, instance)
 
 
 def update_avg_rating(sender, instance, **kwargs):

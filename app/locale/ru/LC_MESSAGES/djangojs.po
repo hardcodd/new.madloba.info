@@ -164,3 +164,74 @@ msgstr "Сервер не вернул идентификатор задачи �
 #: src/static/madloba-export.js:352
 msgid "Could not start export."
 msgstr "Не удалось запустить экспорт."
+
+#: src/static/madloba-import-comments.js:8
+#: src/static/madloba-import-reviews.js:8
+msgid "CSV import utilities are unavailable."
+msgstr "Инструменты импорта CSV недоступны."
+
+#: src/static/madloba-import-comments.js:19
+msgid "Comment import form controls are unavailable."
+msgstr "Элементы формы импорта комментариев недоступны."
+
+#: src/static/madloba-import-reviews.js:19
+msgid "Review import form controls are unavailable."
+msgstr "Элементы формы импорта отзывов недоступны."
+
+#: src/static/madloba-import-comments.js:23
+#: src/static/madloba-import-reviews.js:23
+msgid "CSV parser is unavailable."
+msgstr "Парсер CSV недоступен."
+
+#: src/static/madloba-import-comments.js:42
+#: src/static/madloba-import-reviews.js:42
+msgid "Imported!"
+msgstr "Импортировано!"
+
+#: src/static/madloba-import-comments.js:72
+#: src/static/madloba-import-reviews.js:72
+msgid "The server returned an incomplete import result."
+msgstr "Сервер вернул неполный результат импорта."
+
+#: src/static/madloba-import-comments.js:93
+#: src/static/madloba-import-reviews.js:93
+msgid "Import request failed."
+msgstr "Не удалось выполнить запрос импорта."
+
+#: src/static/madloba-import-comments.js:112
+#: src/static/madloba-import-reviews.js:112
+msgid "Import completed"
+msgstr "Импорт завершён"
+
+#: src/static/madloba-import-comments.js:113
+#: src/static/madloba-import-reviews.js:113
+msgid "Successful"
+msgstr "Успешно"
+
+#: src/static/madloba-import-comments.js:114
+#: src/static/madloba-import-reviews.js:114
+msgid "Warnings"
+msgstr "Предупреждения"
+
+#: src/static/madloba-import-comments.js:115
+#: src/static/madloba-import-reviews.js:115
+msgid "Errors"
+msgstr "Ошибки"
+
+#: src/static/madloba-import-comments.js:137
+#: src/static/madloba-import-reviews.js:135
+msgid "Missing required CSV fields"
+msgstr "Отсутствуют обязательные поля CSV"
+
+#: src/static/madloba-import-comments.js:162
+#: src/static/madloba-import-reviews.js:161
+msgid "Parsing error"
+msgstr "Ошибка разбора"
+
+#: src/static/madloba-admin.js
+msgid "No data to import"
+msgstr "Нет данных для импорта"
+
+#: src/static/madloba-admin.js
+msgid "Status"
+msgstr "Статус"

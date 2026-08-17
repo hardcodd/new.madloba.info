@@ -1,13 +1,7 @@
 // ======= UTILITIES ==================================================
 const escapeHtml = (val) => {
 	if (val === null || val === undefined) return "";
-	const s = String(val);
-	return s;
-	// .replace(/&/g, "&amp;")
-	// .replace(/</g, "&lt;")
-	// .replace(/>/g, "&gt;")
-	// .replace(/"/g, "&quot;")
-	// .replace(/'/g, "&#039;");
+	return String(val);
 };
 
 const truncate = (val, max = 50) => {
@@ -24,6 +18,7 @@ const updateProgressBar = (barEl, percentage) => {
 // ======= TABLE RENDERING ============================================
 const renderTable = (data, progress, progressBar) => {
 	return new Promise((resolve) => {
+		const gettext = window.gettext || ((message) => message);
 		const table = document.querySelector(".csv-table");
 		if (!table) return resolve([]);
 
@@ -35,7 +30,7 @@ const renderTable = (data, progress, progressBar) => {
 
 		if (!Array.isArray(data) || data.length === 0) {
 			const empty = document.createElement("caption");
-			empty.textContent = "No data to import";
+			empty.textContent = gettext("No data to import");
 			table.appendChild(empty);
 			return resolve([]);
 		}
@@ -50,7 +45,7 @@ const renderTable = (data, progress, progressBar) => {
 			headerRow.appendChild(th);
 		});
 		const statusTh = document.createElement("th");
-		statusTh.textContent = "Status";
+		statusTh.textContent = gettext("Status");
 		headerRow.insertBefore(statusTh, headerRow.firstChild);
 		thead.appendChild(headerRow);
 		table.appendChild(thead);
@@ -84,143 +79,6 @@ const renderTable = (data, progress, progressBar) => {
 	});
 };
 
-// ======= SEQUENTIAL SENDING =========================================
-const postRow = async (url, csrfToken, rowObj) => {
-	const res = await fetch(url, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"X-CSRFToken": csrfToken,
-		},
-		body: JSON.stringify(rowObj),
-	});
-
-	// Server may return non-JSON on HTTP 500, handle gracefully
-	let json = {};
-	try {
-		json = await res.json();
-	} catch (_) {}
-
-	// Normalize contract: consider success if 2xx + {success:true}
-	const ok = res.ok && json && json.success === true;
-	const message = json?.message || (res.ok ? "OK" : `HTTP ${res.status}`);
-	return { ok, message };
-};
-
-const importSequentially = async (url, data, csrf, progressBar) => {
-	const total = data.length;
-	let processed = 0;
-	const tbody = document.querySelector(".csv-table tbody");
-
-	for (let i = 0; i < total; i += 1) {
-		const row = data[i];
-		row.is_first = i === 0;
-		row.is_last = i === total - 1;
-		const rowId = `row-${i + 1}`;
-		const tr = document.getElementById(rowId);
-		const statusTd = tr?.querySelector(".status-message");
-
-		try {
-			// const form = document.querySelector("#import-organizations-form");
-			const result = await postRow(url, csrf.value, row);
-
-			if (result.ok) {
-				tr?.classList?.remove("error");
-				tr?.classList?.add("success");
-				tr.querySelector(".status-message").textContent = "Imported!";
-			} else {
-				tr?.classList?.remove("success");
-				tr?.classList?.add(result.message === "Already exists!" ? "warning" : "error");
-				statusTd.textContent = result.message;
-			}
-		} catch (err) {
-			tr?.classList?.remove("success");
-			tr?.classList?.add("error");
-			statusTd.textContent = err?.message || err;
-		} finally {
-			processed += 1;
-			const pct = Math.round((processed / total) * 100);
-			updateProgressBar(progressBar, pct);
-			// Small delay (optional) to avoid overloading the server:
-			// await new Promise(r => setTimeout(r, 20));
-		}
-	}
-
-	// Reorder rows: success first, then warnings, then errors
-	const successRowsLength = tbody.querySelectorAll("tr.success").length;
-	const warningRows = tbody.querySelectorAll("tr.warning");
-	const errorRows = tbody.querySelectorAll("tr.error");
-
-	warningRows.forEach((r) => tbody.appendChild(r));
-	errorRows.forEach((r) => tbody.appendChild(r));
-
-	alert(
-		`Import completed: ${processed} of ${total} rows processed. Successful: ${successRowsLength}, Warnings: ${warningRows.length}, Errors: ${errorRows.length}.`,
-	);
-};
-
-// ======= INITIALIZATION IMPORT / UPDATE ORGANIZATIONS =============================================
-document.addEventListener("DOMContentLoaded", () => {
-	const form = document.querySelector("#import-organizations-form");
-	if (!form) return;
-
-	const csrf = form.querySelector("input[name='csrfmiddlewaretoken']");
-	const progress = document.querySelector("#import-progress");
-	const progressBar = document.querySelector(".bar");
-
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-
-		const file = form.file?.files?.[0];
-		if (!file) return;
-
-		Papa.parse(file, {
-			header: true,
-			skipEmptyLines: true,
-			encoding: "utf-8",
-			complete: async (result) => {
-				const rows = result?.data?.filter(Boolean) || [];
-				await renderTable(rows, progress, progressBar);
-				// IMPORTANT: send it sequentially
-				await importSequentially(form.action, rows, csrf, progressBar);
-			},
-			error: (err) => alert("Parsing error: " + err.message),
-		});
-	});
-});
-
-// ======= INITIALIZATION IMPORT REVIEWS =============================================
-document.addEventListener("DOMContentLoaded", () => {
-	const form = document.querySelector("#import-reviews-form");
-	if (!form) return;
-
-	const csrf = form.querySelector("input[name='csrfmiddlewaretoken']");
-	const progress = document.querySelector("#import-progress");
-	const progressBar = document.querySelector(".bar");
-
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-
-		const file = form.file?.files?.[0];
-		if (!file) return;
-
-		Papa.parse(file, {
-			header: true,
-			skipEmptyLines: true,
-			encoding: "utf-8",
-			complete: async (result) => {
-				const rows = (result?.data || []).filter(Boolean).map((row) => ({
-					id: row.id,
-					user: row.user,
-					rate: row.rate,
-					date: row.date,
-					text: row.text,
-				}));
-				await renderTable(rows, progress, progressBar);
-				// IMPORTANT: send it sequentially
-				await importSequentially(form.action, rows, csrf, progressBar);
-			},
-			error: (err) => alert("Parsing error: " + err.message),
-		});
-	});
+window.MadlobaAdminCsvImport = Object.freeze({
+	renderTable,
 });

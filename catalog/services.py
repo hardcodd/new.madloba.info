@@ -150,7 +150,7 @@ def get_working_hours_service(organization: Organization) -> str:
 
 
 def get_current_city_service(context) -> str:
-    """Return the current city if current page is a catalog.city page.
+    """Return the current city if the current page is a catalog.city page.
     Else try to get the city from parent pages."""
 
     page = context.get("page")

@@ -3,7 +3,7 @@
 {% get_current_language as current_lang %}
 
 {% spaceless %}
-  {% cache 604800 blog_post_item post.pk current_lang %}
+  {% cache 604800 blog_post_item_v2 post.pk current_lang %}
   <article class="blog-post" id="blog-post-{{ post.pk }}">
     <header class="blog-post__header">
       <a href="{{ post.url }}" class="blog-post__image">

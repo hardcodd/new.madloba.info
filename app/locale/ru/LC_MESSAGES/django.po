@@ -208,16 +208,16 @@ msgstr "Авторы"
 
 #: authors/templates/authors/author_page.html:21
 msgid "Total publications:"
-msgstr ""
+msgstr "Всего публикаций:"
 
 #: authors/templates/authors/author_page.html:31
 msgid "View all"
-msgstr ""
+msgstr "Посмотреть все"
 
 #: authors/templates/authors/includes/author-item.html:16
 #: authors/templates/authors/includes/author.html:17
 msgid "Visit author"
-msgstr ""
+msgstr "Подробнее об авторе"
 
 #: authors/templates/authors/includes/author.html:10
 #, fuzzy
@@ -339,7 +339,7 @@ msgstr "По категориям"
 #: ratings/templates/ratings/includes/post-item.html:43
 #: search/templates/search/search_item.html:10
 msgid "Read more"
-msgstr ""
+msgstr "Подробнее"
 
 #: blog/templates/blog/includes/tags_widget.html:11
 #, fuzzy

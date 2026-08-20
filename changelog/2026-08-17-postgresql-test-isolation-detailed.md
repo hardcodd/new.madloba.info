@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-08-17-feedback-administration-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-08-17-postgresql-test-isolation-brief.md)
+[← Предыдущая задача](2026-08-17-feedback-administration-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-08-17-postgresql-test-isolation-brief.md) · [Следующая задача →](2026-08-20-image-rendition-aspect-ratios-detailed.md)
 
 # Безопасная изоляция тестов
 

@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-08-17-feedback-administration-brief.md) · [Все отчёты](README.md) · [Подробная версия](2026-08-17-postgresql-test-isolation-detailed.md)
+[← Предыдущая задача](2026-08-17-feedback-administration-brief.md) · [Все отчёты](README.md) · [Подробная версия](2026-08-17-postgresql-test-isolation-detailed.md) · [Следующая задача →](2026-08-20-image-rendition-aspect-ratios-brief.md)
 
 # Отделил тесты от рабочей базы
 

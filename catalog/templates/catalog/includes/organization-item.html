@@ -20,7 +20,7 @@
 								<div class="organization-item__thumb">
 									<img src="{{ thumb.url }}" alt="{{ o.title|default:o.h1_title }}">
 								</div>
-								<div class="ratio">{% srcset_image img.image width-720 format-{avif,webp,jpeg} loading="lazy" %}</div>
+								<div class="ratio">{% srcset_image img.image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}</div>
 							{% endwith %}
 						{% else %}
 							{% image settings.core.SiteSettings.default_organization_image max-165x165 as thumb %}
@@ -29,7 +29,7 @@
 									<img src="{{ thumb.url }}" alt="{{ o.title|default:o.h1_title }}">
 								</div>
 								{% with settings.core.SiteSettings.default_organization_image as default_image %}
-									<div class="ratio">{% srcset_image default_image width-720 format-{avif,webp,jpeg} loading="lazy" %}</div>
+									<div class="ratio">{% srcset_image default_image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}</div>
 								{% endwith %}
 							{% endif %}
 						{% endif %}

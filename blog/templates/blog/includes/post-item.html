@@ -9,9 +9,9 @@
       <a href="{{ post.url }}" class="blog-post__image">
         <div class="ratio">
           {% if post.get_image %}
-            {% srcset_image post.get_image width-720 format-{avif,webp,jpeg} loading="lazy" %}
+            {% srcset_image post.get_image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}
           {% else %}
-            {% srcset_image settings.core.SiteSettings.default_organization_image width-720 format-{avif,webp,jpeg} loading="lazy" %}
+            {% srcset_image settings.core.SiteSettings.default_organization_image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}
           {% endif %}
         </div>
       </a>

@@ -24,7 +24,13 @@ from core.admin_columns import (
     without_language_prefix,
 )
 from core.utils import is_ajax
-from reviews.models import Review, ReviewImage, ReviewStatus
+from reviews.models import (
+    MAX_REVIEW_RATING,
+    MIN_REVIEW_RATING,
+    Review,
+    ReviewImage,
+    ReviewStatus,
+)
 from reviews.services import ReviewImportError, import_review_row, import_review_rows
 from reviews.templatetags.reviews import get_reviews
 
@@ -142,7 +148,17 @@ def add_review(request):
 
     images = request.FILES.getlist("images")
     comment = request.POST.get("comment")
-    rating = int(request.POST.get("rating", 0))
+    try:
+        rating = int(request.POST.get("rating", ""))
+    except (TypeError, ValueError):
+        rating = None
+
+    if rating is None or not MIN_REVIEW_RATING <= rating <= MAX_REVIEW_RATING:
+        return JsonResponse(
+            {"message": _("Rating must be between 1 and 5.")},
+            status=400,
+        )
+
     object_id = request.POST.get("object_id")
 
     try:

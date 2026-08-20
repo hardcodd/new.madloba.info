@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
@@ -11,6 +12,9 @@ from wagtail.models import ClusterableModel, Orderable, ParentalKey
 from core.utils import starsort
 
 USER_MODEL = get_user_model()
+
+MIN_REVIEW_RATING = 1
+MAX_REVIEW_RATING = 5
 
 
 class ReviewStatus(models.TextChoices):
@@ -40,6 +44,10 @@ class Review(ClusterableModel):
     rating = models.PositiveIntegerField(
         verbose_name=_("Rating"),
         help_text=_("Rating value"),
+        validators=[
+            MinValueValidator(MIN_REVIEW_RATING),
+            MaxValueValidator(MAX_REVIEW_RATING),
+        ],
     )
 
     comment = models.TextField(
@@ -124,9 +132,10 @@ def update_avg_rating(sender, instance, **kwargs):
             content_type=ContentType.objects.get_for_model(content_object),
             object_id=content_object.pk,
             status=ReviewStatus.PUBLISHED,
+            rating__range=(MIN_REVIEW_RATING, MAX_REVIEW_RATING),
         )
         avg_rating = all_reviews.aggregate(models.Avg("rating"))["rating__avg"]
-        content_object.avg_rating = avg_rating
+        content_object.avg_rating = avg_rating or 0
         content_object.save()
 
 
@@ -141,7 +150,7 @@ def update_rating_score(sender, instance, *args, **kwargs):
         object_id=obj.id,
         content_type=obj.content_type,
         # parent=None,
-        rating__gte=0,
+        rating__range=(MIN_REVIEW_RATING, MAX_REVIEW_RATING),
     )
 
     stars = (

@@ -8,7 +8,13 @@ from django.db import IntegrityError, transaction
 from django.utils.translation import gettext as _
 from wagtail.models import Page
 
-from reviews.models import Review, ReviewStatus, update_review_ratings
+from reviews.models import (
+    MAX_REVIEW_RATING,
+    MIN_REVIEW_RATING,
+    Review,
+    ReviewStatus,
+    update_review_ratings,
+)
 
 MAX_IMPORT_BATCH_SIZE = 100
 
@@ -36,7 +42,10 @@ class ReviewImportRowForm(forms.Form):
             "%Y-%m-%d",
         )
     )
-    rate = forms.IntegerField(min_value=1, max_value=5)
+    rate = forms.IntegerField(
+        min_value=MIN_REVIEW_RATING,
+        max_value=MAX_REVIEW_RATING,
+    )
 
     def clean_user(self):
         raw_user = self.cleaned_data["user"]

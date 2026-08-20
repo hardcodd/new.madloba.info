@@ -115,10 +115,10 @@
       "publicPath": "/static/btn/9.png",
       "sourceFilename": "static/btn/9.png"
     },
-    "css/e00ed06d7d6d6a1e8796.main.css": {
-      "name": "css/e00ed06d7d6d6a1e8796.main.css",
-      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/css/e00ed06d7d6d6a1e8796.main.css",
-      "publicPath": "/static/css/e00ed06d7d6d6a1e8796.main.css"
+    "css/60d09a72bce14ade7339.main.css": {
+      "name": "css/60d09a72bce14ade7339.main.css",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/css/60d09a72bce14ade7339.main.css",
+      "publicPath": "/static/css/60d09a72bce14ade7339.main.css"
     },
     "favicon/favicon.png": {
       "name": "favicon/favicon.png",
@@ -289,7 +289,7 @@
   "chunks": {
     "main": [
       "js/f7983d9e4f74e31a9456.272.js",
-      "css/e00ed06d7d6d6a1e8796.main.css",
+      "css/60d09a72bce14ade7339.main.css",
       "js/5de8a949325db534ce2d.main.js"
     ]
   },

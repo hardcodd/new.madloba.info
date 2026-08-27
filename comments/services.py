@@ -4,19 +4,18 @@ from typing import Any
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
-from django.db import IntegrityError, transaction
+from django.db import transaction
 from django.utils.translation import gettext as _
 from wagtail.models import Page
 
 from comments.models import COMMENT_PUBLISHED, Comment
+from core.import_users import (
+    ImportUserError,
+    get_or_create_import_user,
+    parse_import_user,
+)
 
 MAX_IMPORT_BATCH_SIZE = 100
-
-
-@dataclass(frozen=True)
-class CommentImportUser:
-    username: str
-    full_name: str
 
 
 @dataclass(frozen=True)
@@ -38,28 +37,7 @@ class CommentImportRowForm(forms.Form):
     )
 
     def clean_user(self):
-        raw_user = self.cleaned_data["user"]
-        full_name, separator, username = raw_user.rpartition("/")
-
-        if not separator:
-            username = raw_user
-            full_name = raw_user
-
-        username = username.strip()
-        full_name = full_name.strip() or username
-
-        if not username:
-            raise forms.ValidationError(_("Username is required."))
-
-        user_model = get_user_model()
-        username_field = user_model._meta.get_field(user_model.USERNAME_FIELD)
-        if username_field.max_length and len(username) > username_field.max_length:
-            raise forms.ValidationError(
-                _("Username must contain at most %(max_length)s characters."),
-                params={"max_length": username_field.max_length},
-            )
-
-        return CommentImportUser(username=username, full_name=full_name)
+        return parse_import_user(self.cleaned_data["user"])
 
 
 class CommentImportError(Exception):
@@ -74,34 +52,6 @@ def _format_form_errors(form):
     for field_name, errors in form.errors.items():
         messages.extend(f"{field_name}: {error}" for error in errors)
     return "; ".join(messages)
-
-
-def _get_or_create_import_user(import_user):
-    user_model = get_user_model()
-
-    try:
-        return user_model.objects.get(username=import_user.username)
-    except user_model.DoesNotExist:
-        pass
-
-    first_name_field = user_model._meta.get_field("first_name")
-    if (
-        first_name_field.max_length
-        and len(import_user.full_name) > first_name_field.max_length
-    ):
-        raise CommentImportError(
-            _("Full name must contain at most %(max_length)s characters.")
-            % {"max_length": first_name_field.max_length}
-        )
-
-    try:
-        with transaction.atomic():
-            return user_model.objects.create_user(
-                username=import_user.username,
-                first_name=import_user.full_name,
-            )
-    except IntegrityError:
-        return user_model.objects.get(username=import_user.username)
 
 
 def _get_target(page_id):
@@ -132,8 +82,7 @@ def _import_comment_row(data: Any):
             or not isinstance(data[field_name], (int, str))
         ):
             raise CommentImportError(
-                _("%(field_name)s must be an integer.")
-                % {"field_name": field_name}
+                _("%(field_name)s must be an integer.") % {"field_name": field_name}
             )
 
     form = CommentImportRowForm(data)
@@ -142,7 +91,10 @@ def _import_comment_row(data: Any):
 
     content_type, target = _get_target(form.cleaned_data["id"])
     import_user = form.cleaned_data["user"]
-    user = _get_or_create_import_user(import_user)
+    try:
+        user = get_or_create_import_user(import_user)
+    except ImportUserError as error:
+        raise CommentImportError(str(error)) from error
     user = get_user_model().objects.select_for_update().get(pk=user.pk)
     created_at = form.cleaned_data["date"]
     comment_text = form.cleaned_data["text"]

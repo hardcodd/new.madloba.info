@@ -91,6 +91,27 @@ class ImportReviewViewTests(TestCase):
         existing_user.refresh_from_db()
         self.assertEqual(existing_user.first_name, "Existing Name")
 
+    def test_import_without_username_uses_existing_imported_user(self):
+        existing_user = get_user_model().objects.create_user(
+            username="m_123_masha_mityaeva",
+            first_name="Маша Митяева",
+        )
+
+        response = self.post_import(self.payload(user="Маша Митяева"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Review.objects.get().user, existing_user)
+
+    @patch("core.import_users.random.randint", return_value=234)
+    def test_import_without_username_creates_generated_username(self, random_number):
+        response = self.post_import(self.payload(user="Маша Митяева"))
+
+        self.assertEqual(response.status_code, 200)
+        review_user = Review.objects.get().user
+        self.assertEqual(review_user.username, "m_234_masha_mitiaeva")
+        self.assertEqual(review_user.first_name, "Маша Митяева")
+        random_number.assert_called_once_with(100, 999)
+
     def test_import_preserves_csv_datetime(self):
         response = self.post_import(self.payload())
 

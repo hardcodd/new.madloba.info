@@ -1,4 +1,5 @@
 from datetime import datetime
+from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Permission
@@ -89,6 +90,49 @@ class ImportCommentViewTests(TestCase):
         existing_user.refresh_from_db()
         self.assertEqual(existing_user.first_name, "Existing Name")
 
+    def test_import_creates_explicit_username(self):
+        response = self.post_import(
+            self.payload(user="Маша Митяева / m_234_masha_mityaeva")
+        )
+
+        self.assertEqual(response.status_code, 200)
+        comment = Comment.objects.get()
+        self.assertEqual(comment.user.username, "m_234_masha_mityaeva")
+        self.assertEqual(comment.user.first_name, "Маша Митяева")
+
+    def test_import_without_username_uses_existing_imported_user(self):
+        existing_user = get_user_model().objects.create_user(
+            username="m_123_masha_mityaeva",
+            first_name="Маша Митяева",
+        )
+
+        response = self.post_import(self.payload(user="Маша Митяева"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Comment.objects.get().user, existing_user)
+
+    @patch("core.import_users.random.randint", side_effect=[234, 235])
+    def test_import_without_username_retries_when_generated_username_exists(
+        self, random_number
+    ):
+        user_model = get_user_model()
+        user_model.objects.create_user(
+            username="m_234_masha_mitiaeva",
+            first_name="Another User",
+        )
+        user_model.objects.create_user(
+            username="regular-masha",
+            first_name="Маша Митяева",
+        )
+
+        response = self.post_import(self.payload(user="Маша Митяева"))
+
+        self.assertEqual(response.status_code, 200)
+        comment_user = Comment.objects.get().user
+        self.assertEqual(comment_user.username, "m_235_masha_mitiaeva")
+        self.assertEqual(comment_user.first_name, "Маша Митяева")
+        self.assertEqual(random_number.call_count, 2)
+
     def test_import_preserves_csv_datetime_and_publishes_comment(self):
         response = self.post_import(self.payload())
 
@@ -126,18 +170,14 @@ class ImportCommentViewTests(TestCase):
         )
         self.assertEqual(response.json()["results"][1]["code"], "page_not_found")
         self.assertEqual(Comment.objects.count(), 2)
-        self.assertFalse(
-            get_user_model().objects.filter(username="missing").exists()
-        )
+        self.assertFalse(get_user_model().objects.filter(username="missing").exists())
 
     def test_invalid_page_does_not_create_user(self):
         response = self.post_import(self.payload(id=999999, user="New / new-user"))
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json()["code"], "page_not_found")
-        self.assertFalse(
-            get_user_model().objects.filter(username="new-user").exists()
-        )
+        self.assertFalse(get_user_model().objects.filter(username="new-user").exists())
         self.assertFalse(Comment.objects.exists())
 
     def test_primitive_json_returns_validation_error(self):

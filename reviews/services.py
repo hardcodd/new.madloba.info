@@ -4,10 +4,15 @@ from typing import Any
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
-from django.db import IntegrityError, transaction
+from django.db import transaction
 from django.utils.translation import gettext as _
 from wagtail.models import Page
 
+from core.import_users import (
+    ImportUserError,
+    get_or_create_import_user,
+    parse_import_user,
+)
 from reviews.models import (
     MAX_REVIEW_RATING,
     MIN_REVIEW_RATING,
@@ -17,12 +22,6 @@ from reviews.models import (
 )
 
 MAX_IMPORT_BATCH_SIZE = 100
-
-
-@dataclass(frozen=True)
-class ReviewImportUser:
-    username: str
-    full_name: str
 
 
 @dataclass(frozen=True)
@@ -48,28 +47,7 @@ class ReviewImportRowForm(forms.Form):
     )
 
     def clean_user(self):
-        raw_user = self.cleaned_data["user"]
-        full_name, separator, username = raw_user.rpartition("/")
-
-        if not separator:
-            username = raw_user
-            full_name = raw_user
-
-        username = username.strip()
-        full_name = full_name.strip() or username
-
-        if not username:
-            raise forms.ValidationError(_("Username is required."))
-
-        user_model = get_user_model()
-        username_field = user_model._meta.get_field(user_model.USERNAME_FIELD)
-        if username_field.max_length and len(username) > username_field.max_length:
-            raise forms.ValidationError(
-                _("Username must contain at most %(max_length)s characters."),
-                params={"max_length": username_field.max_length},
-            )
-
-        return ReviewImportUser(username=username, full_name=full_name)
+        return parse_import_user(self.cleaned_data["user"])
 
 
 class ReviewImportError(Exception):
@@ -84,34 +62,6 @@ def _format_form_errors(form):
     for field_name, errors in form.errors.items():
         messages.extend(f"{field_name}: {error}" for error in errors)
     return "; ".join(messages)
-
-
-def _get_or_create_import_user(import_user):
-    user_model = get_user_model()
-
-    try:
-        return user_model.objects.get(username=import_user.username)
-    except user_model.DoesNotExist:
-        pass
-
-    first_name_field = user_model._meta.get_field("first_name")
-    if (
-        first_name_field.max_length
-        and len(import_user.full_name) > first_name_field.max_length
-    ):
-        raise ReviewImportError(
-            _("Full name must contain at most %(max_length)s characters.")
-            % {"max_length": first_name_field.max_length}
-        )
-
-    try:
-        with transaction.atomic():
-            return user_model.objects.create_user(
-                username=import_user.username,
-                first_name=import_user.full_name,
-            )
-    except IntegrityError:
-        return user_model.objects.get(username=import_user.username)
 
 
 def _import_review_row(data: Any, *, defer_rating_update=False):
@@ -148,7 +98,10 @@ def _import_review_row(data: Any, *, defer_rating_update=False):
 
     content_type = ContentType.objects.get_for_model(page)
     import_user = form.cleaned_data["user"]
-    user = _get_or_create_import_user(import_user)
+    try:
+        user = get_or_create_import_user(import_user)
+    except ImportUserError as error:
+        raise ReviewImportError(str(error)) from error
     user = get_user_model().objects.select_for_update().get(pk=user.pk)
 
     if Review.objects.filter(

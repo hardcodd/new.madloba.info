@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-08-17-postgresql-test-isolation-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-08-20-reliability-migrations-interface-brief.md)
+[← Предыдущая задача](2026-08-17-postgresql-test-isolation-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-08-20-reliability-migrations-interface-brief.md) · [Следующая задача →](2026-08-28-feedback-import-users-detailed.md)
 
 # Надёжность отзывов, миграции и исправления интерфейса
 

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const progress = document.querySelector("#import-progress");
 	const progressBar = progress?.querySelector(".bar");
 	const requiredFields = ["id", "user", "rate", "date", "text"];
-	const batchSize = 100;
+	const batchSize = 10;
 
 	if (!csrf || !progressBar) {
 		console.error(gettext("Review import form controls are unavailable."));

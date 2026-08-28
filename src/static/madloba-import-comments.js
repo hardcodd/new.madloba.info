@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const progress = document.querySelector("#import-progress");
 	const progressBar = progress?.querySelector(".bar");
 	const requiredFields = ["id", "text", "user", "date"];
-	const batchSize = 100;
+	const batchSize = 10;
 
 	if (!csrf || !progressBar) {
 		console.error(gettext("Comment import form controls are unavailable."));

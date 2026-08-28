@@ -9,6 +9,7 @@
 
 | Задача | Коммиты | Для себя | Для работодателя |
 | --- | --- | --- | --- |
+| Размер пакетов при импорте отзывов и комментариев | [`78907f9`](https://github.com/hardcodd/new.madloba.info/commit/78907f918a9279f83e49d9c75067ed68f93f4117) | [Подробно](2026-08-28-feedback-import-batch-size-detailed.md) | [Кратко](2026-08-28-feedback-import-batch-size-brief.md) |
 | Пользователи при импорте отзывов и комментариев | [`916a1cd`](https://github.com/hardcodd/new.madloba.info/commit/916a1cde56cc802bd6f9773329feb4551c62ffd5) | [Подробно](2026-08-28-feedback-import-users-detailed.md) | [Кратко](2026-08-28-feedback-import-users-brief.md) |
 
 ## 20 августа 2026

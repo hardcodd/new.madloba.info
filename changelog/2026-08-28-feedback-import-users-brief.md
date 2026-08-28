@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-08-20-reliability-migrations-interface-brief.md) · [Все отчёты](README.md) · [Подробная версия](2026-08-28-feedback-import-users-detailed.md)
+[← Предыдущая задача](2026-08-20-reliability-migrations-interface-brief.md) · [Все отчёты](README.md) · [Подробная версия](2026-08-28-feedback-import-users-detailed.md) · [Следующая задача →](2026-08-28-feedback-import-batch-size-brief.md)
 
 # Улучшил импорт пользователей в отзывах и комментариях
 

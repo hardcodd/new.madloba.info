@@ -31,22 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		progressBar.textContent = `${percentage}%`;
 	};
 
-	const setRowResult = (index, result) => {
-		const row = document.getElementById(`row-${index + 1}`);
-		const status = row?.querySelector(".status-message");
-		if (!row || !status) return;
-
-		row.classList.remove("success", "warning", "error");
-		if (result.success) {
-			row.classList.add("success");
-			status.textContent = gettext("Imported!");
-			return;
-		}
-
-		row.classList.add(result.code === "already_exists" ? "warning" : "error");
-		status.textContent = result.message;
-	};
-
 	const postBatch = async (rows) => {
 		const response = await fetch(form.action, {
 			method: "POST",
@@ -62,11 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		try {
 			data = await response.json();
 		} catch (_) {
-			throw new Error(`HTTP ${response.status}`);
+			const error = new Error(`HTTP ${response.status}`);
+			error.status = response.status;
+			throw error;
 		}
 
 		if (!response.ok || !data.success || !Array.isArray(data.results)) {
-			throw new Error(data.message || `HTTP ${response.status}`);
+			const error = new Error(data.message || `HTTP ${response.status}`);
+			error.status = response.status;
+			throw error;
 		}
 		if (data.results.length !== rows.length) {
 			throw new Error(gettext("The server returned an incomplete import result."));
@@ -74,28 +62,47 @@ document.addEventListener("DOMContentLoaded", () => {
 		return data.results;
 	};
 
+	const requestFailedResult = (error) => ({
+		success: false,
+		code: "request_failed",
+		message: error.message || gettext("Import request failed."),
+	});
+
+	const postBatchWithFallback = async (rows) => {
+		try {
+			return await postBatch(rows);
+		} catch (batchError) {
+			if (batchError.status && batchError.status < 500) {
+				return rows.map(() => requestFailedResult(batchError));
+			}
+
+			const results = [];
+			for (const row of rows) {
+				try {
+					const [result] = await postBatch([row]);
+					results.push(result);
+				} catch (rowError) {
+					results.push(requestFailedResult(rowError));
+				}
+			}
+			return results;
+		}
+	};
+
 	const importRows = async (rows) => {
 		let processed = 0;
 		let successful = 0;
 		let warnings = 0;
 		let errors = 0;
+		const importResults = [];
 		setProgress(0, rows.length);
 
 		for (let offset = 0; offset < rows.length; offset += batchSize) {
 			const batch = rows.slice(offset, offset + batchSize);
-			let results;
-			try {
-				results = await postBatch(batch);
-			} catch (error) {
-				results = batch.map(() => ({
-					success: false,
-					code: "request_failed",
-					message: error.message || gettext("Import request failed."),
-				}));
-			}
+			const results = await postBatchWithFallback(batch);
 
-			results.forEach((result, index) => {
-				setRowResult(offset + index, result);
+			results.forEach((result) => {
+				importResults.push(result);
 				if (result.success) successful += 1;
 				else if (result.code === "already_exists") warnings += 1;
 				else errors += 1;
@@ -104,16 +111,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			setProgress(processed, rows.length);
 		}
 
-		const tableBody = document.querySelector(".csv-table tbody");
-		tableBody
-			?.querySelectorAll("tr.warning, tr.error")
-			.forEach((row) => tableBody.appendChild(row));
 		alert(
 			`${gettext("Import completed")}: ${processed}/${rows.length}. ` +
 				`${gettext("Successful")}: ${successful}. ` +
 				`${gettext("Warnings")}: ${warnings}. ` +
 				`${gettext("Errors")}: ${errors}.`,
 		);
+		return importResults;
 	};
 
 	form.addEventListener("submit", (event) => {
@@ -129,30 +133,34 @@ document.addEventListener("DOMContentLoaded", () => {
 			encoding: "utf-8",
 			complete: async (result) => {
 				const fields = result.meta?.fields || [];
-				const missingFields = requiredFields.filter(
-					(field) => !fields.includes(field),
-				);
+				const missingFields = requiredFields.filter((field) => !fields.includes(field));
 				if (missingFields.length) {
-					alert(
-						`${gettext("Missing required CSV fields")}: ${missingFields.join(", ")}`,
-					);
+					alert(`${gettext("Missing required CSV fields")}: ${missingFields.join(", ")}`);
 					return;
 				}
 
-				const rows = (result.data || []).map((row) => ({
+				const sourceRows = result.data || [];
+				const rows = sourceRows.map((row) => ({
 					id: row.id,
 					text: row.text,
 					user: row.user,
 					date: row.date,
 				}));
 
-				await csvImport.renderTable(rows, progress, progressBar);
 				const controls = form.querySelectorAll("input, button");
 				controls.forEach((control) => {
 					control.disabled = true;
 				});
 				try {
-					await importRows(rows);
+					const importResults = await importRows(rows);
+					csvImport.downloadImportResults(
+						file,
+						fields,
+						sourceRows,
+						importResults,
+						result.meta?.delimiter,
+						result.meta?.linebreak,
+					);
 				} finally {
 					controls.forEach((control) => {
 						control.disabled = false;

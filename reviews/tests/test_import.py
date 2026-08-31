@@ -66,6 +66,7 @@ class ImportReviewViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "<sup>*</sup> id", html=True)
         self.assertContains(response, "<sup>*</sup> rate", html=True)
+        self.assertNotContains(response, "csv-table")
 
     def test_admin_listing_renders_imported_review(self):
         self.post_import(self.payload())

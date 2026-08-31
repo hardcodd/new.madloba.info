@@ -65,6 +65,7 @@ class ImportCommentViewTests(TestCase):
         self.assertContains(response, "<th>id</th>", html=True)
         self.assertContains(response, "<th>text</th>", html=True)
         self.assertNotContains(response, "content_type")
+        self.assertNotContains(response, "csv-table")
 
     def test_admin_listing_renders_imported_comment(self):
         self.post_import(self.payload())

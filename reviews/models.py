@@ -80,6 +80,18 @@ class Review(ClusterableModel):
         ),
     ]
 
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=("content_type", "object_id", "user"),
+                name="reviews_import_lookup_idx",
+            ),
+            models.Index(
+                fields=("content_type", "object_id", "status", "rating"),
+                name="reviews_rating_lookup_idx",
+            ),
+        ]
+
     def __str__(self):
         return f"{self.user}"
 

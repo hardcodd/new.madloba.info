@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-08-28-feedback-import-users-brief.md) · [Все отчёты](README.md) · [Подробная версия](2026-08-28-feedback-import-batch-size-detailed.md)
+[← Предыдущая задача](2026-08-28-feedback-import-users-brief.md) · [Все отчёты](README.md) · [Подробная версия](2026-08-28-feedback-import-batch-size-detailed.md) · [Следующая задача →](2026-08-31-feedback-import-reliability-results-brief.md)
 
 # Уменьшил размер пакетов при импорте отзывов и комментариев
 

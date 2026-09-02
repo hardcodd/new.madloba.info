@@ -23,6 +23,7 @@ from wagtail.snippets.models import register_snippet
 
 from core.export_views import export_pages
 from core.import_views import import_pages
+from core.staticfiles import versioned_static
 from core.views import FooterViewSet
 
 
@@ -108,17 +109,23 @@ register_image_format(
 
 @hooks.register("insert_global_admin_js")  # type: ignore
 def global_admin_js():
-    return format_html('<script src="{}"></script>', static("madloba-admin.js"))
+    return format_html(
+        '<script src="{}"></script>', versioned_static("madloba-admin.js")
+    )
 
 
 @hooks.register("insert_global_admin_js")  # type: ignore
 def import_admin_js():
-    return format_html('<script src="{}"></script>', static("madloba-import.js"))
+    return format_html(
+        '<script src="{}"></script>', versioned_static("madloba-import.js")
+    )
 
 
 @hooks.register("insert_global_admin_js")  # type: ignore
 def export_admin_js():
-    return format_html('<script src="{}"></script>', static("madloba-export.js"))
+    return format_html(
+        '<script src="{}"></script>', versioned_static("madloba-export.js")
+    )
 
 
 @hooks.register("insert_global_admin_css")  # type: ignore

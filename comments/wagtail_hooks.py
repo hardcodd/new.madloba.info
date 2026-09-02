@@ -1,10 +1,11 @@
 from django.urls import reverse
-from django.templatetags.static import static
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from wagtail import hooks
 from wagtail.admin import messages
+
+from core.staticfiles import versioned_static
 
 from .models import COMMENT_ON_MODERATION, Comment
 from .views import CommentViewSetGroup, comments_viewset
@@ -18,7 +19,7 @@ def register_viewset():
 @hooks.register("insert_global_admin_js")  # type: ignore
 def import_comments_admin_js():
     return format_html(
-        '<script src="{}"></script>', static("madloba-import-comments.js")
+        '<script src="{}"></script>', versioned_static("madloba-import-comments.js")
     )
 
 

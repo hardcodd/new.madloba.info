@@ -164,12 +164,17 @@ const setMappingFields = (modelFields, csvFields, fieldsMappingTable) => {
 
 		const modelCell = document.createElement("td");
 
-		const title = document.createElement("h2");
+		const fieldLabel = document.createElement("span");
+		const fieldName = document.createElement("span");
 
 		modelCell.classList.add("title");
+		fieldLabel.classList.add("import-field-label");
+		fieldName.classList.add("import-field-name");
 
-		title.textContent = modelFieldLabel;
-		modelCell.appendChild(title);
+		fieldLabel.textContent = modelFieldLabel;
+		fieldName.textContent = modelFieldName;
+		modelCell.appendChild(fieldLabel);
+		modelCell.appendChild(fieldName);
 
 		const csvCell = document.createElement("td");
 

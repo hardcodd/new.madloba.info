@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from typing import Any, Iterable, cast
 
@@ -18,6 +19,8 @@ from wagtail.snippets.views.snippets import SnippetViewSet
 
 from core import field_handlers
 from core.models import Footer, RobotsTxtSettings
+
+logger = logging.getLogger(__name__)
 
 
 class FooterViewSet(SnippetViewSet):
@@ -197,7 +200,9 @@ def set_attr(obj: Model, field_name: str, field_value: Any) -> None:
             _("Object %(obj)s does not have field %(field)r")
             % {"obj": obj, "field": field_name}
         ) from field_error
-    except ValueError as handler_error:
+    except Exception as handler_error:
+        if not isinstance(handler_error, (KeyError, TypeError, ValueError)):
+            logger.exception("Unexpected error setting import field %r", field_name)
         raise ValueError(
             _("Error setting field %(field)r: %(error)s")
             % {"field": field_name, "error": handler_error}
@@ -355,3 +360,7 @@ def import_page(request):
 
     except (ImportError, TypeError, ValueError, KeyError) as import_error:
         return result(False, str(import_error), 400)
+    except Exception as import_error:
+        logger.exception("Unexpected error while importing a page from a CSV row")
+        message = str(import_error) or _("Unexpected page import error")
+        return result(False, message, 500)

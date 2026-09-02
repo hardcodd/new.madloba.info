@@ -4,7 +4,6 @@ from pathlib import Path
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.templatetags.static import static
 from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
@@ -130,7 +129,9 @@ def export_admin_js():
 
 @hooks.register("insert_global_admin_css")  # type: ignore
 def global_admin_css():
-    return format_html('<link rel="stylesheet" href="{}">', static("madloba-admin.css"))
+    return format_html(
+        '<link rel="stylesheet" href="{}">', versioned_static("madloba-admin.css")
+    )
 
 
 register_snippet(FooterViewSet)

@@ -279,14 +279,11 @@ class PublicTemplateTranslationTests(SimpleTestCase):
                 with context.bind_template(template):
                     html = scripts.render(context)
                 self.assertIn(f"&language={language}&libraries=marker", html)
-                with (
-                    patch("core.templatetags.core.os.path.exists", return_value=True),
-                    patch("core.templatetags.core.os.makedirs"),
-                ):
+                with patch("core.maps.Path.is_file", return_value=True):
                     html = render_to_string(
                         "catalog/includes/organization-map.html",
                         {
-                            "page": SimpleNamespace(pk=1),
+                            "page": SimpleNamespace(pk=1, ll="41.7,44.8"),
                             "GOOGLE_MAPS_API_KEY": "test-key",
                         },
                     )
@@ -348,14 +345,16 @@ class ReviewFragmentLanguageTests(TestCase):
             comment="",
             images=[],
         )
-        with patch("reviews.templatetags.reviews.Review.objects.filter") as reviews:
-            reviews.return_value.order_by.return_value = [review] * 21
+        with patch(
+            "reviews.templatetags.reviews.paginate",
+            return_value=Paginator([review] * 21, 10).page(1),
+        ):
             for language, prefix in (("ru", ""), ("ka", "/ka"), ("en", "/en")):
                 with override(language), self.subTest(language=language):
                     html = render_to_string(
                         "reviews/reviews-list.html",
                         {
-                            "page": SimpleNamespace(pk=1, content_type=1),
+                            "page": SimpleNamespace(pk=1, content_type_id=1),
                             "request": RequestFactory().get("/"),
                         },
                     )

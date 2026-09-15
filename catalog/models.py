@@ -1,3 +1,5 @@
+from typing import Any
+
 from django import forms
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
@@ -493,8 +495,9 @@ class Organization(Page):
         context["service_types"] = self.service_types.select_related("category").all()
         return context
 
-    def save(self, *args, **kwargs):
-        keys = ["organization", "organization_images", "organization_item"]
+    def save(self, *args: Any, **kwargs: Any) -> None:
+        """Invalidate card fragments while forwarding Wagtail's save options."""
+        keys = ["organization", "organization_images", "organization_item_i18n_v2"]
         languages = getattr(settings, "LANGUAGES", ["en"])
 
         for key in keys:

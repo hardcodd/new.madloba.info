@@ -1,12 +1,16 @@
+from collections.abc import Mapping
 from datetime import datetime, time
 from datetime import time as dtime
 
+from django.template import Context
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from wagtail.models import Page
+from wagtail.query import PageQuerySet
 
-from catalog.models import Organization
+from catalog.models import City, Organization
 from catalog.utils import to_12h
-from core.utils import is_catalog_city, is_page, paginate
+from core.utils import paginate
 
 
 def get_working_hours_service(organization: Organization) -> str:
@@ -149,24 +153,20 @@ def get_working_hours_service(organization: Organization) -> str:
     return result
 
 
-def get_current_city_service(context) -> str:
-    """Return the current city if the current page is a catalog.city page.
-    Else try to get the city from parent pages."""
-
+def get_current_city_service(context: Context | Mapping[str, object]) -> str:
+    """Find the nearest city in one query, without loading each ancestor's body."""
     page = context.get("page")
-
-    if not is_page(page):
+    if not isinstance(page, Page):
         return ""
-
-    if is_catalog_city(page):
-        return page.specific.title
-
-    # Try to get the city from parent pages
-    for parent_page in page.get_ancestors().reverse():
-        if is_catalog_city(parent_page):
-            return parent_page.specific.title
-
-    return ""
+    if isinstance(page, City):
+        return str(page.title)
+    city = (
+        City.objects.ancestor_of(page, inclusive=True)
+        .defer_streamfields()
+        .order_by("-depth")
+        .first()
+    )
+    return str(city.title) if city else ""
 
 
 def get_phones_service(organization: Organization) -> list:
@@ -261,9 +261,11 @@ def get_top_organizations_service(page):
     return page.get_descendants().live()
 
 
-def get_latest_organizations_service(parent=None, count=4):
-    """Return latest organizations for."""
-    qs = Organization.objects.live().order_by("-first_published_at")
+def get_latest_organizations_service(
+    parent: Page | None = None, count: int = 4
+) -> PageQuerySet:
+    """Return latest cards without fetching unused translated StreamFields."""
+    qs = Organization.objects.live().defer_streamfields().order_by("-first_published_at")
     if parent:
         qs = qs.descendant_of(parent)
     return qs[:count]

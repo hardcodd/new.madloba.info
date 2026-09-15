@@ -4,7 +4,7 @@
 <div id="org-map-wrapper" class="map-wrapper ratio">
   <!-- Static map preview -->
 	{% get_static_map page as static_map_src %}
-	<img id="org-map-static" class="map-static" src="{{ static_map_src }}" alt="{% trans 'Location map' %}" />
+	<img id="org-map-static" class="map-static" src="{{ static_map_src }}" alt="{% trans 'Location map' %}" loading="lazy" width="800" height="400" />
 
   <!-- Overlay with text -->
   <div class="map-overlay">

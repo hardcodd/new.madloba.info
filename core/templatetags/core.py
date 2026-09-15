@@ -1,10 +1,9 @@
-import os
 import random
 import re
 from datetime import time
 from functools import lru_cache
+from typing import TYPE_CHECKING
 
-import requests
 from django import template
 from django.conf import settings
 from django.core import signing
@@ -15,9 +14,13 @@ from django.template.exceptions import TemplateDoesNotExist
 from slugify import slugify
 
 from core.jsonld import render_jsonld
+from core.maps import static_map_url
 from core.models import SiteSettings
 from core.pagination import page_url
 from core.utils import get_domain_name, truncate_string
+
+if TYPE_CHECKING:
+    from catalog.models import Organization
 
 register = template.Library()
 
@@ -371,32 +374,9 @@ def duration_format(value: time) -> str:
 
 
 @register.simple_tag
-def get_static_map(page):
-    page_id = page.pk
-    api_key = settings.GOOGLE_MAPS_API_KEY
-
-    # Create maps dir in media if it does not exist
-    os.makedirs(
-        os.path.join(settings.MEDIA_ROOT, "maps"),
-        exist_ok=True,
-    )
-
-    local_static_map_path = os.path.join(settings.MEDIA_ROOT, f"maps/{page_id}-map.jpg")
-    local_static_map_url = settings.MEDIA_URL + f"maps/{page_id}-map.jpg"
-
-    # Check if file exists
-    if os.path.exists(local_static_map_path):
-        return local_static_map_url
-
-    src = f"https://maps.googleapis.com/maps/api/staticmap?center={page.ll}&zoom=15&size=800x400&markers={page.ll}&key={api_key}"
-    static_map = requests.get(src)
-
-    if static_map.status_code == 200:
-        with open(local_static_map_path, "wb") as f:
-            f.write(static_map.content)
-            return local_static_map_url
-
-    return src
+def get_static_map(page: "Organization") -> str:
+    """Resolve a preview URL without waiting for Google during page rendering."""
+    return static_map_url(page.pk, str(page.ll))
 
 
 @register.simple_tag(name="signing")

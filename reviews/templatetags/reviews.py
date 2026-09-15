@@ -4,11 +4,12 @@ from collections.abc import Mapping
 
 from django import template
 from django.core.paginator import Page as PaginatorPage
+from django.db.models import Prefetch
 from django.http import HttpRequest
 from wagtail.models import Page
 
 from core.pagination import paginate
-from reviews.models import Review, ReviewStatus
+from reviews.models import Review, ReviewImage, ReviewStatus
 
 register = template.Library()
 
@@ -32,11 +33,22 @@ def get_reviews(
     """Return published reviews, applying the public pagination contract."""
     request = context["request"]
 
-    reviews = Review.objects.filter(
-        content_type=page.content_type,
-        object_id=page.pk,
-        status=ReviewStatus.PUBLISHED,
-    ).order_by("-created_at")
+    reviews = (
+        Review._default_manager.filter(
+            content_type_id=page.content_type_id,
+            object_id=page.pk,
+            status=ReviewStatus.PUBLISHED,
+        )
+        .select_related("user")
+        .prefetch_related(
+            Prefetch(
+                "images",
+                queryset=ReviewImage._default_manager.select_related("image")
+                .prefetch_related("image__renditions"),
+            )
+        )
+        .order_by("-created_at")
+    )
 
     return paginate(request, reviews, 10)
 

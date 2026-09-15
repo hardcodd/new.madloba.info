@@ -3,7 +3,7 @@
 {% get_current_language as current_lang %}
 
 {% spaceless %}
-	{% cache 604800 organization_item_i18n organization.pk current_lang %}
+	{% cache 604800 organization_item_i18n_v2 organization.pk current_lang %}
 		{% with organization.specific as o %}
 			<article id="organization-{{ o.pk }}"{% if o.temporarily_closed %} class="temporarily-closed"{% endif %}>
 				<a class="organization-item{% if o.premium_subscription %} {{ o.premium_subscription.classname }}{% endif %}" href="{{ o.url }}">
@@ -14,25 +14,17 @@
 						{% if o.premium_subscription %}
 							<div class="organization-item__premium-bage {{ o.premium_subscription.classname }}" data-tippy-content="{{ o.premium_subscription }}">{% include "icons/crown.svg" %}</div>
 						{% endif %}
-						{% if o.images.count %}
-							{% with o.images.first as img %}
-								{% image img.image max-165x165 as thumb %}
-								<div class="organization-item__thumb">
-									<img src="{{ thumb.url }}" alt="{{ o.title|default:o.h1_title }}">
-								</div>
+						{% with o.images.first as img %}
+							{% if img %}
 								<div class="ratio">{% srcset_image img.image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}</div>
-							{% endwith %}
-						{% else %}
-							{% image settings.core.SiteSettings.default_organization_image max-165x165 as thumb %}
-							{% if thumb %}
-								<div class="organization-item__thumb">
-									<img src="{{ thumb.url }}" alt="{{ o.title|default:o.h1_title }}">
-								</div>
+							{% else %}
 								{% with settings.core.SiteSettings.default_organization_image as default_image %}
-									<div class="ratio">{% srcset_image default_image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}</div>
+									{% if default_image %}
+										<div class="ratio">{% srcset_image default_image fill-720x405 format-{avif,webp,jpeg} loading="lazy" %}</div>
+									{% endif %}
 								{% endwith %}
 							{% endif %}
-						{% endif %}
+						{% endwith %}
 					</div>
 					<div class="organization-item__content">
 						<div class="organization-item__heading">

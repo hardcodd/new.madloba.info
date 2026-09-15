@@ -192,10 +192,10 @@
       "publicPath": "/static/hero-banner.png",
       "sourceFilename": "static/hero-banner.png"
     },
-    "js/5de8a949325db534ce2d.main.js": {
-      "name": "js/5de8a949325db534ce2d.main.js",
-      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/js/5de8a949325db534ce2d.main.js",
-      "publicPath": "/static/js/5de8a949325db534ce2d.main.js"
+    "js/3762f7190c74f025e5e1.main.js": {
+      "name": "js/3762f7190c74f025e5e1.main.js",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/js/3762f7190c74f025e5e1.main.js",
+      "publicPath": "/static/js/3762f7190c74f025e5e1.main.js"
     },
     "js/f7983d9e4f74e31a9456.272.js": {
       "name": "js/f7983d9e4f74e31a9456.272.js",
@@ -290,7 +290,7 @@
     "main": [
       "js/f7983d9e4f74e31a9456.272.js",
       "css/8abde753d897c9d86b06.main.css",
-      "js/5de8a949325db534ce2d.main.js"
+      "js/3762f7190c74f025e5e1.main.js"
     ]
   },
   "publicPath": "/static/"

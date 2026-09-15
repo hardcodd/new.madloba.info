@@ -29,7 +29,7 @@
       <!-- canonical -->
       {% fullpageurl page as canonical_url %}
       <link rel="canonical" href="{{ canonical_url|pagination_canonical:request }}">
-      <meta property="og:url" content="{% fullpageurl page %}" />
+      {% include "includes/open_graph.html" %}
     {% endif %}
 
     {% block extrahead %}{% endblock %}

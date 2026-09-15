@@ -104,5 +104,59 @@
 
 .organization-promotions__items {
 	display: grid;
-	gap: rem(20);
+	gap: rem(12);
+
+	.organization-item {
+		display: grid;
+		grid-template-columns: clamp(6rem, 30%, 10rem) minmax(0, 1fr);
+		min-height: rem(132);
+
+		&__images {
+			border-radius: var(--border-radius) 0 0 var(--border-radius);
+
+			.ratio {
+				width: 100%;
+				height: 100%;
+				padding: 0;
+			}
+		}
+
+		&__content {
+			gap: rem(6);
+			align-content: center;
+			min-width: 0;
+			padding: rem(12);
+		}
+
+		&__heading,
+		&__description {
+			display: -webkit-box;
+			overflow: hidden;
+
+			overflow-wrap: anywhere;
+
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+		}
+
+		.rewards--small {
+			min-height: rem(24);
+
+			.rewards__item {
+				width: rem(24);
+			}
+		}
+
+		&.premium .organization-item__content {
+			border-radius: 0 var(--border-radius) var(--border-radius) 0;
+
+			&:before {
+				width: 0;
+				height: 100%;
+
+				border-top: 0;
+				border-left: rem(1) dashed var(--accent-color);
+			}
+		}
+	}
 }

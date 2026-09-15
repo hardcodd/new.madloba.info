@@ -517,7 +517,8 @@ class Organization(Page):
         verbose_name_plural = _("Organizations")
 
     def get_context(self, request: HttpRequest) -> dict[str, Any]:
-        """Include category promotions and eligible competitors for this page."""
+        """Include category promotions and relevant nearby alternatives."""
+        from catalog.nearby import get_nearby_batch
         from catalog.promotions import get_competitors
 
         context = super().get_context(request)
@@ -529,6 +530,9 @@ class Organization(Page):
             .first()
         )
         context["competitors"] = get_competitors(self)
+        nearby = get_nearby_batch(self)
+        context["nearby_organizations"] = nearby.items
+        context["nearby_next_url"] = nearby.next_url
         return context
 
     def save(self, *args: Any, **kwargs: Any) -> None:

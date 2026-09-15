@@ -121,10 +121,10 @@
       "publicPath": "/static/btn/9.png",
       "sourceFilename": "static/btn/9.png"
     },
-    "css/b806beb635d626cfea2b.main.css": {
-      "name": "css/b806beb635d626cfea2b.main.css",
-      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/css/b806beb635d626cfea2b.main.css",
-      "publicPath": "/static/css/b806beb635d626cfea2b.main.css"
+    "css/bf57754e2dd23e50c8a9.main.css": {
+      "name": "css/bf57754e2dd23e50c8a9.main.css",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/css/bf57754e2dd23e50c8a9.main.css",
+      "publicPath": "/static/css/bf57754e2dd23e50c8a9.main.css"
     },
     "favicon/favicon.png": {
       "name": "favicon/favicon.png",
@@ -198,10 +198,10 @@
       "publicPath": "/static/hero-banner.png",
       "sourceFilename": "static/hero-banner.png"
     },
-    "js/3762f7190c74f025e5e1.main.js": {
-      "name": "js/3762f7190c74f025e5e1.main.js",
-      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/js/3762f7190c74f025e5e1.main.js",
-      "publicPath": "/static/js/3762f7190c74f025e5e1.main.js"
+    "js/66b76653b741978beb4a.main.js": {
+      "name": "js/66b76653b741978beb4a.main.js",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/js/66b76653b741978beb4a.main.js",
+      "publicPath": "/static/js/66b76653b741978beb4a.main.js"
     },
     "js/f7983d9e4f74e31a9456.272.js": {
       "name": "js/f7983d9e4f74e31a9456.272.js",
@@ -295,8 +295,8 @@
   "chunks": {
     "main": [
       "js/f7983d9e4f74e31a9456.272.js",
-      "css/b806beb635d626cfea2b.main.css",
-      "js/3762f7190c74f025e5e1.main.js"
+      "css/bf57754e2dd23e50c8a9.main.css",
+      "js/66b76653b741978beb4a.main.js"
     ]
   },
   "publicPath": "/static/"

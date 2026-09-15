@@ -14,6 +14,7 @@ import "./components/tabs";
 import "./components/organization-images";
 import "./components/search-images";
 import "./components/organization";
+import "./components/nearby-organizations";
 import "./components/organization-item";
 import "./components/textarea";
 import "./components/images-upload-field";

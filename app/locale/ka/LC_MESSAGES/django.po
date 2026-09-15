@@ -1752,3 +1752,39 @@ msgstr "რეიტინგების ტექსტი"
 
 msgid "See more offers"
 msgstr "იხილეთ მეტი შეთავაზებები"
+
+msgid "Similar places nearby"
+msgstr "მსგავსი ორგანიზაციები ახლომახლო"
+
+msgid ""
+"Places in the same category within 5 km. Distances are approximate and "
+"measured in a straight line."
+msgstr ""
+"იმავე კატეგორიის ორგანიზაციები 5 კმ-ის რადიუსში. მანძილები მიახლოებითია და "
+"იზომება სწორი ხაზით."
+
+msgid "Less than 50 m"
+msgstr "50 მ-ზე ნაკლები"
+
+#, python-format
+msgid "About %(distance)s m"
+msgstr "დაახლოებით %(distance)s მ"
+
+#, python-format
+msgid "About %(distance)s km"
+msgstr "დაახლოებით %(distance)s კმ"
+
+msgid "Show more nearby places"
+msgstr "მეტი ახლომდებარე ორგანიზაციის ჩვენება"
+
+msgid "Loading nearby places…"
+msgstr "ორგანიზაციები იტვირთება…"
+
+msgid "Could not load nearby places. Please try again."
+msgstr "ორგანიზაციების ჩატვირთვა ვერ მოხერხდა. სცადეთ ხელახლა."
+
+msgid "More nearby places loaded."
+msgstr "დამატებულია სხვა ახლომდებარე ორგანიზაციები."
+
+msgid "All nearby places have been shown."
+msgstr "ყველა შესაბამისი ახლომდებარე ორგანიზაცია ნაჩვენებია."

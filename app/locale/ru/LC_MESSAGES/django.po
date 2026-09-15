@@ -2244,3 +2244,39 @@ msgstr "Текст рейтингов"
 
 msgid "See more offers"
 msgstr "Смотрите больше предложений"
+
+msgid "Similar places nearby"
+msgstr "Похожие организации рядом"
+
+msgid ""
+"Places in the same category within 5 km. Distances are approximate and "
+"measured in a straight line."
+msgstr ""
+"Организации той же категории в радиусе 5 км. Расстояния приблизительные и "
+"указаны по прямой."
+
+msgid "Less than 50 m"
+msgstr "Менее 50 м"
+
+#, python-format
+msgid "About %(distance)s m"
+msgstr "Около %(distance)s м"
+
+#, python-format
+msgid "About %(distance)s km"
+msgstr "Около %(distance)s км"
+
+msgid "Show more nearby places"
+msgstr "Показать ещё организации рядом"
+
+msgid "Loading nearby places…"
+msgstr "Загружаем организации…"
+
+msgid "Could not load nearby places. Please try again."
+msgstr "Не удалось загрузить организации. Попробуйте ещё раз."
+
+msgid "More nearby places loaded."
+msgstr "Добавлены ещё организации рядом."
+
+msgid "All nearby places have been shown."
+msgstr "Все подходящие организации рядом показаны."

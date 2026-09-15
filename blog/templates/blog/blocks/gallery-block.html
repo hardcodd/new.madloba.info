@@ -1,6 +1,7 @@
-{% load wagtailimages_tags cache %}
+{% load wagtailimages_tags cache i18n %}
+{% get_current_language as fragment_language %}
 
-{% cache 604800 blog-gallery-block self.gallery.id %}
+{% cache 604800 blog-gallery-block self.gallery.id fragment_language %}
 {% spaceless %}
 <div class="gallery-block">
 	<div class="row v-gutters">

@@ -26,12 +26,12 @@
 					{% if not page.first_published_at == page.last_published_at %}
 						<div class="organization__updated">
 							<span>{% trans "Updated at:" %}</span>
-							<time datetime="{{ page.last_published_at|date:'c' }}">{{ page.last_published_at|date:'M d, Y' }}</time>
+							<time datetime="{{ page.last_published_at|date:'c' }}">{{ page.last_published_at|date:'DATE_FORMAT' }}</time>
 						</div>
 					{% endif %}
 
 					{% get_reviews_count page as reviews_count %}
-					{% include "includes/star-rating.html" with reviews_count=reviews_count rating=page.avg_rating|floatformat:"1u" %}
+					{% include "includes/star-rating.html" with reviews_count=reviews_count rating=page.avg_rating|floatformat:"1" %}
 				</div>
 				{% if page.rewards.count %}
 					{% include "includes/rewards.html" with rewards=page.rewards.all %}
@@ -94,7 +94,7 @@
 												<div class="col-auto">
 													<a href="mailto:{{ page.email }}" class="btn sm light round icon-text">
 														{% include "icons/mail.svg" %}
-														{% trans "E-post" %}
+														{% trans "E-mail" %}
 													</a>
 												</div>
 											{% endif %}
@@ -252,7 +252,7 @@
 										{% for org in in_building %}
 											<li>
 												<a href="{{ org.url }}">
-													{% include "includes/star-rating-mini.html" with rating=org.avg_rating|floatformat:"1u" %}
+													{% include "includes/star-rating-mini.html" with rating=org.avg_rating|floatformat:"1" %}
 													<strong>{{ org.title }}</strong>
 												</a>
 											</li>
@@ -285,10 +285,10 @@
 							<div class="organization-block">
 								<div class="row v-gutters" style="--gutter-x:calc(10 / 16 * 1rem);--gutter-y:calc(10 / 16 * 1rem);">
 									<div class="col-auto">
-										<a href="{{ page.get_parent.url }}map/" class="btn sm orange">{{ page.get_parent.title }} {% trans "on map" %}</a>
+										<a href="{{ page.get_parent.url }}map/" class="btn sm orange">{% blocktranslate with title=page.get_parent.title %}{{ title }} on map{% endblocktranslate %}</a>
 									</div>
 									<div class="col-auto">
-										<a href="https://firma.ge/google_maps_business_profile_en" class="btn sm outline">{% trans "Free audit maps"|title %}</a>
+										<a href="https://firma.ge/google_maps_business_profile_en" class="btn sm outline">{% trans "Free audit maps" %}</a>
 									</div>
 								</div>
 							</div>

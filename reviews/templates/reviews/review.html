@@ -9,14 +9,7 @@
       <div class="review__rating">{% include "includes/stars-rating.html" with stars=review.rating %}</div>
       <div class="review__meta">
         <div class="review__date">
-          {% now "Y" as current_year %}
-          <time datetime="{{ review.created_at|date:'c' }}">
-            {% if review.created_at|date:'Y' == current_year %}
-              {{ review.created_at|date:'j E' }}
-            {% else %}
-              {% trans "This year" %}
-            {% endif %}
-          </time>
+          <time datetime="{{ review.created_at|date:'c' }}">{{ review.created_at|date:'DATE_FORMAT' }}</time>
         </div>
         <div class="review__author">{{ review.user.get_full_name|default:review.user }}</div>
       </div>

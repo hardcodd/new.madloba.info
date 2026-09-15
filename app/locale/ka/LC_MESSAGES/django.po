@@ -75,7 +75,7 @@ msgstr "ქუქი-ფაილების პარამეტრები"
 
 #: app/templates/includes/cookie_consent.html:23
 msgid "Close"
-msgstr ""
+msgstr "დახურვა"
 
 #: app/templates/includes/cookie_consent.html:27
 msgid "Select which categories you want to allow. You can change this later."
@@ -89,15 +89,15 @@ msgstr "აუცილებელი"
 
 #: app/templates/includes/cookie_consent.html:34
 msgid "Required for the site to function. Always on."
-msgstr ""
+msgstr "აუცილებელია საიტის მუშაობისთვის. ყოველთვის ჩართულია."
 
 #: app/templates/includes/cookie_consent.html:37
 msgid "Necessary cookies"
-msgstr ""
+msgstr "აუცილებელი ქუქი-ფაილები"
 
 #: app/templates/includes/cookie_consent.html:46
 msgid "Analytics"
-msgstr ""
+msgstr "ანალიტიკა"
 
 #: app/templates/includes/cookie_consent.html:47
 msgid "Helps us understand how our site is used."
@@ -105,23 +105,23 @@ msgstr "გვეხმარება გავიგოთ, თუ როგ�
 
 #: app/templates/includes/cookie_consent.html:50
 msgid "Analytics cookies"
-msgstr ""
+msgstr "ანალიტიკური ქუქი-ფაილები"
 
 #: app/templates/includes/cookie_consent.html:59
 msgid "Marketing"
-msgstr ""
+msgstr "მარკეტინგი"
 
 #: app/templates/includes/cookie_consent.html:60
 msgid "Used to show you relevant content and ads."
-msgstr ""
+msgstr "გამოიყენება თქვენთვის შესაბამისი კონტენტისა და რეკლამის საჩვენებლად."
 
 #: app/templates/includes/cookie_consent.html:63
 msgid "Marketing cookies"
-msgstr ""
+msgstr "მარკეტინგული ქუქი-ფაილები"
 
 #: app/templates/includes/cookie_consent.html:73
 msgid "Save preferences"
-msgstr ""
+msgstr "პარამეტრების შენახვა"
 
 #: app/templates/includes/header-search.html:7
 msgid "What're you looking for? Cafe, restaurant, school ..."
@@ -208,24 +208,24 @@ msgstr ""
 
 #: authors/templates/authors/author_page.html:21
 msgid "Total publications:"
-msgstr ""
+msgstr "პუბლიკაციების საერთო რაოდენობა:"
 
 #: authors/templates/authors/author_page.html:31
 msgid "View all"
-msgstr ""
+msgstr "ყველას ნახვა"
 
 #: authors/templates/authors/includes/author-item.html:16
 #: authors/templates/authors/includes/author.html:17
 msgid "Visit author"
-msgstr ""
+msgstr "ვრცლად ავტორის შესახებ"
 
 #: authors/templates/authors/includes/author.html:10
 msgid "By:"
-msgstr ""
+msgstr "ავტორი:"
 
 #: authors/templates/authors/includes/author.html:14
 msgid "Post:"
-msgstr ""
+msgstr "თანამდებობა:"
 
 #: blog/blocks.py:16
 msgid "Blog post"
@@ -476,7 +476,7 @@ msgstr "მისამართი"
 
 #: catalog/models.py:324 catalog/templates/catalog/organization_page.html:54
 msgid "How to arrive"
-msgstr "როგორ ჩავიდეს"
+msgstr "როგორ მივიდეთ"
 
 #: catalog/models.py:334
 msgid "Show on map"
@@ -534,7 +534,7 @@ msgstr ""
 
 #: catalog/models.py:449 catalog/templates/catalog/organization_page.html:49
 msgid "General"
-msgstr "გენერალი"
+msgstr "ზოგადი ინფორმაცია"
 
 #: catalog/models.py:450
 msgid "Contacts"
@@ -677,7 +677,7 @@ msgstr "შენობაში"
 
 #: catalog/templates/catalog/organization_page.html:63
 msgid "QnA"
-msgstr ""
+msgstr "კითხვები და პასუხები"
 
 #: catalog/templates/catalog/organization_page.html:79
 msgid "Call"
@@ -718,7 +718,7 @@ msgstr "ოფიციალური ვებსაიტი"
 
 #: catalog/templates/catalog/organization_page.html:159
 msgid "E-mail"
-msgstr ""
+msgstr "ელფოსტა"
 
 #: catalog/templates/catalog/organization_page.html:193
 msgid "Coords and Plus Code"
@@ -734,7 +734,7 @@ msgstr "პლუს კოდის კოპირება"
 
 #: catalog/templates/catalog/organization_page.html:225
 msgid "They speak languages"
-msgstr "ისინი ენებზე საუბრობენ"
+msgstr "საუბრობენ შემდეგ ენებზე"
 
 #: catalog/templates/catalog/organization_page.html:288
 #: catalog/templates/catalog/organization_type_map.html:6
@@ -744,7 +744,7 @@ msgstr "რუკაზე"
 
 #: catalog/templates/catalog/organization_page.html:291
 msgid "Free audit maps"
-msgstr "უფასო აუდიტის რუკები"
+msgstr "რუკებზე უფასო აუდიტი"
 
 #: catalog/templates/catalog/organization_type_map.html:17
 msgid "near me in"
@@ -752,11 +752,11 @@ msgstr ""
 
 #: catalog/templates/catalog/organization_type_page.html:12
 msgid "By tag:"
-msgstr ""
+msgstr "თეგის მიხედვით:"
 
 #: catalog/templates/catalog/organization_type_page.html:23
 msgid "[[Top]] organizations"
-msgstr "[[ზედა]] ორგანიზაციები"
+msgstr "[[საუკეთესო]] ორგანიზაციები"
 
 #: catalog/templates/catalog/organizations.html:6
 msgid "Organizations list"
@@ -764,7 +764,7 @@ msgstr "ორგანიზაციების სია"
 
 #: catalog/templates/catalog/organizations.html:10
 msgid "Organizations list page."
-msgstr ""
+msgstr "ორგანიზაციების სიის გვერდი."
 
 #: catalog/templates/catalog/organizations.html:21
 msgid "[[By address]]: "
@@ -934,7 +934,7 @@ msgstr "წინ"
 
 #: comments/templates/comments/comment_deleted.html:14
 msgid "Comment was deleted by moderator"
-msgstr "კომენტარი წაიშალა მოდერატორმა"
+msgstr "კომენტარი მოდერატორმა წაშალა"
 
 #: comments/templates/comments/comment_on_moderation.html:14
 msgid "The comment is under moderation"
@@ -950,7 +950,7 @@ msgstr "კომენტარი მოდერატორმა უარ�
 
 #: comments/templates/comments/form.html:23
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: comments/templates/comments/form.html:24
 #: reviews/templates/reviews/reviews-form.html:33
@@ -959,14 +959,14 @@ msgstr "გაგზავნა"
 
 #: comments/templates/comments/form.html:31
 msgid "Log in to leave a comment"
-msgstr ""
+msgstr "კომენტარის დასატოვებლად შედით ანგარიშში"
 
 #: comments/templates/comments/header.html:6
 #, python-format
 msgid "%(counter)s comment"
 msgid_plural "%(counter)s comments"
 msgstr[0] "%(counter)s კომენტარი"
-msgstr[1] "%(counter)s კომენტარები"
+msgstr[1] "%(counter)s კომენტარი"
 
 #: comments/views.py:46 comments/views.py:52 comments/views.py:57
 #: comments/views.py:79
@@ -1397,10 +1397,9 @@ msgid "No"
 msgstr ""
 
 #: gallery/templates/gallery/gallery_post_page.html:30
-#, fuzzy
 #| msgid "Show"
 msgid "Show more"
-msgstr "ჩვენება"
+msgstr "მეტის ჩვენება"
 
 #: home/models.py:21
 msgid "Main image for the home page."
@@ -1491,10 +1490,9 @@ msgid "click to upload"
 msgstr "დააწკაპუნეთ ასატვირთად"
 
 #: reviews/templates/reviews/reviews-list.html:13
-#, fuzzy
 #| msgid "Show"
 msgid "Show more reviews"
-msgstr "ჩვენება"
+msgstr "მეტი მიმოხილვის ჩვენება"
 
 #: reviews/templates/reviews/reviews.html:8
 msgid "Be the first to leave a review"
@@ -1534,7 +1532,7 @@ msgstr "კომენტარი მოდერაციის ქვეშ�
 
 #: search/templates/search/search.html:30
 msgid "No results found"
-msgstr ""
+msgstr "შედეგები ვერ მოიძებნა"
 
 #: subscription/models.py:9
 msgid "Competitor"
@@ -1621,3 +1619,108 @@ msgstr ""
 #, fuzzy
 #~ msgid "Awards received by this organization."
 #~ msgstr "დაამატეთ ორგანიზაცია"
+
+#: search/templates/search/search.html
+msgid "Search"
+msgstr "ძიება"
+
+#: search/templates/search/search.html
+msgid "Search the site"
+msgstr "საიტზე ძიება"
+
+#: search/templates/search/search.html
+msgid "Search query"
+msgstr "საძიებო მოთხოვნა"
+
+#: search/templates/search/search.html
+msgid "Name, place or keyword"
+msgstr "სახელი, ადგილი ან საკვანძო სიტყვა"
+
+#: search/templates/search/search.html
+msgid "Find"
+msgstr "მოძებნა"
+
+#: search/templates/search/search.html
+msgid "Results found:"
+msgstr "ნაპოვნია:"
+
+#: search/templates/search/search.html
+#, python-format
+msgid "Showing %(start)s–%(end)s"
+msgstr "ნაჩვენებია %(start)s–%(end)s"
+
+#: search/templates/search/search.html
+msgid "Check the spelling or try fewer, more general words."
+msgstr "შეამოწმეთ მართლწერა ან სცადეთ უფრო მოკლე საძიებო ფრაზა."
+
+#: search/templates/search/search.html
+msgid "What would you like to find?"
+msgstr "რისი პოვნა გსურთ?"
+
+#: search/templates/search/search.html
+msgid "Enter an organization, place or topic in the search field above."
+msgstr "ზემოთ მოცემულ საძიებო ველში შეიყვანეთ ორგანიზაციის, ადგილის ან თემის სახელი."
+
+#: app/templates/404.html:5
+msgid "Page not found"
+msgstr "გვერდი ვერ მოიძებნა"
+
+#: app/templates/500.html:7 app/templates/500.html:11
+msgid "Internal server error"
+msgstr "სერვერის შიდა შეცდომა"
+
+#: app/templates/500.html:13
+msgid "Sorry, there seems to be an error. Please try again soon."
+msgstr "მოხდა შეცდომა. გთხოვთ, ცოტა ხანში ხელახლა სცადოთ."
+
+#: app/templates/base.html:71
+msgid "Check links"
+msgstr "ბმულების შემოწმება"
+
+#: catalog/templates/catalog/includes/organization-map.html:7
+msgid "Location map"
+msgstr "მდებარეობის რუკა"
+
+#: app/templates/includes/stars-rating.html:3
+#, python-format
+msgid "Rating: %(rating)s out of 5"
+msgstr "შეფასება: %(rating)s / 5"
+
+#: ratings/templates/ratings/blocks/rating_block.html:7
+#, python-format
+msgid "%(rating)s out of 10"
+msgstr "%(rating)s / 10"
+
+#: comments/templates/comments/comment_deleted.html:12
+#: comments/templates/comments/comment_on_moderation.html:12
+#: comments/templates/comments/comment_rejected.html:12
+#, python-format
+msgid "%(elapsed)s ago"
+msgstr "%(elapsed)s წინ"
+
+#: blog/templates/blog/index_page.html:15
+#, python-format
+msgid "[[By author]]: %(author_name)s"
+msgstr "[[ავტორი]]: %(author_name)s"
+
+#: blog/templates/blog/index_page.html:19
+#, python-format
+msgid "[[By tag]]: %(tag_name)s"
+msgstr "[[თეგის მიხედვით]]: %(tag_name)s"
+
+#: catalog/templates/catalog/organizations.html:21
+#, python-format
+msgid "[[By address]]: %(address)s"
+msgstr "[[მისამართის მიხედვით]]: %(address)s"
+
+#: catalog/templates/catalog/organization_page.html:288
+#: catalog/templates/catalog/organization_type_map.html:6
+#: catalog/templates/catalog/organization_type_map.html:10
+#, python-format
+msgid "%(title)s on map"
+msgstr "%(title)s რუკაზე"
+
+#: catalog/templates/catalog/organization_type_map.html:17
+#, python-format
+msgid "%(title)s near me in %(city)s"
+msgstr "%(title)s ჩემთან ახლოს — %(city)s"

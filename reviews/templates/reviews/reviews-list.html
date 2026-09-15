@@ -10,7 +10,7 @@
 	</ul>
 	{% if reviews.has_next %}
 		<div class="text-center" style="margin-top: calc(30 / 16 * 1rem);">
-			<a href="{% url 'reviews:load_more_reviews' %}?page={{ reviews.next_page_number }}&token={% signing page.pk %}" class="btn load-more-reviews">{% trans "Show more reviews" %}</a>
+			<a href="{% url 'load-more-reviews' %}?page={{ reviews.next_page_number }}&token={% signing page.pk %}" class="btn load-more-reviews">{% trans "Show more reviews" %}</a>
 		</div>
 	{% endif %}
 {% endif %}

@@ -68,7 +68,7 @@
 			<div class="support-link__text">{% trans "Help" %}</div>
 		</a>
 
-    {% if request.user.is_staff or request.user.is_superuser %}<div class="check-links-btn">Check links</div>{% endif %}
+    {% if request.user.is_staff or request.user.is_superuser %}<div class="check-links-btn">{% trans "Check links" %}</div>{% endif %}
 
     {# Global javascript #}
     {% if "localhost" in request.build_absolute_uri or "127.0.0.1" in request.build_absolute_uri %}

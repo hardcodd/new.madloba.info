@@ -33,6 +33,19 @@ PASSWORD_HASHERS = [
 ]
 EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
 
+# Test database isolation does not isolate caches; never share site URL or HTML
+# entries with the running application.
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "madloba-test-default",
+    },
+    "renditions": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "madloba-test-renditions",
+    },
+}
+
 WEBPACK_LOADER = {
     "DEFAULT": {
         "CACHE": True,

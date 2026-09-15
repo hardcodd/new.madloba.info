@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-08-28-feedback-import-batch-size-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-08-31-feedback-import-reliability-results-brief.md)
+[← Предыдущая задача](2026-08-28-feedback-import-batch-size-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-08-31-feedback-import-reliability-results-brief.md) · [Следующая задача →](2026-09-15-public-localization-detailed.md)
 
 # Надёжность и результаты импорта отзывов и комментариев
 

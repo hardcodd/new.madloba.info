@@ -1724,3 +1724,31 @@ msgstr "%(title)s რუკაზე"
 #, python-format
 msgid "%(title)s near me in %(city)s"
 msgstr "%(title)s ჩემთან ახლოს — %(city)s"
+
+msgid "Banners"
+msgstr "ბანერები"
+
+msgid ""
+"Choose premium placement on Madloba and attract customers who are currently "
+"leaving for your competitors."
+msgstr ""
+"აირჩიეთ პრემიუმ განთავსება Madloba-ზე და მოიზიდეთ მომხმარებლები, რომლებიც "
+"ამჟამად მიდიან თქვენი კონკურენტებისთვის."
+
+msgid "Do you want to increase the number of clients by 5 times?"
+msgstr "გსურთ 5-ჯერ გაიზარდოთ კლიენტების რაოდენობა?"
+
+msgid "I want"
+msgstr "მინდა"
+
+msgid "Popular ratings"
+msgstr "პოპულარული რეიტინგები"
+
+msgid "Ratings image"
+msgstr "რეიტინგების სურათი"
+
+msgid "Ratings text"
+msgstr "რეიტინგების ტექსტი"
+
+msgid "See more offers"
+msgstr "იხილეთ მეტი შეთავაზებები"

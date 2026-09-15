@@ -3,6 +3,7 @@ import re
 from datetime import time
 from functools import lru_cache
 from typing import TYPE_CHECKING
+from urllib.parse import urlsplit
 
 from django import template
 from django.conf import settings
@@ -11,6 +12,7 @@ from django.forms.renderers import get_template
 from django.http import HttpRequest
 from django.template.base import mark_safe
 from django.template.exceptions import TemplateDoesNotExist
+from django.utils.html import conditional_escape
 from slugify import slugify
 
 from core.jsonld import render_jsonld
@@ -185,46 +187,66 @@ def replace(value, arg):
 
 
 @register.filter()
-def social_network_icon(url: str):
-    """Return a social icon class based on the URL."""
+def social_network_icon(url: str) -> str:
+    """Render an icon for a known host, or an escaped domain for unknown links.
+
+    Match host boundaries rather than URL substrings so paths, query strings
+    and lookalike domains cannot select another service's icon.
+    """
     if not url:
         return ""
-
-    html_icon = ""
-
     try:
-        if "facebook.com" in url:
-            html_icon = get_template("icons/facebook.svg").render()
-        elif "instagram.com" in url:
-            html_icon = get_template("icons/instagram.svg").render()
-        elif "twitter.com" in url:
-            html_icon = get_template("icons/twitter.svg").render()
-        elif "x.com" in url:
-            html_icon = get_template("icons/x.svg").render()
-        elif "tripadvisor.com" in url:
-            html_icon = get_template("icons/tripadvisor.svg").render()
-        elif "youtube.com" in url:
-            html_icon = get_template("icons/youtube.svg").render()
-        elif "linkedin.com" in url:
-            html_icon = get_template("icons/linkedin.svg").render()
-        elif "tiktok.com" in url:
-            html_icon = get_template("icons/tiktok.svg").render()
-        elif "vk.com" in url:
-            html_icon = get_template("icons/vk.svg").render()
-        elif "pinterest.com" in url:
-            html_icon = get_template("icons/pinterest.svg").render()
-        elif "dzen.ru" in url:
-            html_icon = get_template("icons/dzen.svg").render()
-        elif "whatsapp.com" in url:
-            html_icon = get_template("icons/whatsapp.svg").render()
-        elif "t.me" in url:
-            html_icon = get_template("icons/telegram.svg").render()
-        else:
-            html_icon = get_domain_name(url)
-    except TemplateDoesNotExist:
-        html_icon = get_domain_name(url)
+        parsed = urlsplit(url if "://" in url or url.startswith("//") else "//" + url)
+        host = (parsed.hostname or "").lower().rstrip(".")
+    except ValueError:
+        return conditional_escape(url)
 
-    return mark_safe(html_icon)
+    icons = {
+        "facebook.com": "facebook",
+        "fb.com": "facebook",
+        "instagram.com": "instagram",
+        "twitter.com": "twitter",
+        "x.com": "x",
+        "tripadvisor.com": "tripadvisor",
+        "youtube.com": "youtube",
+        "youtu.be": "youtube",
+        "linkedin.com": "linkedin",
+        "tiktok.com": "tiktok",
+        "vk.com": "vk",
+        "vk.ru": "vk",
+        "pinterest.com": "pinterest",
+        "dzen.ru": "dzen",
+        "whatsapp.com": "whatsapp",
+        "wa.me": "whatsapp",
+        "viber.com": "viber",
+        "vb.me": "viber",
+        "t.me": "telegram",
+        "telegram.me": "telegram",
+        "maps.app.goo.gl": "google",
+        "maps.google.com": "google",
+        "yandex.ru": "yandex",
+        "yandex.com": "yandex",
+        "yandex.ge": "yandex",
+        "ya.cc": "yandex",
+    }
+    icon = next(
+        (
+            name
+            for domain, name in icons.items()
+            if host == domain or host.endswith("." + domain)
+        ),
+        None,
+    )
+    if host in {"google.com", "www.google.com", "goo.gl"} and parsed.path.startswith(
+        "/maps"
+    ):
+        icon = "google"
+    if icon:
+        try:
+            return mark_safe(get_template(f"icons/{icon}.svg").render())
+        except TemplateDoesNotExist:
+            pass
+    return conditional_escape(host or url)
 
 
 @register.filter()

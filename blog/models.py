@@ -7,7 +7,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase
 from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page, ParentalKey, Orderable
 from wagtail.snippets.models import register_snippet
 from blog import blocks as blog_blocks
@@ -20,14 +20,21 @@ class BlogIndexPage(Panels, Page):
     parent_page_types = ["home.HomePage"]
     template = "blog/index_page.html"
 
-    subtitle = models.CharField(
-        max_length=255,
+    subtitle = RichTextField(
+        features=["link"],
         blank=True,
         verbose_name=_("Subtitle"),
     )
 
+    banners = StreamField(
+        [("banner", blocks.InlineBannerBlock())],
+        blank=True,
+        verbose_name=_("Banners"),
+    )
+
     content_panels = Panels.content_panels + [
         FieldPanel("subtitle"),
+        FieldPanel("banners"),
     ]
 
     class Meta(Page.Meta):

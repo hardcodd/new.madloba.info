@@ -19,6 +19,12 @@
       "publicPath": "/static/banners/cupman.png",
       "sourceFilename": "static/banners/cupman.png"
     },
+    "banners/premium-placement.png": {
+      "name": "banners/premium-placement.png",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/banners/premium-placement.png",
+      "publicPath": "/static/banners/premium-placement.png",
+      "sourceFilename": "static/banners/premium-placement.png"
+    },
     "btn/1.png": {
       "name": "btn/1.png",
       "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/btn/1.png",
@@ -115,10 +121,10 @@
       "publicPath": "/static/btn/9.png",
       "sourceFilename": "static/btn/9.png"
     },
-    "css/8abde753d897c9d86b06.main.css": {
-      "name": "css/8abde753d897c9d86b06.main.css",
-      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/css/8abde753d897c9d86b06.main.css",
-      "publicPath": "/static/css/8abde753d897c9d86b06.main.css"
+    "css/b806beb635d626cfea2b.main.css": {
+      "name": "css/b806beb635d626cfea2b.main.css",
+      "path": "/Volumes/HC/www/madlobafamily/new.madloba.info/app/static/css/b806beb635d626cfea2b.main.css",
+      "publicPath": "/static/css/b806beb635d626cfea2b.main.css"
     },
     "favicon/favicon.png": {
       "name": "favicon/favicon.png",
@@ -289,7 +295,7 @@
   "chunks": {
     "main": [
       "js/f7983d9e4f74e31a9456.272.js",
-      "css/8abde753d897c9d86b06.main.css",
+      "css/b806beb635d626cfea2b.main.css",
       "js/3762f7190c74f025e5e1.main.js"
     ]
   },

@@ -294,9 +294,22 @@
 							</div>
 						</div>
 					{% endif %}
+					{% include "catalog/includes/category_ratings.html" with category=promotion_category %}
+					{% if competitors %}
+						<section class="organization-promotions">
+							<h2 class="h4">{% trans "See more offers" %}</h2>
+							<div class="organization-promotions__items">
+								{% for competitor in competitors %}
+									{% include "catalog/includes/organization-item.html" with organization=competitor %}
+								{% endfor %}
+							</div>
+						</section>
+					{% endif %}
 				</div>
 			</div>
 
+			{% include_block page.banners %}
+			{% include "catalog/includes/premium_banner.html" %}
 			{% include "reviews/reviews.html" %}
 		</article>
 	</div>

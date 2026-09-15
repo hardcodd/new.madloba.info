@@ -6,7 +6,8 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
-from django.db.models import Exists, F, OuterRef
+from django.db.models import F
+from django.http import HttpRequest
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -16,6 +17,7 @@ from taggit.models import ItemBase, TagBase
 from wagtail.admin.panels import (
     FieldPanel,
     MultipleChooserPanel,
+    MultiFieldPanel,
     ObjectList,
     TabbedInterface,
     TitleFieldPanel,
@@ -157,10 +159,28 @@ class OrganizationType(RoutablePageMixin, Panels, Page):
         verbose_name=_("Content"),
     )
 
+    ratings_image = models.ForeignKey(
+        "wagtailimages.Image",
+        on_delete=models.SET_NULL,
+        related_name="+",
+        blank=True,
+        null=True,
+        verbose_name=_("Ratings image"),
+    )
+    ratings_text = RichTextField(
+        blank=True,
+        features=["h3", "ul", "link"],
+        verbose_name=_("Ratings text"),
+    )
+
     content_panels = [
         TitleFieldPanel("title"),
         FieldPanel("image"),
         FieldPanel("content"),
+        MultiFieldPanel(
+            [FieldPanel("ratings_image"), FieldPanel("ratings_text")],
+            heading=_("Popular ratings"),
+        ),
     ]
 
     promote_panels = Panels.promote_panels + [FieldPanel("noindex")]
@@ -304,6 +324,12 @@ class Organization(Page):
         verbose_name=_("Description"),
     )
 
+    banners = StreamField(
+        [("banner", blocks.InlineBannerBlock())],
+        blank=True,
+        verbose_name=_("Banners"),
+    )
+
     address = models.CharField(
         max_length=255,
         blank=True,
@@ -413,6 +439,7 @@ class Organization(Page):
 
     description_panels = [
         FieldPanel("description"),
+        FieldPanel("banners"),
     ]
 
     qna_panels = [
@@ -489,10 +516,19 @@ class Organization(Page):
         verbose_name = _("Organization")
         verbose_name_plural = _("Organizations")
 
-    def get_context(self, request):
-        """Get the context for the template."""
+    def get_context(self, request: HttpRequest) -> dict[str, Any]:
+        """Include category promotions and eligible competitors for this page."""
+        from catalog.promotions import get_competitors
+
         context = super().get_context(request)
         context["service_types"] = self.service_types.select_related("category").all()
+        context["promotion_category"] = (
+            OrganizationType.objects.filter(path=str(self.path)[:-self.steplen])
+            .select_related("ratings_image")
+            .defer_streamfields()
+            .first()
+        )
+        context["competitors"] = get_competitors(self)
         return context
 
     def save(self, *args: Any, **kwargs: Any) -> None:

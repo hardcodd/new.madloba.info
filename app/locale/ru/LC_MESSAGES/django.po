@@ -2216,3 +2216,31 @@ msgstr "%(title)s на карте"
 #, python-format
 msgid "%(title)s near me in %(city)s"
 msgstr "%(title)s рядом со мной — %(city)s"
+
+msgid "Banners"
+msgstr "Баннеры"
+
+msgid ""
+"Choose premium placement on Madloba and attract customers who are currently "
+"leaving for your competitors."
+msgstr ""
+"Выберите премиум-размещение на Madloba и привлекайте клиентов, которые "
+"сейчас уходят к вашим конкурентам."
+
+msgid "Do you want to increase the number of clients by 5 times?"
+msgstr "Хотите увеличить количество клиентов в 5 раз?"
+
+msgid "I want"
+msgstr "Хочу"
+
+msgid "Popular ratings"
+msgstr "Популярные рейтинги"
+
+msgid "Ratings image"
+msgstr "Изображение рейтингов"
+
+msgid "Ratings text"
+msgstr "Текст рейтингов"
+
+msgid "See more offers"
+msgstr "Смотрите больше предложений"

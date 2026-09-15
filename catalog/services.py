@@ -1,7 +1,9 @@
 from collections.abc import Mapping
 from datetime import datetime, time
 from datetime import time as dtime
+from typing import Any
 
+from django.core.paginator import Page as PaginatorPage
 from django.template import Context
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -271,9 +273,15 @@ def get_latest_organizations_service(
     return qs[:count]
 
 
-def get_paginated_organizations_service(context, parent=None, count=16):
-    """Return paginated organizations"""
+def get_paginated_organizations_service(
+    context: Context | Mapping[str, Any], parent: Page | None = None, count: int = 16
+) -> PaginatorPage:
+    """Paginate category filters only for lists belonging to the current page."""
     request = context.get("request")
+    listing = context.get("organization_listing")
+    page = context.get("page")
+    if listing is not None and (parent is None or parent.pk == page.pk):
+        return paginate(request, listing.queryset, count)
     qs = Organization.objects.live().defer_streamfields()
     if parent:
         qs = qs.descendant_of(parent)

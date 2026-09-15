@@ -7,7 +7,7 @@ from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 from django.db.models import F
-from django.http import HttpRequest
+from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -216,21 +216,35 @@ class OrganizationType(RoutablePageMixin, Panels, Page):
             return self.image
         return None
 
-    def get_context(self, request):
-        """Get the context for the template."""
+    def get_context(self, request: HttpRequest) -> dict[str, Any]:
+        """Share category filters with both editable lists and the fallback list."""
+        from catalog.listing import OrganizationListing, has_category_listing
+
         context = super().get_context(request)
-
-        if request.method == "GET":
-            service_type = request.GET.get("service_type")
-            try:
-                service_type = ServiceType.objects.get(pk=service_type)  # type: ignore  # fmt: off
-            except ServiceType.DoesNotExist:  # type: ignore
-                service_type = None
-
-            if service_type:
-                context["active_service_type"] = service_type
-
+        context["organization_listing"] = OrganizationListing(self, request)
+        context["has_category_listing"] = has_category_listing(self)
         return context
+
+    @route(r"^filter-counts/$")
+    def filter_counts(self, request: HttpRequest) -> JsonResponse:
+        """Preview validated filter counts under Wagtail's page access rules."""
+        from catalog.listing import OrganizationListing
+
+        listing = OrganizationListing(self, request)
+        response = JsonResponse(
+            {
+                "count": listing.count,
+                "counts": {
+                    option.id: option.count
+                    for group in listing.service_groups.values()
+                    for option in group.options
+                },
+                "valid": not bool(listing.form.errors),
+            },
+            status=400 if listing.form.errors else 200,
+        )
+        response["Cache-Control"] = "no-store"
+        return response
 
     class Meta(Page.Meta):
         verbose_name = _("Organization type")

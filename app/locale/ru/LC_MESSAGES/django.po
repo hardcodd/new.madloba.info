@@ -2280,3 +2280,175 @@ msgstr "Добавлены ещё организации рядом."
 
 msgid "All nearby places have been shown."
 msgstr "Все подходящие организации рядом показаны."
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Name or address"
+msgstr "Название или адрес"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Search in this category"
+msgstr "Поиск в этой категории"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Sort by"
+msgstr "Сортировка"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Recommended order"
+msgstr "Рекомендуемый порядок"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Highest rating"
+msgstr "Сначала высокий рейтинг"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Newest first"
+msgstr "Сначала новые"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Name: A to Z"
+msgstr "По названию: А–Я"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Minimum rating"
+msgstr "Рейтинг от"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Any rating"
+msgstr "Любой рейтинг"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Language spoken"
+msgstr "Язык общения"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Any language"
+msgstr "Любой язык"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Verified by Madloba"
+msgstr "Проверено Madloba"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Hide temporarily closed"
+msgstr "Скрыть временно закрытые"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Find your place"
+msgstr "Найди подходящее место"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Found: %(count)s of %(total)s"
+msgstr "Найдено: %(count)s из %(total)s"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Services and features"
+msgstr "Услуги и особенности"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid ""
+"Choose any options within a group. Different groups are combined. Counts "
+"show all places in this category."
+msgstr ""
+"Внутри группы подойдёт любой выбранный вариант, между группами — все условия"
+" вместе. Числа показывают места во всей категории."
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid ""
+"Some filters are invalid or no longer available. Reset the filters and try "
+"again."
+msgstr ""
+"Некоторые фильтры некорректны или больше недоступны. Сбрось фильтры и "
+"попробуй снова."
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Show places"
+msgstr "Показать места"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Reset filters"
+msgstr "Сбросить фильтры"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Applied filters"
+msgstr "Применённые фильтры"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Remove filter: %(label)s"
+msgstr "Убрать фильтр: %(label)s"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "No matching places"
+msgstr "Подходящих мест не найдено"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Try another name, lower the rating or remove a filter."
+msgstr "Попробуй другое название, снизь рейтинг или убери один из фильтров."
+
+
+msgid "Filters and sorting"
+msgstr "Фильтры и сортировка"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Remove"
+msgstr "Убрать"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "All conditions"
+msgstr "Все условия"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "At least one"
+msgstr "Хотя бы одно"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "How to match services and features"
+msgstr "Как учитывать услуги и особенности"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "At least one feature from every selected group is required. Counts include selections in other groups."
+msgstr "Нужен хотя бы один признак из каждой выбранной группы. Цифры учитывают выбор в других группах."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Any selected feature is enough. Each number counts places with that feature; a place may match several features."
+msgstr "Достаточно любого выбранного признака. Цифра рядом — места с этим признаком; одно место может иметь несколько признаков."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Search, rating and other filters apply in both modes. The button shows the total number of matching places."
+msgstr "Поиск, рейтинг и другие фильтры действуют в обоих режимах. Итоговое число подходящих мест — на кнопке."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Updating counts…"
+msgstr "Пересчитываем…"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Counts could not be updated. Use Show places to apply your filters."
+msgstr "Не удалось обновить цифры. Нажми «Показать места», чтобы применить фильтры."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Matching places:"
+msgstr "Подходящих мест:"

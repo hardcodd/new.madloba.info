@@ -1788,3 +1788,176 @@ msgstr "დამატებულია სხვა ახლომდებ�
 
 msgid "All nearby places have been shown."
 msgstr "ყველა შესაბამისი ახლომდებარე ორგანიზაცია ნაჩვენებია."
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Name or address"
+msgstr "სახელი ან მისამართი"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Search in this category"
+msgstr "ძიება ამ კატეგორიაში"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Sort by"
+msgstr "დალაგება"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Recommended order"
+msgstr "რეკომენდებული რიგითობა"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Highest rating"
+msgstr "ჯერ მაღალი შეფასებით"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Newest first"
+msgstr "ჯერ ახალი"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Name: A to Z"
+msgstr "სახელის მიხედვით: ა–ჰ"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Minimum rating"
+msgstr "მინიმალური შეფასება"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Any rating"
+msgstr "ნებისმიერი შეფასება"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Language spoken"
+msgstr "საკომუნიკაციო ენა"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Any language"
+msgstr "ნებისმიერი ენა"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Verified by Madloba"
+msgstr "შემოწმებულია Madloba-ს მიერ"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Hide temporarily closed"
+msgstr "დროებით დახურული ადგილების დამალვა"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Find your place"
+msgstr "იპოვე შესაფერისი ადგილი"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Found: %(count)s of %(total)s"
+msgstr "ნაპოვნია: %(count)s / %(total)s"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Services and features"
+msgstr "სერვისები და მახასიათებლები"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid ""
+"Choose any options within a group. Different groups are combined. Counts "
+"show all places in this category."
+msgstr ""
+"ჯგუფში საკმარისია ნებისმიერი არჩეული ვარიანტი; სხვადასხვა ჯგუფის პირობები "
+"ერთად მოქმედებს. რიცხვები აჩვენებს ადგილებს მთელ კატეგორიაში."
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid ""
+"Some filters are invalid or no longer available. Reset the filters and try "
+"again."
+msgstr ""
+"ზოგი ფილტრი არასწორია ან აღარ არის ხელმისაწვდომი. გაასუფთავე ფილტრები და "
+"სცადე ხელახლა."
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Show places"
+msgstr "ადგილების ჩვენება"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Reset filters"
+msgstr "ფილტრების გასუფთავება"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Applied filters"
+msgstr "გამოყენებული ფილტრები"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Remove filter: %(label)s"
+msgstr "ფილტრის მოცილება: %(label)s"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "No matching places"
+msgstr "შესაფერისი ადგილები ვერ მოიძებნა"
+
+#: catalog/listing.py
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Try another name, lower the rating or remove a filter."
+msgstr ""
+"სცადე სხვა სახელი, შეამცირე მინიმალური შეფასება ან მოხსენი ერთ-ერთი ფილტრი."
+
+
+msgid "Filters and sorting"
+msgstr "ფილტრები და დალაგება"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Remove"
+msgstr "მოხსნა"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "All conditions"
+msgstr "ყველა პირობა"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "At least one"
+msgstr "ერთი მაინც"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "How to match services and features"
+msgstr "როგორ გავითვალისწინოთ სერვისები და მახასიათებლები"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "At least one feature from every selected group is required. Counts include selections in other groups."
+msgstr "საჭიროა სულ მცირე ერთი მახასიათებელი თითოეული არჩეული ჯგუფიდან. რაოდენობები ითვალისწინებს სხვა ჯგუფებში გაკეთებულ არჩევანს."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Any selected feature is enough. Each number counts places with that feature; a place may match several features."
+msgstr "საკმარისია ნებისმიერი არჩეული მახასიათებელი. თითოეული რიცხვი აჩვენებს ამ მახასიათებლის მქონე ადგილებს; ერთ ადგილს შეიძლება რამდენიმე მახასიათებელი ჰქონდეს."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Search, rating and other filters apply in both modes. The button shows the total number of matching places."
+msgstr "ძიება, რეიტინგი და სხვა ფილტრები ორივე რეჟიმში მოქმედებს. ღილაკზე ნაჩვენებია შესაბამისი ადგილების საერთო რაოდენობა."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Updating counts…"
+msgstr "რაოდენობები ახლდება…"
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Counts could not be updated. Use Show places to apply your filters."
+msgstr "რაოდენობების განახლება ვერ მოხერხდა. ფილტრების გამოსაყენებლად დააჭირე ღილაკს „ადგილების ჩვენება“."
+
+#: catalog/templates/catalog/includes/organization-filters.html
+msgid "Matching places:"
+msgstr "შესაბამისი ადგილები:"

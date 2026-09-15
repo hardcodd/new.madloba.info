@@ -54,8 +54,7 @@ def get_reviews(
 
 
 @register.simple_tag
-def get_total_reviews_count():
-    """
-    Return total reviews count over the website
-    """
-    return Review.objects.filter(status=ReviewStatus.PUBLISHED).count()
+def get_total_reviews_count() -> str:
+    """Return the published review count with space-separated digit groups."""
+    count = Review.objects.filter(status=ReviewStatus.PUBLISHED).count()
+    return f"{count:,}".replace(",", " ")

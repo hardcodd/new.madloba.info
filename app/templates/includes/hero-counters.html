@@ -30,7 +30,7 @@
     <div class="hero-counter hero-counter--user-reviews">
       <div class="hero-counter__icon">{% include "icons/chat.svg" %}</div>
       <div class="hero-counter__text">
-        {% cache 86400 hero_counters_reviews fragment_language %}
+        {% cache 86400 hero_counters_reviews_v2 fragment_language %}
         <div class="hero-counter__number">{% get_total_reviews_count %}</div>
       {% endcache %}
       <div class="hero-counter__description">{% trans "User reviews" %}</div>

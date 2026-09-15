@@ -3,7 +3,7 @@ import json
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.views import csrf_protect
 from django.core import signing
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpRequest, JsonResponse
 from django.shortcuts import redirect, render, reverse
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
@@ -276,9 +276,8 @@ def publish_review(request, review_id):
     return redirect(back_url)
 
 
-def load_more_reviews(request):
-    page_number = request.GET.get("page", 1)
-    page_number = int(page_number)
+def load_more_reviews(request: HttpRequest) -> JsonResponse:
+    """Return a published review batch or a strict pagination error."""
     token = request.GET.get("token")
 
     if not token:
@@ -287,7 +286,7 @@ def load_more_reviews(request):
     page_pk = signing.loads(token)
     page = Page.objects.get(pk=page_pk)
 
-    reviews = get_reviews({"page": page, "request": request}, page.specific)
+    reviews = get_reviews({"request": request}, page.specific)
 
     return JsonResponse(
         {
@@ -295,7 +294,7 @@ def load_more_reviews(request):
                 render_to_string("reviews/review.html", {"review": r})
                 for r in reviews.object_list
             ],
-            "page_number": page_number + 1 if reviews.has_next() else None,
+            "page_number": reviews.next_page_number() if reviews.has_next() else None,
         }
     )
 

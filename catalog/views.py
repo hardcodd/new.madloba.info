@@ -13,7 +13,7 @@ from django.db.models import (
     Value,
 )
 from django.db.models.functions import Cast, Coalesce, Concat, JSONObject
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.utils.html import strip_tags
 from django.utils.timezone import make_aware
@@ -53,7 +53,7 @@ def search_cities(request):
     raise Http404
 
 
-def organizations(request):
+def organizations(request: HttpRequest) -> HttpResponse:
     """Organizations list page."""
     filters = {}
     parent_id = None
@@ -64,6 +64,8 @@ def organizations(request):
     # Check if request is GET and has query parameters
     if request.method == "GET":
         for key, value in request.GET.items():
+            if key == "page":
+                continue
             if key in allowed_filters:
                 if key == "organization_type":
                     parent_id = value

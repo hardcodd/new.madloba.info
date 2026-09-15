@@ -1,18 +1,15 @@
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpRequest, JsonResponse
 from django.template.loader import render_to_string
 
 from gallery.models import GalleryPostPage
 from gallery.services import get_gallery_images_service
 
 
-def load_more_images(request):
-    page_number = request.GET.get("page")
+def load_more_images(request: HttpRequest) -> JsonResponse:
+    """Return the requested gallery batch, with strict pagination errors."""
     page_id = request.GET.get("page-id")
 
-    if not page_id or not page_id.isdigit():
-        raise Http404
-
-    if not page_number or not page_id.isdigit():
+    if not isinstance(page_id, str) or not page_id.isdigit():
         raise Http404
 
     try:
@@ -20,7 +17,7 @@ def load_more_images(request):
     except GalleryPostPage.DoesNotExist:
         raise Http404
 
-    images = get_gallery_images_service(page, 24, page_number)
+    images = get_gallery_images_service(page, request, 24)
 
     if not images:
         raise Http404

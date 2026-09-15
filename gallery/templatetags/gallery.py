@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from django import template
+from django.core.paginator import Page as PaginatorPage
 
 from gallery.models import GalleryPostPage, GalleryCategoryPage
 from gallery.services import (
@@ -12,19 +15,21 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def get_gallery_images(context, count=24):
+def get_gallery_images(context: template.Context, count: int = 24) -> PaginatorPage:
+    """Return the requested image page or propagate pagination errors."""
     page = context["page"]
     request = context["request"]
-    page_num = request.GET.get("page", 1)
-    return get_gallery_images_service(page, count, page_num)
+    return get_gallery_images_service(page, request, count)
 
 
 @register.simple_tag(takes_context=True)
-def get_paginated_galleries(context, count=24):
+def get_paginated_galleries(
+    context: template.Context, count: int = 24
+) -> PaginatorPage:
+    """Return the requested gallery page or propagate pagination errors."""
     page = context["page"]
     request = context["request"]
-    page_num = request.GET.get("page", 1)
-    return get_paginated_galleries_service(page, count, page_num)
+    return get_paginated_galleries_service(page, request, count)
 
 
 @register.simple_tag

@@ -1,6 +1,13 @@
-from django import template
-from django.core.paginator import Paginator
+from __future__ import annotations
 
+from collections.abc import Mapping
+
+from django import template
+from django.core.paginator import Page as PaginatorPage
+from django.http import HttpRequest
+from wagtail.models import Page
+
+from core.pagination import paginate
 from reviews.models import Review, ReviewStatus
 
 register = template.Library()
@@ -19,13 +26,11 @@ def get_reviews_count(page):
 
 
 @register.simple_tag(takes_context=True)
-def get_reviews(context, page):
-    """
-    Return the reviews for a given page.
-    """
-    request = context.get("request")
-    page_number = request.GET.get("page", 1)
-    page_number = int(page_number)
+def get_reviews(
+    context: template.Context | Mapping[str, HttpRequest], page: Page
+) -> PaginatorPage:
+    """Return published reviews, applying the public pagination contract."""
+    request = context["request"]
 
     reviews = Review.objects.filter(
         content_type=page.content_type,
@@ -33,8 +38,7 @@ def get_reviews(context, page):
         status=ReviewStatus.PUBLISHED,
     ).order_by("-created_at")
 
-    paginator = Paginator(reviews, 10)
-    return paginator.get_page(page_number)
+    return paginate(request, reviews, 10)
 
 
 @register.simple_tag

@@ -1,18 +1,29 @@
-from django.core.paginator import Paginator
+from __future__ import annotations
 
-from gallery.models import GalleryPostPage, GalleryCategoryPage, GalleryIndexPage
+from django.core.paginator import Page as PaginatorPage
+from django.http import HttpRequest
+
+from core.pagination import paginate
+from gallery.models import (
+    GalleryPostPage,
+    GalleryCategoryPage,
+    GalleryIndexPage,
+)
 
 
-def get_gallery_images_service(page: GalleryPostPage, count=24, page_num=1):
-    images = page.specific.images.all()
-    paginator = Paginator(images, count)
-    return paginator.get_page(page_num)
+def get_gallery_images_service(
+    page: GalleryPostPage, request: HttpRequest, count: int = 24
+) -> PaginatorPage:
+    """Paginate gallery images using the public page parameter contract."""
+    return paginate(request, page.images.all(), count)
 
 
-def get_paginated_galleries_service(page: GalleryCategoryPage, count=24, page_num=1):
+def get_paginated_galleries_service(
+    page: GalleryCategoryPage, request: HttpRequest, count: int = 24
+) -> PaginatorPage:
+    """Paginate the category's gallery pages with strict bounds checking."""
     galleries = page.get_children().type(GalleryPostPage)
-    paginator = Paginator(galleries, count)
-    return paginator.get_page(page_num)
+    return paginate(request, galleries, count)
 
 
 def get_first_gallery_image_service(gallery: GalleryPostPage):

@@ -95,6 +95,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     # "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "core.middleware.MultilingualRedirectMiddleware",
+    "core.pagination.PaginationMiddleware",
     "allauth.account.middleware.AccountMiddleware",
 ]
 

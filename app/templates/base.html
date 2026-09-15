@@ -27,7 +27,8 @@
 
     {% if page %}
       <!-- canonical -->
-      <link rel="canonical" href="{% fullpageurl page %}">
+      {% fullpageurl page as canonical_url %}
+      <link rel="canonical" href="{{ canonical_url|pagination_canonical:request }}">
       <meta property="og:url" content="{% fullpageurl page %}" />
     {% endif %}
 

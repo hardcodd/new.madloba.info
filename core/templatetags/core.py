@@ -9,12 +9,14 @@ from django import template
 from django.conf import settings
 from django.core import signing
 from django.forms.renderers import get_template
+from django.http import HttpRequest
 from django.template.base import mark_safe
 from django.template.exceptions import TemplateDoesNotExist
 from slugify import slugify
 
 from core.jsonld import render_jsonld
 from core.models import SiteSettings
+from core.pagination import page_url
 from core.utils import get_domain_name, truncate_string
 
 register = template.Library()
@@ -134,27 +136,32 @@ def truncate(value: str, length: int):
 
 
 @register.filter()
-def set_page(value, page_number):
-    """Sets 'page' property to the pagination link"""
-
-    if "?page=" in value or "&page=" in value:
-        value = re.sub(r"page=[\d]+", f"page={page_number}", value)
-    elif re.search(r"\?[\w]+=", value):
-        value = f"{value}&page={page_number}"
-    else:
-        value = f"{value}?page={page_number}"
-    return value
+def set_page(value: str, page_number: int) -> str:
+    """Set a page link without losing filters; page one uses the base URL."""
+    return page_url(value, page_number)
 
 
 @register.filter()
-def remove_page(value):
-    """Removes 'page' property from the pagination link"""
+def remove_page(value: str) -> str:
+    """Remove only pagination, preserving filters and repeated query values."""
+    return page_url(value, None)
 
-    if "?page=" in value or "&page=" in value:
-        value = re.sub(r"[&?]page=[\d]+", "", value)
-    if value.startswith("/&"):
-        value = "/?" + value[2:]
-    return value
+
+@register.filter
+def pagination_canonical(value: str, request: HttpRequest) -> str:
+    """Add the page number to the existing canonical without other parameters."""
+    page_number = request.GET.get("page", "")
+    if (
+        not isinstance(page_number, str)
+        or not page_number.isascii()
+        or not page_number.isdecimal()
+    ):
+        return value
+    try:
+        number = int(page_number)
+    except ValueError:
+        return value
+    return page_url(value, number)
 
 
 @register.simple_tag()

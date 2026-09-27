@@ -43,3 +43,38 @@ application logging calls through Python's standard `logging` API working.
 - Django system checks and the applicable project test suite pass, or any
   environmental blocker is reported precisely.
 - `git diff --check` reports no whitespace errors.
+
+# Public-site translation completion
+
+## Scope
+
+Complete gettext translations used by visitor-facing templates, catalog
+filters and nearby results, comment and review forms, public responses, and
+client-side JavaScript for Russian (`ru`), Georgian (`ka`), Danish (`da`),
+Finnish (`fi`), Norwegian Bokmål (`nb`), and Swedish (`sv`). English is the
+source language. Keep Wagtail administration, import/export, and other
+staff-only messages outside this translation pass.
+
+## Expected behavior
+
+- Every active public message has a non-fuzzy translation in each target
+  catalog, with valid interpolation placeholders and plural forms.
+- Compiled catalogs serve those translations at runtime.
+- The review-saving error message uses a constant gettext key so extraction
+  and translation work for every target language.
+- Remove the obsolete `dk` catalog if no project setting or code uses that
+  language code; retain `da` as the supported Danish catalog.
+
+## Constraints
+
+- Preserve existing translations and administrative catalog entries.
+- Do not change configured site languages or add dependencies.
+- Keep unrelated Git changes and generated files out of the task.
+
+## Acceptance criteria
+
+- Focused tests verify public template, Python response, and JavaScript
+  messages in all six catalogs, including placeholders and compiled output.
+- The project checks and focused tests pass, or blockers are reported.
+- No project references require the removed `dk` catalog, and
+  `git diff --check` reports no whitespace errors.

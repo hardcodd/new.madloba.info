@@ -1,5 +1,22 @@
 # new.madloba.info
 
+## Application logs
+
+Loguru receives Django, Wagtail, and application warnings and errors through
+Python's standard logging API. Each process writes separate `warnings.*.log`
+and `errors.*.log` files in `logs/` by default. Errors do not appear in the
+warning files. The previous `errors.log` is not imported into the new report.
+
+Files rotate at 50 MB, rotated files are compressed with gzip, and warning and
+error files are retained for 30 and 90 days respectively. The runtime user must
+be able to create the log directory. Override the defaults with `SITE_LOG_DIR`,
+`SITE_LOG_ROTATION_MB`, `SITE_LOG_WARNING_RETENTION_DAYS`,
+`SITE_LOG_ERROR_RETENTION_DAYS`, and `SITE_LOG_CONSOLE_LEVEL`.
+
+Superusers can view recent warnings and errors and download current or archived
+files from Wagtail's Reports menu. The report reads bounded file tails on demand;
+it does not store logs in the database.
+
 ## Tests
 
 Tests use the dedicated PostgreSQL database `test_newmadloba`. Create it as a

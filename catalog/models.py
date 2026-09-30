@@ -536,7 +536,13 @@ class Organization(Page):
 
     def save(self, *args: Any, **kwargs: Any) -> None:
         """Invalidate card fragments while forwarding Wagtail's save options."""
-        keys = ["organization", "organization_images", "organization_item_i18n_v2"]
+        keys = [
+            "organization",
+            "organization_images",
+            "organization_images_v3",
+            "organization_item_i18n_v2",
+            "organization_item_i18n_v4",
+        ]
         languages = getattr(settings, "LANGUAGES", ["en"])
 
         for key in keys:

@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-09-16-organization-filters-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-09-16-review-counter-formatting-brief.md)
+[← Предыдущая задача](2026-09-16-organization-filters-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-09-16-review-counter-formatting-brief.md) · [Следующая задача →](2026-09-16-competitor-cards-detailed.md)
 
 # Единый формат чисел в счётчиках
 

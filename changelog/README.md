@@ -5,22 +5,28 @@
 - **Для себя** — подробная техническая версия.
 - **Для работодателя** — короткая и простая версия.
 
-## Незапушенные изменения на 16 сентября 2026 года
+## 30 сентября 2026
 
-После успешного `git fetch origin` проверен диапазон `origin/main..HEAD`: **11 коммитов, 9 законченных групп задач**. Все 11 коммитов перечислены ниже ровно по одной группе. Новые отчёты датированы завершением соответствующих задач; повторные проверки выполнены 16 сентября. Отсутствие коммита в `origin/main` не доказывает отсутствие его изменений на сервере; развёртывание отдельно не проверялось.
+| Задача | Коммиты | Для себя | Для работодателя |
+| --- | --- | --- | --- |
+| Изображения организаций без фотографий | [bf86ea1](https://github.com/hardcodd/new.madloba.info/commit/bf86ea188c62a0c52add4fa14baa027fdd4ec1c2) | [Подробно](2026-09-30-organization-image-fallbacks-detailed.md) | [Кратко](2026-09-30-organization-image-fallbacks-brief.md) |
+| Удаление отдельных страниц карт рубрик | [a229426](https://github.com/hardcodd/new.madloba.info/commit/a229426c4c0ec149d2088a7222abced4caf30347) | [Подробно](2026-09-30-category-map-removal-detailed.md) | [Кратко](2026-09-30-category-map-removal-brief.md) |
+| Расширенный список страниц в API админки | [5662dfa](https://github.com/hardcodd/new.madloba.info/commit/5662dfab14e315b28b4aa3da46eddabc1d12410b) | [Подробно](2026-09-30-admin-pages-api-detailed.md) | [Кратко](2026-09-30-admin-pages-api-brief.md) |
+| Частичный пересчёт карты сайта | [bc17f64](https://github.com/hardcodd/new.madloba.info/commit/bc17f647f8123a60ecb69ded6d674992e0f8880e) | [Подробно](2026-09-30-partial-sitemaps-detailed.md) | [Кратко](2026-09-30-partial-sitemaps-brief.md) |
+| Логотип без обрезки | [8f9d0d5](https://github.com/hardcodd/new.madloba.info/commit/8f9d0d56141bc6e878dbba19bde4c3e59b6e89e5) | [Подробно](2026-09-30-logo-sizing-detailed.md) | [Кратко](2026-09-30-logo-sizing-brief.md) |
 
-### Инструкции менеджерам
+## 28 сентября 2026
 
-- [Баннеры, популярные рейтинги, ссылки в блоге, контакты и подписки](2026-09-15-page-promotions-detailed.md#инструкция-менеджерам).
-- [Какие поля заполнять для фильтров каталога](2026-09-16-organization-filters-detailed.md#инструкция-менеджерам).
-- [Координаты и условия подбора похожих организаций](2026-09-15-nearby-organizations-detailed.md#инструкция-менеджерам).
-- [Вопросы и ответы и данные для превью ссылки](2026-09-15-faq-social-metadata-detailed.md#инструкция-менеджерам).
-- [Статус закрытия и карточка организации в поиске](2026-09-15-search-results-detailed.md#инструкция-менеджерам).
+| Задача | Коммиты | Для себя | Для работодателя |
+| --- | --- | --- | --- |
+| Переводы публичного интерфейса | [d75f67d](https://github.com/hardcodd/new.madloba.info/commit/d75f67de92260a3a6f193dbe2b52748a8b6621f8) | [Подробно](2026-09-28-public-translations-detailed.md) | [Кратко](2026-09-28-public-translations-brief.md) |
+| Журнал ошибок и предупреждений | [bf8f533](https://github.com/hardcodd/new.madloba.info/commit/bf8f53379fbf488b63758e24f250fa27eae943ab) | [Подробно](2026-09-28-application-logs-detailed.md) | [Кратко](2026-09-28-application-logs-brief.md) |
 
 ## 16 сентября 2026
 
 | Задача | Коммиты | Для себя | Для работодателя |
 | --- | --- | --- | --- |
+| Компактные карточки конкурентов | [56e6a9b](https://github.com/hardcodd/new.madloba.info/commit/56e6a9b76ce669f3d855e88e8fbbf56d407af120) | [Подробно](2026-09-16-competitor-cards-detailed.md) | [Кратко](2026-09-16-competitor-cards-brief.md) |
 | Единый формат чисел в счётчиках | [898665a](https://github.com/hardcodd/new.madloba.info/commit/898665ae3b6c54c96cd7c72646a0869277fe3021) | [Подробно](2026-09-16-review-counter-formatting-detailed.md) | [Кратко](2026-09-16-review-counter-formatting-brief.md) |
 | Фильтры каталога и количество подходящих организаций | [407bbd3](https://github.com/hardcodd/new.madloba.info/commit/407bbd3a0e370be7366c15737384f25700778325) | [Подробно](2026-09-16-organization-filters-detailed.md) | [Кратко](2026-09-16-organization-filters-brief.md) |
 
@@ -62,6 +68,18 @@
 | Очистка устаревших инструментов | [`a481e38`](https://github.com/hardcodd/new.madloba.info/commit/a481e38c2a68969d38bb8eac015467947c596e2d), [`b727ea1`](https://github.com/hardcodd/new.madloba.info/commit/b727ea1a61aae7bbfe78631c288f152a6395ae30) | [Подробно](2026-08-17-cleanup-obsolete-tools-detailed.md) | [Кратко](2026-08-17-cleanup-obsolete-tools-brief.md) |
 | Обновление отзывов и комментариев | [`5838c96`](https://github.com/hardcodd/new.madloba.info/commit/5838c96548de441f0c9f6724d00dd630e80117bd) | [Подробно](2026-08-17-feedback-administration-detailed.md) | [Кратко](2026-08-17-feedback-administration-brief.md) |
 | Безопасная изоляция тестов | [`18b00be`](https://github.com/hardcodd/new.madloba.info/commit/18b00be5f83ac25a15118fd35569586a49dcb2a7) | [Подробно](2026-08-17-postgresql-test-isolation-detailed.md) | [Кратко](2026-08-17-postgresql-test-isolation-brief.md) |
+
+## Архивная проверка на 16 сентября 2026 года
+
+После успешного `git fetch origin` проверен диапазон `origin/main..HEAD`: **11 коммитов, 9 законченных групп задач**. Все 11 коммитов перечислены выше ровно по одной группе. Отчёты той проверки датированы завершением соответствующих задач; повторные проверки выполнены 16 сентября. Отсутствие коммита в `origin/main` не доказывает отсутствие его изменений на сервере; развёртывание отдельно не проверялось.
+
+### Инструкции менеджерам
+
+- [Баннеры, популярные рейтинги, ссылки в блоге, контакты и подписки](2026-09-15-page-promotions-detailed.md#инструкция-менеджерам).
+- [Какие поля заполнять для фильтров каталога](2026-09-16-organization-filters-detailed.md#инструкция-менеджерам).
+- [Координаты и условия подбора похожих организаций](2026-09-15-nearby-organizations-detailed.md#инструкция-менеджерам).
+- [Вопросы и ответы и данные для превью ссылки](2026-09-15-faq-social-metadata-detailed.md#инструкция-менеджерам).
+- [Статус закрытия и карточка организации в поиске](2026-09-15-search-results-detailed.md#инструкция-менеджерам).
 
 ## Проверка незапушенных изменений 16 сентября 2026
 

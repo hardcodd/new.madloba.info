@@ -234,6 +234,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = os.environ.get("WAGTAIL_SITE_NAME", "Madloba")
+WAGTAILAPI_LIMIT_MAX = 100
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html

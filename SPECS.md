@@ -78,3 +78,39 @@ staff-only messages outside this translation pass.
 - The project checks and focused tests pass, or blockers are reported.
 - No project references require the removed `dk` catalog, and
   `git diff --check` reports no whitespace errors.
+
+# Sitemap completeness during regeneration
+
+## Scope
+
+Investigate the reported loss of category and article URLs using the current
+local catalog data and the generator history. Preserve existing sitemap files
+when a regeneration cannot produce complete output. Transfer the verified fix
+from the local catalog checkout to this project.
+
+## Expected behavior
+
+- Every selected live page produces exactly one `<url>` entry in its section's
+  primary language map. An exception or missing primary URL is reported with
+  enough context to identify the affected page and aborts that section.
+- A failed section leaves all its previously published files intact, including
+  multi-file sections. A successful section removes stale numbered files.
+- A large reduction from an existing section map is detected before replacing
+  its files, so an unexpected change in page selection cannot silently remove
+  most indexed URLs. An intentional large reduction can be explicitly allowed.
+- Unselected sections and the sitemap index remain available during partial
+  regeneration.
+
+## Constraints
+
+- Preserve the current sitemap URL structure and command usage by default.
+- Avoid retaining changes in the local catalog checkout and avoid database
+  writes during investigation.
+- Do not add or change dependencies.
+
+## Acceptance criteria
+
+- Focused tests cover failed URL resolution, missing URLs, multi-file rollback,
+  unexpected shrinkage, deliberate shrinkage, and normal regeneration.
+- The local category and article counts are compared with their generated maps.
+- The relevant Django checks and tests pass, and `git diff --check` is clean.

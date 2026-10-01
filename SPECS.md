@@ -114,3 +114,36 @@ from the local catalog checkout to this project.
   unexpected shrinkage, deliberate shrinkage, and normal regeneration.
 - The local category and article counts are compared with their generated maps.
 - The relevant Django checks and tests pass, and `git diff --check` is clean.
+
+# Sitemap file delivery after regeneration
+
+## Scope
+
+Serve the generated sitemap index and section XML from the current files on
+disk. Remove Django template-loader caching from the public sitemap path.
+
+## Expected behavior
+
+- A request reads the current XML file, including after that file is replaced
+  while the application process remains running.
+- Preserve existing sitemap URLs, XML bytes, `application/xml` responses, and
+  404 behavior for missing files or unsupported languages.
+- Stream section files so large organization maps are not loaded into memory
+  as complete response bodies.
+
+## Constraints
+
+- Keep the generator's successful-write and rollback protections intact: old
+  section files remain public until new files are ready, and stale files are
+  removed only after successful publication.
+- Do not alter the database, generated sitemap content, or dependencies.
+
+## Acceptance criteria
+
+- Focused tests show that repeated requests to both the index and a section
+  return replacement file contents without resetting the template engine.
+- Focused tests cover XML response type and missing-file handling.
+- A full local regeneration produces an index and section URL lists that match
+  the selected live database pages in every configured language, without
+  duplicate URLs.
+- Applicable Django checks and tests pass, and `git diff --check` is clean.

@@ -1,9 +1,13 @@
 import json
+from datetime import datetime
 from typing import Any
 
 from django.db.models import Model
 from django.db.models.fields.related import ForeignKey
 from django.utils.text import slugify
+from django.utils.dateparse import parse_date
+from django.utils.html import escape
+from wagtail.fields import StreamField
 
 from catalog.utils import get_start_end_day
 from core.utils import get_weekday_number
@@ -36,6 +40,11 @@ def slugfield_handler(obj: Model, field: str, value: Any) -> None:
 
 def textfield_handler(obj: Model, field: str, value: Any) -> None:
     text = str(value)
+
+    plain_fields = getattr(obj, "csv_plain_text_fields", set())
+    if any(field == name or field.startswith(f"{name}_") for name in plain_fields):
+        setattr(obj, field, text)
+        return
 
     if should_preserve_plain_text(field):
         setattr(obj, field, text)
@@ -146,3 +155,56 @@ def located_in_handler(obj: Model, field: str, value: Any) -> None:
         raise ValueError(f"Invalid {field} ID") from error
 
     setattr(obj, field, related_obj)
+
+
+def foreignkey_handler(obj: Model, field: str, value: Any) -> None:
+    """Resolve an existing relation by its database ID; never create targets."""
+    located_in_handler(obj, field, value)
+
+
+def datefield_handler(obj: Model, field: str, value: Any) -> None:
+    """Read ISO dates and the engine's exported day.month.year dates."""
+    text = str(value).strip()
+    result = parse_date(text)
+    if result is None:
+        result = datetime.strptime(text, "%d.%m.%Y").date()
+    setattr(obj, field, result)
+
+
+def richtextfield_handler(obj: Model, field: str, value: Any) -> None:
+    """Keep native rich text markup or escape plain text as one paragraph."""
+    text = str(value)
+    setattr(
+        obj, field, text if text.lstrip().startswith("<") else f"<p>{escape(text)}</p>"
+    )
+
+
+def streamfield_handler(obj: Model, field: str, value: Any) -> None:
+    """Validate native StreamField JSON, including chooser targets and block rules."""
+    model_field = obj._meta.get_field(field)
+    if not isinstance(model_field, StreamField):
+        raise ValueError("Expected a StreamField")
+    data = json.loads(value) if isinstance(value, str) else value
+    if not isinstance(data, list):
+        raise ValueError("Expected a JSON list of blocks")
+    allowed = model_field.stream_block.child_blocks
+    if any(
+        not isinstance(item, dict)
+        or item.get("type") not in allowed
+        or "value" not in item
+        for item in data
+    ):
+        raise ValueError("Unknown or malformed block")
+    stream = model_field.to_python(data)
+    # Resolving choosers may return None for deleted/nonexistent references;
+    # block validation rejects required missing targets before any database write.
+    model_field.stream_block.clean(stream)
+    setattr(obj, field, stream)
+
+
+def tags_handler(obj: Model, field: str, value: Any) -> None:
+    """Import the existing comma-separated tag-name export format."""
+    names = list(
+        dict.fromkeys(name.strip() for name in str(value).split(",") if name.strip())
+    )
+    getattr(obj, field).set(names)

@@ -4,6 +4,7 @@ from decimal import Decimal
 from typing import Any
 
 from django.core.exceptions import FieldDoesNotExist
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Model
 from django.db.models.fields.related import ForeignKey, ManyToManyField
 from django.utils import timezone
@@ -100,9 +101,15 @@ def serialize_page_field(page: Page, field_name: str) -> Any:
         return ""
 
     if isinstance(model_field, StreamField):
+        if getattr(page, "csv_native_streams", False):
+            return json.dumps(
+                value.get_prep_value(), ensure_ascii=False, cls=DjangoJSONEncoder
+            )
         return serialize_stream_value(value)
 
     if isinstance(model_field, RichTextField):
+        if getattr(page, "csv_preserve_richtext", False):
+            return str(value)
         return strip_tags(str(value)).strip()
 
     if isinstance(model_field, ForeignKey):

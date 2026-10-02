@@ -134,8 +134,8 @@ msgid ""
 "After selecting a city, you will be taken to its page and can start "
 "searching for the establishment or company you need."
 msgstr ""
-"Når du har valgt en by, bliver du ført til dens side, hvor du kan begynde at "
-"søge efter den virksomhed eller det sted, du har brug for."
+"Når du har valgt en by, bliver du ført til dens side, hvor du kan begynde at"
+" søge efter den virksomhed eller det sted, du har brug for."
 
 #: app/templates/includes/hero-counters.html:13
 msgid "Organizations in catalog"
@@ -703,8 +703,8 @@ msgstr "Vise"
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
 msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them "
-"to work better, knowing you can leave a review."
+"Tell the company you found their number on %(site_name)s — it motivates them"
+" to work better, knowing you can leave a review."
 msgstr ""
 "Fortæl virksomheden, at du fandt deres nummer på %(site_name)s — det "
 "motiverer dem til at arbejde bedre, velvidende at du kan skrive en "
@@ -1091,7 +1091,7 @@ msgstr ""
 
 #: core/blocks.py:186
 msgid "Answer"
-msgstr ""
+msgstr "Svar"
 
 #: core/blocks.py:188
 msgid "Q&A Item"
@@ -1159,7 +1159,7 @@ msgstr ""
 
 #: core/blocks.py:294
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: core/blocks.py:310
 msgid "Custom"
@@ -1571,13 +1571,6 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#, python-format
-#~ msgid "All about %(site_name)s"
-#~ msgstr "Alt om %(site_name)s"
-
-#~ msgid "Find out all the benefits of premium placement in our catalog."
-#~ msgstr "Find alle fordelene ved premium-placering i vores katalog."
-
 #: app/templates/404.html:5
 msgid "Page not found"
 msgstr "Siden blev ikke fundet"
@@ -1910,3 +1903,209 @@ msgstr "Ca. %(distance)s m"
 #, python-format
 msgid "About %(distance)s km"
 msgstr "Ca. %(distance)s km"
+
+# FAQ pages and editor controls
+msgid "All categories"
+msgstr "Alle kategorier"
+
+msgid "Answer details"
+msgstr "Detaljer om svaret"
+
+msgid "Answered at"
+msgstr "Besvaret"
+
+msgid "Blog category"
+msgstr "Blogkategori"
+
+msgid "Catalog category"
+msgstr "Katalogkategori"
+
+msgid "Categories"
+msgstr "Kategorier"
+
+msgid "Checked at"
+msgstr "Kontrolleret"
+
+msgid "Common misconception"
+msgstr "Almindelig misforståelse"
+
+msgid "Cover"
+msgstr "Forsidebillede"
+
+msgid "Dates"
+msgstr "Datoer"
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "Enter a valid HTTPS YouTube video URL."
+msgstr "Angiv et gyldigt HTTPS-link til en YouTube-video."
+
+msgid "FAQ category"
+msgstr "Spørgsmålskategori"
+
+msgid "FAQ category group"
+msgstr "Gruppe af spørgsmålskategorier"
+
+msgid "FAQ category groups"
+msgstr "Grupper af spørgsmålskategorier"
+
+msgid "FAQ category page"
+msgstr "Side for spørgsmålskategori"
+
+msgid "FAQ category pages"
+msgstr "Sider for spørgsmålskategorier"
+
+msgid "FAQ index page"
+msgstr "Hovedside for spørgsmål og svar"
+
+msgid "FAQ index pages"
+msgstr "Hovedsider for spørgsmål og svar"
+
+msgid "FAQ question page"
+msgstr "Spørgsmålsside"
+
+msgid "FAQ question pages"
+msgstr "Spørgsmålssider"
+
+msgid "FAQ questions"
+msgstr "Spørgsmål og svar"
+
+msgid "Important note"
+msgstr "Vigtigt"
+
+msgid "Introduction"
+msgstr "Indledning"
+
+msgid "Latest questions"
+msgstr "Seneste spørgsmål"
+
+msgid "Manual questions"
+msgstr "Manuelt valgte spørgsmål"
+
+msgid "Manual selection"
+msgstr "Manuelt valg"
+
+msgid "No questions published yet."
+msgstr "Ingen spørgsmål er offentliggjort endnu."
+
+msgid "People also ask"
+msgstr "Andre spørger også"
+
+msgid "Play video"
+msgstr "Afspil video"
+
+msgid "Point"
+msgstr "Punkt"
+
+msgid "Popular question"
+msgstr "Populært spørgsmål"
+
+msgid "Popular questions"
+msgstr "Populære spørgsmål"
+
+msgid "Questions and answers"
+msgstr "Spørgsmål og svar"
+
+msgid "Read more URL"
+msgstr "Eksternt link til Læs mere"
+
+msgid "Read more and related questions"
+msgstr "Læs mere og relaterede spørgsmål"
+
+msgid "Read more label"
+msgstr "Tekst til Læs mere-knappen"
+
+msgid "Read more page"
+msgstr "Side til Læs mere"
+
+msgid "Recently checked"
+msgstr "Nyligt kontrollerede"
+
+msgid "Related questions"
+msgstr "Relaterede spørgsmål"
+
+msgid "Selection"
+msgstr "Valg af spørgsmål"
+
+msgid "Short answer"
+msgstr "Kort svar"
+
+msgid "Social image"
+msgstr "Billede til sociale medier"
+
+msgid "Sort order"
+msgstr "Sorteringsrækkefølge"
+
+msgid "Source name"
+msgstr "Kildenavn"
+
+msgid "Sources"
+msgstr "Kilder"
+
+msgid "The check date cannot precede the answer date."
+msgstr "Kontroldatoen kan ikke være før svardatoen."
+
+msgid "Tip"
+msgstr "Tip"
+
+msgid "Used only for manual selection; list order is preserved."
+msgstr "Bruges kun ved manuelt valg; rækkefølgen bevares."
+
+msgid "Watch on YouTube"
+msgstr "Se på YouTube"
+
+msgid "What actually happens"
+msgstr "Sådan er det faktisk"
+
+msgid "What may differ"
+msgstr "Hvad kan variere"
+
+msgid "Why"
+msgstr "Hvorfor"
+
+msgid "YouTube URL"
+msgstr "YouTube-link"
+
+msgid "live must be 0 or 1"
+msgstr "live skal være 0 eller 1"
+
+msgid "The page is locked or in a workflow"
+msgstr "Siden er låst eller i en arbejdsgang"
+
+msgid "Alias or scheduled pages cannot be imported"
+msgstr "Alias og sider med planlagt udgivelse kan ikke importeres"
+
+msgid "Publish or discard the pending draft before importing live changes"
+msgstr "Udgiv eller kassér kladden før import af offentliggjorte ændringer"
+
+msgid "Search questions and answers"
+msgstr "Søg i spørgsmål og svar"
+
+msgid "Question or topic"
+msgstr "Spørgsmål eller emne"
+
+msgid "Enter a question or topic."
+msgstr "Indtast et spørgsmål eller emne."
+
+msgid "On this topic"
+msgstr "Om dette emne"
+
+#, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "Alt om %(site_name)s"
+
+#~ msgid "Find out all the benefits of premium placement in our catalog."
+#~ msgstr "Find alle fordelene ved premium-placering i vores katalog."
+
+#: faq/models.py
+msgid "Links and media"
+msgstr "Links og medier"
+
+#: faq/models.py
+msgid "Leave blank to show four automatically selected questions from the same category, ordered by check date. Select up to five questions to replace the automatic list. Clear this field to restore it."
+msgstr "Lad feltet være tomt for automatisk at vise fire spørgsmål fra samme kategori, sorteret efter kontroldato. Vælg op til fem spørgsmål for at erstatte den automatiske liste. Ryd feltet for at gendanne automatisk udvælgelse."
+
+#: faq/models.py
+msgid "Enter both the misconception and its correction, or leave both blank."
+msgstr "Udfyld både misforståelsen og rettelsen, eller lad begge felter være tomme."

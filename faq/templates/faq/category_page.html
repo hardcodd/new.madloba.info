@@ -1,0 +1,16 @@
+{% extends "faq/base.html" %}
+{% load i18n wagtailimages_tags wagtailcore_tags %}
+{% block body_class %}template-faq-category{% endblock %}
+{% block content %}
+<div class="container faq-page"><div class="row v-gutters">
+  <div class="col-lg-9 col-12">
+    <header class="faq-category-header">
+      {% if page.cover %}{% image page.cover fill-402x495 class="faq-category-cover" %}{% endif %}
+      <div><h1 class="page__title">{{ page.title }}</h1>{% if page.intro %}{{ page.intro|richtext }}{% endif %}</div>
+    </header>
+    {% if questions %}{% include "faq/includes/question_list.html" %}{% else %}<p>{% trans "No questions published yet." %}</p>{% endif %}
+    {% include "includes/pagination.html" with page_obj=questions %}
+  </div>
+  <aside class="col-lg-3 col-12">{% include "faq/includes/sidebar.html" %}</aside>
+</div></div>
+{% endblock %}

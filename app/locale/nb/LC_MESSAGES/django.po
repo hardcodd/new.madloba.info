@@ -716,11 +716,11 @@ msgstr "Vise"
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
 msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them "
-"to work better, knowing you can leave a review."
+"Tell the company you found their number on %(site_name)s — it motivates them"
+" to work better, knowing you can leave a review."
 msgstr ""
-"Fortell bedriften at du fant nummeret deres på %(site_name)s – det motiverer "
-"dem til å jobbe bedre, vel vitende om at du kan legge igjen en anmeldelse."
+"Fortell bedriften at du fant nummeret deres på %(site_name)s – det motiverer"
+" dem til å jobbe bedre, vel vitende om at du kan legge igjen en anmeldelse."
 
 #: catalog/templates/catalog/organization_page.html:138
 msgid "Official website"
@@ -1120,7 +1120,7 @@ msgstr "Spørsmål"
 
 #: core/blocks.py:186
 msgid "Answer"
-msgstr ""
+msgstr "Svar"
 
 #: core/blocks.py:188
 msgid "Q&A Item"
@@ -1188,7 +1188,7 @@ msgstr ""
 
 #: core/blocks.py:294
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: core/blocks.py:310
 msgid "Custom"
@@ -1608,21 +1608,6 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#, python-format
-#~ msgid "All about %(site_name)s"
-#~ msgstr "Alt om %(site_name)s"
-
-#~ msgid "Find out all the benefits of premium placement in our catalog."
-#~ msgstr "Finn ut alle fordelene med premiumplassering i katalogen vår."
-
-#~ msgid "Advertising on Madloba"
-#~ msgstr "Annonsering på Madloba"
-
-#~ msgid ""
-#~ "Source: Brønnøysund Register Centre (NLOD 2.0) / Norwegian Mapping "
-#~ "Authority Address API"
-#~ msgstr "Kilde: Brønnøysundregistrene (NLOD 2.0) / Kartverket Adresser API"
-
 #: app/templates/404.html:5
 msgid "Page not found"
 msgstr "Siden ble ikke funnet"
@@ -1956,3 +1941,218 @@ msgstr "Omtrent %(distance)s m"
 #, python-format
 msgid "About %(distance)s km"
 msgstr "Omtrent %(distance)s km"
+
+# FAQ pages and editor controls
+msgid "All categories"
+msgstr "Alle kategorier"
+
+msgid "Answer details"
+msgstr "Detaljer om svaret"
+
+msgid "Answered at"
+msgstr "Besvart"
+
+msgid "Blog category"
+msgstr "Bloggkategori"
+
+msgid "Catalog category"
+msgstr "Katalogkategori"
+
+msgid "Categories"
+msgstr "Kategorier"
+
+msgid "Checked at"
+msgstr "Kontrollert"
+
+msgid "Common misconception"
+msgstr "Vanlig misforståelse"
+
+msgid "Cover"
+msgstr "Forsidebilde"
+
+msgid "Dates"
+msgstr "Datoer"
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "Enter a valid HTTPS YouTube video URL."
+msgstr "Oppgi en gyldig HTTPS-lenke til en YouTube-video."
+
+msgid "FAQ category"
+msgstr "Spørsmålskategori"
+
+msgid "FAQ category group"
+msgstr "Gruppe av spørsmålskategorier"
+
+msgid "FAQ category groups"
+msgstr "Grupper av spørsmålskategorier"
+
+msgid "FAQ category page"
+msgstr "Side for spørsmålskategori"
+
+msgid "FAQ category pages"
+msgstr "Sider for spørsmålskategorier"
+
+msgid "FAQ index page"
+msgstr "Hovedside for spørsmål og svar"
+
+msgid "FAQ index pages"
+msgstr "Hovedsider for spørsmål og svar"
+
+msgid "FAQ question page"
+msgstr "Spørsmålsside"
+
+msgid "FAQ question pages"
+msgstr "Spørsmålssider"
+
+msgid "FAQ questions"
+msgstr "Spørsmål og svar"
+
+msgid "Important note"
+msgstr "Viktig"
+
+msgid "Introduction"
+msgstr "Innledning"
+
+msgid "Latest questions"
+msgstr "Nyeste spørsmål"
+
+msgid "Manual questions"
+msgstr "Manuelt valgte spørsmål"
+
+msgid "Manual selection"
+msgstr "Manuelt valg"
+
+msgid "No questions published yet."
+msgstr "Ingen spørsmål er publisert ennå."
+
+msgid "People also ask"
+msgstr "Andre spør også"
+
+msgid "Play video"
+msgstr "Spill av video"
+
+msgid "Point"
+msgstr "Punkt"
+
+msgid "Popular question"
+msgstr "Populært spørsmål"
+
+msgid "Popular questions"
+msgstr "Populære spørsmål"
+
+msgid "Questions and answers"
+msgstr "Spørsmål og svar"
+
+msgid "Read more URL"
+msgstr "Ekstern lenke for Les mer"
+
+msgid "Read more and related questions"
+msgstr "Les mer og relaterte spørsmål"
+
+msgid "Read more label"
+msgstr "Tekst for Les mer-knappen"
+
+msgid "Read more page"
+msgstr "Side for Les mer"
+
+msgid "Recently checked"
+msgstr "Nylig kontrollerte"
+
+msgid "Related questions"
+msgstr "Relaterte spørsmål"
+
+msgid "Selection"
+msgstr "Valg av spørsmål"
+
+msgid "Short answer"
+msgstr "Kort svar"
+
+msgid "Social image"
+msgstr "Bilde for sosiale medier"
+
+msgid "Sort order"
+msgstr "Sorteringsrekkefølge"
+
+msgid "Source name"
+msgstr "Kildenavn"
+
+msgid "Sources"
+msgstr "Kilder"
+
+msgid "The check date cannot precede the answer date."
+msgstr "Kontrolldatoen kan ikke være før svardatoen."
+
+msgid "Tip"
+msgstr "Tips"
+
+msgid "Used only for manual selection; list order is preserved."
+msgstr "Brukes bare ved manuelt valg; rekkefølgen beholdes."
+
+msgid "Watch on YouTube"
+msgstr "Se på YouTube"
+
+msgid "What actually happens"
+msgstr "Slik er det egentlig"
+
+msgid "What may differ"
+msgstr "Hva kan variere"
+
+msgid "Why"
+msgstr "Hvorfor"
+
+msgid "YouTube URL"
+msgstr "YouTube-lenke"
+
+msgid "live must be 0 or 1"
+msgstr "live må være 0 eller 1"
+
+msgid "The page is locked or in a workflow"
+msgstr "Siden er låst eller i en arbeidsflyt"
+
+msgid "Alias or scheduled pages cannot be imported"
+msgstr "Alias og sider med planlagt publisering kan ikke importeres"
+
+msgid "Publish or discard the pending draft before importing live changes"
+msgstr ""
+"Publiser eller forkast utkastet før du importerer publiserte endringer"
+
+msgid "Search questions and answers"
+msgstr "Søk i spørsmål og svar"
+
+msgid "Question or topic"
+msgstr "Spørsmål eller tema"
+
+msgid "Enter a question or topic."
+msgstr "Skriv inn et spørsmål eller tema."
+
+msgid "On this topic"
+msgstr "Om dette temaet"
+
+#, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "Alt om %(site_name)s"
+
+#~ msgid "Find out all the benefits of premium placement in our catalog."
+#~ msgstr "Finn ut alle fordelene med premiumplassering i katalogen vår."
+
+#~ msgid "Advertising on Madloba"
+#~ msgstr "Annonsering på Madloba"
+
+#~ msgid ""
+#~ "Source: Brønnøysund Register Centre (NLOD 2.0) / Norwegian Mapping Authority"
+#~ " Address API"
+#~ msgstr "Kilde: Brønnøysundregistrene (NLOD 2.0) / Kartverket Adresser API"
+
+#: faq/models.py
+msgid "Links and media"
+msgstr "Lenker og medier"
+
+#: faq/models.py
+msgid "Leave blank to show four automatically selected questions from the same category, ordered by check date. Select up to five questions to replace the automatic list. Clear this field to restore it."
+msgstr "La feltet stå tomt for automatisk å vise fire spørsmål fra samme kategori, sortert etter kontrolldato. Velg opptil fem spørsmål for å erstatte den automatiske listen. Tøm feltet for å gjenopprette automatisk utvalg."
+
+#: faq/models.py
+msgid "Enter both the misconception and its correction, or leave both blank."
+msgstr "Fyll ut både misforståelsen og rettelsen, eller la begge feltene stå tomme."

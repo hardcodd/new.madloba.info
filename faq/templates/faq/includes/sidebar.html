@@ -1,0 +1,19 @@
+{% load i18n wagtailcore_tags %}
+<div class="faq-sidebar">
+  <nav class="faq-card faq-sidebar-panel" aria-labelledby="faq-navigation-title">
+    <h2 id="faq-navigation-title">{% trans "Categories" %}</h2>
+    <ul class="faq-category-links">
+      {% for item in sidebar_categories %}
+      <li><a href="{% pageurl item %}"{% if item.pk == sidebar_category.pk %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% if sidebar_related_pages %}
+  <section class="faq-card faq-sidebar-panel" aria-labelledby="faq-related-pages-title">
+    <h2 id="faq-related-pages-title">{% trans "On this topic" %}</h2>
+    <ul class="faq-category-links">
+      {% for item in sidebar_related_pages %}<li><a href="{% pageurl item %}">{{ item.title }}</a></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>

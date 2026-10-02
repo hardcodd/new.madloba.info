@@ -73,6 +73,7 @@ def social_image(
         if isinstance(page, Organization):
             own_image = get_organization_fallback(page, organization_default, request)
     candidates: tuple[Image | None, ...] = (
+        getattr(page, "social_image", None),
         own_image,
         getattr(page, "image", None),
         fallback,

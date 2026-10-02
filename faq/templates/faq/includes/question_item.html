@@ -1,0 +1,6 @@
+{% load i18n wagtailcore_tags %}
+<li class="faq-list__item card faq-question-card">
+  <h3><a class="faq-list__link" href="{% pageurl question %}">{{ question.title }}</a></h3>
+  <p>{{ question.answer_excerpt }}</p>
+  <div class="faq-question-card__footer"><small>{% trans "Checked at" %}: <time datetime="{{ question.checked_at|date:'Y-m-d' }}">{{ question.checked_at|date:'DATE_FORMAT' }}</time></small><span class="faq-card-action" aria-hidden="true">{% trans "Read more" %}</span></div>
+</li>

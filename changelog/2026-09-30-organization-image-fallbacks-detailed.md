@@ -1,4 +1,4 @@
-[← Предыдущая задача](2026-09-30-category-map-removal-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-09-30-organization-image-fallbacks-brief.md)
+[← Предыдущая задача](2026-09-30-category-map-removal-detailed.md) · [Все отчёты](README.md) · [Краткая версия](2026-09-30-organization-image-fallbacks-brief.md) · [Следующая задача](2026-10-02-faq-detailed.md)
 
 # Изображения организаций без фотографий
 

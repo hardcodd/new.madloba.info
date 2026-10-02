@@ -1,5 +1,10 @@
 # new.madloba.info
 
+## FAQ
+
+The native FAQ app reuses Wagtail pages, translation, search and CSV import/export.
+See [FAQ editing, import and deployment](faq/README.md).
+
 ## Application logs
 
 Loguru receives Django, Wagtail, and application warnings and errors through

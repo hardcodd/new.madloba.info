@@ -16,6 +16,7 @@ STANDARD_FIELD_NAMES = (
     "seo_title",
     "search_description",
     "first_published_at",
+    "live",
 )
 
 EXCLUDED_FIELD_NAMES = frozenset(

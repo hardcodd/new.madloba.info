@@ -1,0 +1,14 @@
+{% load i18n static wagtailcore_tags %}
+{% if questions %}
+<link rel="stylesheet" href="{% static 'faq/faq.css' %}">
+<section class="section faq-home">
+  <div class="container">
+  {% with questions.0.get_parent.get_parent as index %}
+  {% pageurl index as index_url %}
+  {% trans "All categories" as all_categories %}
+  {% include "includes/section-header.html" with section_title=value.title|default:_("Questions and answers") pageurl=index_url button_text=all_categories %}
+  {% endwith %}
+  {% include "faq/includes/question_list.html" %}
+  </div>
+</section>
+{% endif %}

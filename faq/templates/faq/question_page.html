@@ -1,0 +1,34 @@
+{% extends "faq/base.html" %}
+{% load i18n static wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}template-faq-question{% endblock %}
+{% block extrahead %}{{ block.super }}{% if not page.search_description %}<meta name="description" content="{{ page.short_answer }}"><meta property="og:description" content="{{ page.short_answer }}">{% endif %}{% endblock %}
+{% block content %}
+<div class="container faq-page"><div class="row v-gutters">
+  <article class="col-lg-9 col-12">
+    <h1 class="page__title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="faq-intro">{{ page.subtitle }}</p>{% endif %}
+    <div class="faq-dates">
+      <span>{% trans "Answered at" %}: <time datetime="{{ page.answered_at|date:'Y-m-d' }}">{{ page.answered_at|date:'DATE_FORMAT' }}</time></span>
+      <span>{% trans "Checked at" %}: <time datetime="{{ page.checked_at|date:'Y-m-d' }}">{{ page.checked_at|date:'DATE_FORMAT' }}</time></span>
+    </div>
+    <section class="faq-answer" aria-labelledby="faq-short"><h2 id="faq-short">{% trans "Short answer" %}</h2>{{ page.short_answer|linebreaks }}</section>
+    {% include "faq/includes/cta.html" with cta_class="faq-read-more--mobile" %}
+    {% with page.get_image as cover %}{% if cover %}{% image cover width-1200 class="faq-cover" %}{% endif %}{% endwith %}
+    {% if page.why_points %}<section class="faq-section" aria-labelledby="faq-why"><h2 id="faq-why">{% trans "Why" %}</h2><ol>{% for point in page.why_points %}<li>{{ point.value }}</li>{% endfor %}</ol></section>{% endif %}
+    {% if page.details %}<section class="faq-section" aria-labelledby="faq-details"><h2 id="faq-details">{% trans "Details" %}</h2>{{ page.details|richtext }}</section>{% endif %}
+    {% if page.tip or page.may_differ %}<div class="row v-gutters faq-section">
+      {% if page.tip %}<section class="{% if page.tip and page.may_differ %}col-sm-6 {% endif %}col-12" aria-labelledby="faq-tip"><div class="faq-card"><h2 id="faq-tip">{% trans "Tip" %}</h2>{{ page.tip|richtext }}</div></section>{% endif %}
+      {% if page.may_differ %}<section class="{% if page.tip and page.may_differ %}col-sm-6 {% endif %}col-12" aria-labelledby="faq-differ"><div class="faq-card"><h2 id="faq-differ">{% trans "What may differ" %}</h2>{{ page.may_differ|richtext }}</div></section>{% endif %}
+    </div>{% endif %}
+    {% if page.myth and page.myth_truth %}<section class="faq-section faq-card faq-myth" aria-labelledby="faq-myth"><h2 id="faq-myth">{% trans "Common misconception" %}</h2>{{ page.myth|richtext }}<h3>{% trans "What actually happens" %}</h3>{{ page.myth_truth|richtext }}</section>{% endif %}
+    {% if page.people_also_ask %}<section class="faq-section" aria-labelledby="faq-also"><h2 id="faq-also">{% trans "People also ask" %}</h2><ul>{% for question in page.people_also_ask %}<li>{{ question.value }}</li>{% endfor %}</ul></section>{% endif %}
+    {% if sources %}<section class="faq-section" aria-labelledby="faq-sources"><h2 id="faq-sources">{% trans "Sources" %}</h2><ul class="faq-sources">{% for source in sources %}<li><a href="{{ source.url }}" rel="noopener">{{ source.name }}</a><small>{% trans "Checked at" %}: <time datetime="{{ source.checked_at|date:'Y-m-d' }}">{{ source.checked_at|date:'DATE_FORMAT' }}</time></small></li>{% endfor %}</ul></section>{% endif %}
+    {% if page.important_note %}<p class="faq-note">{{ page.important_note }}</p>{% endif %}
+    {% include "faq/includes/cta.html" with cta_class="faq-read-more--desktop" %}
+    {% if video_id %}<section class="faq-section" aria-labelledby="faq-video"><h2 id="faq-video">{% trans "Video" %}</h2><div class="faq-video"><button type="button" class="btn faq-video__play" data-faq-video="{{ video_id }}" data-title="{% trans 'Video' %}">{% trans "Play video" %}</button></div><noscript><a href="{{ page.video_url }}">{% trans "Watch on YouTube" %}</a></noscript></section>{% endif %}
+    {% if related_questions %}<section class="faq-section" aria-labelledby="faq-related"><h2 id="faq-related">{% trans "Related questions" %}</h2>{% include "faq/includes/question_list.html" with questions=related_questions %}</section>{% endif %}
+  </article>
+  <aside class="col-lg-3 col-12">{% include "faq/includes/sidebar.html" %}</aside>
+</div></div>
+{% endblock %}
+{% block extra_js %}{{ block.super }}{% if video_id %}<script src="{% static 'faq/video.js' %}" defer></script>{% endif %}{% endblock %}

@@ -6,6 +6,8 @@ from typing import Any, Iterable, cast
 from django.conf import settings
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models import Model
+from django.db import transaction
+from django.core.exceptions import ValidationError
 from django.db.models.options import Options
 from django.http import FileResponse, Http404, HttpRequest, HttpResponse, JsonResponse
 from django.utils.module_loading import import_string
@@ -14,6 +16,7 @@ from django.utils.translation import ngettext
 from django.views.decorators.http import require_POST
 from wagtail.admin.auth import require_admin_access
 from wagtail.models import Page, Site, get_page_models
+from wagtail.fields import StreamField, RichTextField
 from wagtail.snippets.views.snippets import SnippetViewSet
 
 from core import field_handlers
@@ -86,9 +89,16 @@ def get_page_model(page_type: str) -> type[Page]:
 def run_field_handler(obj: Model, field_name: str, field_value: Any) -> None:
     model_meta = cast(Options, getattr(obj, "_meta"))
     model_field = model_meta.get_field(field_name)
+    type_name = model_field.get_internal_type().lower()
+    if isinstance(model_field, StreamField):
+        type_name = "streamfield"
+    elif isinstance(model_field, RichTextField) and getattr(
+        obj, "csv_preserve_richtext", False
+    ):
+        type_name = "richtextfield"
     handler_names = (
         f"{field_name}_handler",
-        f"{model_field.get_internal_type().lower()}_handler",
+        f"{type_name}_handler",
     )
 
     for handler_name in dict.fromkeys(handler_names):
@@ -181,6 +191,22 @@ def check_unique(
 
 def set_attr(obj: Model, field_name: str, field_value: Any) -> None:
     if field_value is None or field_value == "":
+        if getattr(obj, "csv_clear_blank_fields", False):
+            model_field = obj._meta.get_field(field_name)
+            if model_field.blank:
+                if field_name == "tags":
+                    getattr(obj, field_name).set([])
+                elif model_field.many_to_one:
+                    setattr(obj, field_name, None)
+                elif isinstance(model_field, StreamField):
+                    setattr(obj, field_name, [])
+                elif model_field.get_internal_type() in {
+                    "CharField",
+                    "TextField",
+                    "RichTextField",
+                    "URLField",
+                }:
+                    setattr(obj, field_name, "")
         return
 
     skip_fields = frozenset({"parent_id"})
@@ -211,7 +237,7 @@ def set_attr(obj: Model, field_name: str, field_value: Any) -> None:
 
 @require_admin_access
 @require_POST
-def import_page(request):
+def import_page(request: HttpRequest) -> JsonResponse:
     def result(success: bool, message: str, status: int) -> JsonResponse:
         return JsonResponse(
             {
@@ -283,77 +309,140 @@ def import_page(request):
     try:
         page_model = get_page_model(page_type)
 
-        page_id = mapped_data.pop("id", None)
-        unique_fields.discard("id")
+        with transaction.atomic():
+            raw_live = mapped_data.pop("live", "1")
+            if str(raw_live).lower() not in {"0", "1", "false", "true"}:
+                raise ValueError(_("live must be 0 or 1"))
+            publish = str(raw_live).lower() in {"1", "true"}
 
-        try:
-            page_id = int(page_id) if page_id else None
-        except (TypeError, ValueError):
-            return result(False, "Invalid page ID", 400)
+            page_id = mapped_data.pop("id", None)
+            unique_fields.discard("id")
 
-        check_unique(
-            page_model,
-            unique_fields,
-            mapped_data,
-            exclude_page_id=page_id,
-        )
-
-        if page_id:
             try:
-                existing_page = Page.objects.get(id=page_id).specific
-            except Page.DoesNotExist:
-                return result(False, "Page does not exist", 400)
+                page_id = int(page_id) if page_id else None
+            except (TypeError, ValueError):
+                return result(False, "Invalid page ID", 400)
 
-            if not isinstance(existing_page, page_model):
-                return result(False, _("Page type does not match existing page"), 400)
+            check_unique(
+                page_model,
+                unique_fields,
+                mapped_data,
+                exclude_page_id=page_id,
+            )
 
-            if not existing_page.permissions_for_user(request.user).can_edit():
+            if page_id:
+                try:
+                    existing_page = (
+                        Page.objects.select_for_update().get(id=page_id).specific
+                    )
+                except Page.DoesNotExist:
+                    return result(False, "Page does not exist", 400)
+
+                if not isinstance(existing_page, page_model):
+                    return result(
+                        False, _("Page type does not match existing page"), 400
+                    )
+
+                if not existing_page.permissions_for_user(request.user).can_edit():
+                    return result(False, _("Permission denied"), 403)
+
+                if existing_page.locked or existing_page.workflow_in_progress:
+                    return result(False, _("The page is locked or in a workflow"), 400)
+                if (
+                    existing_page.alias_of_id
+                    or existing_page.revisions.filter(
+                        approved_go_live_at__isnull=False
+                    ).exists()
+                ):
+                    return result(
+                        False, _("Alias or scheduled pages cannot be imported"), 400
+                    )
+                if publish and existing_page.has_unpublished_changes:
+                    return result(
+                        False,
+                        _(
+                            "Publish or discard the pending draft before importing live changes"
+                        ),
+                        400,
+                    )
+                if (
+                    publish
+                    and not existing_page.permissions_for_user(
+                        request.user
+                    ).can_publish()
+                ):
+                    return result(False, _("Permission denied"), 403)
+                if not publish:
+                    existing_page = existing_page.get_latest_revision_as_object()
+
+                for field_name, field_value in mapped_data.items():
+                    set_attr(existing_page, field_name, field_value)
+
+                try:
+                    if getattr(existing_page, "csv_native_streams", False):
+                        existing_page.full_clean()
+                    revision = existing_page.save_revision(user=request.user)
+                    if publish:
+                        revision.publish(user=request.user)
+                except Exception as save_error:
+                    transaction.set_rollback(True)
+                    return result(False, str(save_error), 400)
+
+                return result(True, _("Updated successfully"), 200)
+
+            parent_id = mapped_data.get("parent_id", None)
+            if not parent_id:
+                return result(False, "parent_id is required", 400)
+
+            try:
+                parent_page = (
+                    Page.objects.select_for_update().get(id=int(parent_id)).specific
+                )
+            except (TypeError, ValueError, Page.DoesNotExist):
+                return result(False, "parent_id does not exist", 400)
+
+            if not parent_page.permissions_for_user(request.user).can_add_subpage():
                 return result(False, _("Permission denied"), 403)
 
+            if page_model not in type(
+                parent_page
+            ).creatable_subpage_models() or not page_model.can_create_at(parent_page):
+                return result(
+                    False, _("Page type is not allowed under this parent"), 400
+                )
+
+            new_page = page_model()
+            new_page.live = False
+
             for field_name, field_value in mapped_data.items():
-                set_attr(existing_page, field_name, field_value)
+                set_attr(new_page, field_name, field_value)
 
             try:
-                existing_page.save_revision().publish()
+                parent_page.add_child(instance=new_page)
+                if (
+                    publish
+                    and not new_page.permissions_for_user(request.user).can_publish()
+                ):
+                    transaction.set_rollback(True)
+                    return result(False, _("Permission denied"), 403)
+                if getattr(new_page, "csv_native_streams", False):
+                    new_page.full_clean()
+                revision = new_page.save_revision(user=request.user)
+                if publish:
+                    revision.publish(user=request.user)
             except Exception as save_error:
+                transaction.set_rollback(True)
                 return result(False, str(save_error), 400)
 
-            return result(True, _("Updated successfully"), 200)
+            return result(True, _("Imported successfully"), 200)
 
-        parent_id = mapped_data.get("parent_id", None)
-        if not parent_id:
-            return result(False, "parent_id is required", 400)
-
-        try:
-            parent_page = Page.objects.get(id=int(parent_id)).specific
-        except (TypeError, ValueError, Page.DoesNotExist):
-            return result(False, "parent_id does not exist", 400)
-
-        if not parent_page.permissions_for_user(request.user).can_add_subpage():
-            return result(False, _("Permission denied"), 403)
-
-        if page_model not in type(
-            parent_page
-        ).creatable_subpage_models() or not page_model.can_create_at(parent_page):
-            return result(False, _("Page type is not allowed under this parent"), 400)
-
-        new_page = page_model()
-
-        for field_name, field_value in mapped_data.items():
-            set_attr(new_page, field_name, field_value)
-
-        try:
-            parent_page.numchild = parent_page.get_children().count()
-            parent_page.add_child(instance=new_page)
-            parent_page.numchild += 1
-            parent_page.save()
-            new_page.save_revision().publish()
-        except Exception as save_error:
-            return result(False, str(save_error), 400)
-
-        return result(True, _("Imported successfully"), 200)
-
-    except (ImportError, TypeError, ValueError, KeyError) as import_error:
+    except (
+        ImportError,
+        TypeError,
+        ValueError,
+        KeyError,
+        ValidationError,
+    ) as import_error:
         return result(False, str(import_error), 400)
     except Exception as import_error:
         logger.exception("Unexpected error while importing a page from a CSV row")

@@ -706,8 +706,8 @@ msgstr "ჩვენება"
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
 msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them "
-"to work better, knowing you can leave a review."
+"Tell the company you found their number on %(site_name)s — it motivates them"
+" to work better, knowing you can leave a review."
 msgstr ""
 "უთხარით კომპანიას, რომ მათი ნომერი იპოვეთ %(site_name)s — ეს მათ მოტივაციას "
 "აძლევს, უკეთ იმუშაონ, რადგან იციან, რომ შეგიძლიათ დატოვოთ შეფასება."
@@ -1093,7 +1093,7 @@ msgstr ""
 
 #: core/blocks.py:186
 msgid "Answer"
-msgstr ""
+msgstr "პასუხი"
 
 #: core/blocks.py:188
 msgid "Q&A Item"
@@ -1160,7 +1160,7 @@ msgstr ""
 
 #: core/blocks.py:294
 msgid "Video"
-msgstr ""
+msgstr "ვიდეო"
 
 #: core/blocks.py:310
 msgid "Custom"
@@ -1580,48 +1580,6 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#, python-format
-#~ msgid "All about %(site_name)s"
-#~ msgstr "ყველაფერი %(site_name)s შესახებ"
-
-#~ msgid "Find out all the benefits of premium placement in our catalog."
-#~ msgstr "გაიგეთ პრემიუმ განთავსების ყველა უპირატესობა ჩვენს კატალოგში."
-
-#~ msgid "Pnone"
-#~ msgstr "ტელეფონი"
-
-#~ msgid "Around the clock"
-#~ msgstr "მთელი საათის განმავლობაში"
-
-#~ msgid "Mark this organization as working around the clock."
-#~ msgstr "მონიშნეთ ეს ორგანიზაცია, როგორც მთელი საათის განმავლობაში."
-
-#~ msgid "Phone number"
-#~ msgstr "ტელეფონის ნომერი"
-
-#, fuzzy
-#~ msgid "Cards section"
-#~ msgstr "მდებარეობა"
-
-#~ msgid "Additional info"
-#~ msgstr "დამატებითი ინფორმაცია"
-
-#~ msgid "Language"
-#~ msgstr "ენა"
-
-#~ msgid "Additional information"
-#~ msgstr "დამატებითი ინფორმაცია"
-
-#~ msgid "Something"
-#~ msgstr "რაღაც"
-
-#~ msgid "More"
-#~ msgstr "მეტი"
-
-#, fuzzy
-#~ msgid "Awards received by this organization."
-#~ msgstr "დაამატეთ ორგანიზაცია"
-
 #: search/templates/search/search.html
 msgid "Search"
 msgstr "ძიება"
@@ -1661,7 +1619,8 @@ msgstr "რისი პოვნა გსურთ?"
 
 #: search/templates/search/search.html
 msgid "Enter an organization, place or topic in the search field above."
-msgstr "ზემოთ მოცემულ საძიებო ველში შეიყვანეთ ორგანიზაციის, ადგილის ან თემის სახელი."
+msgstr ""
+"ზემოთ მოცემულ საძიებო ველში შეიყვანეთ ორგანიზაციის, ადგილის ან თემის სახელი."
 
 #: app/templates/404.html:5
 msgid "Page not found"
@@ -1920,7 +1879,6 @@ msgid "Try another name, lower the rating or remove a filter."
 msgstr ""
 "სცადე სხვა სახელი, შეამცირე მინიმალური შეფასება ან მოხსენი ერთ-ერთი ფილტრი."
 
-
 msgid "Filters and sorting"
 msgstr "ფილტრები და დალაგება"
 
@@ -1941,16 +1899,29 @@ msgid "How to match services and features"
 msgstr "როგორ გავითვალისწინოთ სერვისები და მახასიათებლები"
 
 #: catalog/templates/catalog/includes/organization-filters.html
-msgid "At least one feature from every selected group is required. Counts include selections in other groups."
-msgstr "საჭიროა სულ მცირე ერთი მახასიათებელი თითოეული არჩეული ჯგუფიდან. რაოდენობები ითვალისწინებს სხვა ჯგუფებში გაკეთებულ არჩევანს."
+msgid ""
+"At least one feature from every selected group is required. Counts include "
+"selections in other groups."
+msgstr ""
+"საჭიროა სულ მცირე ერთი მახასიათებელი თითოეული არჩეული ჯგუფიდან. რაოდენობები "
+"ითვალისწინებს სხვა ჯგუფებში გაკეთებულ არჩევანს."
 
 #: catalog/templates/catalog/includes/organization-filters.html
-msgid "Any selected feature is enough. Each number counts places with that feature; a place may match several features."
-msgstr "საკმარისია ნებისმიერი არჩეული მახასიათებელი. თითოეული რიცხვი აჩვენებს ამ მახასიათებლის მქონე ადგილებს; ერთ ადგილს შეიძლება რამდენიმე მახასიათებელი ჰქონდეს."
+msgid ""
+"Any selected feature is enough. Each number counts places with that feature;"
+" a place may match several features."
+msgstr ""
+"საკმარისია ნებისმიერი არჩეული მახასიათებელი. თითოეული რიცხვი აჩვენებს ამ "
+"მახასიათებლის მქონე ადგილებს; ერთ ადგილს შეიძლება რამდენიმე მახასიათებელი "
+"ჰქონდეს."
 
 #: catalog/templates/catalog/includes/organization-filters.html
-msgid "Search, rating and other filters apply in both modes. The button shows the total number of matching places."
-msgstr "ძიება, რეიტინგი და სხვა ფილტრები ორივე რეჟიმში მოქმედებს. ღილაკზე ნაჩვენებია შესაბამისი ადგილების საერთო რაოდენობა."
+msgid ""
+"Search, rating and other filters apply in both modes. The button shows the "
+"total number of matching places."
+msgstr ""
+"ძიება, რეიტინგი და სხვა ფილტრები ორივე რეჟიმში მოქმედებს. ღილაკზე ნაჩვენებია"
+" შესაბამისი ადგილების საერთო რაოდენობა."
 
 #: catalog/templates/catalog/includes/organization-filters.html
 msgid "Updating counts…"
@@ -1958,7 +1929,9 @@ msgstr "რაოდენობები ახლდება…"
 
 #: catalog/templates/catalog/includes/organization-filters.html
 msgid "Counts could not be updated. Use Show places to apply your filters."
-msgstr "რაოდენობების განახლება ვერ მოხერხდა. ფილტრების გამოსაყენებლად დააჭირე ღილაკს „ადგილების ჩვენება“."
+msgstr ""
+"რაოდენობების განახლება ვერ მოხერხდა. ფილტრების გამოსაყენებლად დააჭირე ღილაკს"
+" „ადგილების ჩვენება“."
 
 #: catalog/templates/catalog/includes/organization-filters.html
 msgid "Matching places:"
@@ -1972,3 +1945,244 @@ msgstr "შეფასება უნდა იყოს 1-დან 5-მდ�
 #, python-format
 msgid "Error saving review: %(error)s"
 msgstr "შეფასების შენახვის შეცდომა: %(error)s"
+
+# FAQ pages and editor controls
+msgid "All categories"
+msgstr "ყველა კატეგორია"
+
+msgid "Answer details"
+msgstr "პასუხის დეტალები"
+
+msgid "Answered at"
+msgstr "პასუხის თარიღი"
+
+msgid "Blog category"
+msgstr "ბლოგის კატეგორია"
+
+msgid "Catalog category"
+msgstr "კატალოგის კატეგორია"
+
+msgid "Categories"
+msgstr "კატეგორიები"
+
+msgid "Checked at"
+msgstr "გადამოწმებულია"
+
+msgid "Common misconception"
+msgstr "გავრცელებული მცდარი წარმოდგენა"
+
+msgid "Cover"
+msgstr "გარეკანი"
+
+msgid "Dates"
+msgstr "თარიღები"
+
+msgid "Details"
+msgstr "დეტალურად"
+
+msgid "Enter a valid HTTPS YouTube video URL."
+msgstr "მიუთითეთ YouTube-ის ვიდეოს სწორი HTTPS ბმული."
+
+msgid "FAQ category"
+msgstr "კითხვების კატეგორია"
+
+msgid "FAQ category group"
+msgstr "FAQ კატეგორიების ჯგუფი"
+
+msgid "FAQ category groups"
+msgstr "FAQ კატეგორიების ჯგუფები"
+
+msgid "FAQ category page"
+msgstr "კითხვების კატეგორიის გვერდი"
+
+msgid "FAQ category pages"
+msgstr "კითხვების კატეგორიების გვერდები"
+
+msgid "FAQ index page"
+msgstr "FAQ-ის მთავარი გვერდი"
+
+msgid "FAQ index pages"
+msgstr "FAQ-ის მთავარი გვერდები"
+
+msgid "FAQ question page"
+msgstr "FAQ კითხვის გვერდი"
+
+msgid "FAQ question pages"
+msgstr "FAQ კითხვების გვერდები"
+
+msgid "FAQ questions"
+msgstr "FAQ კითხვები"
+
+msgid "Important note"
+msgstr "მნიშვნელოვანია"
+
+msgid "Introduction"
+msgstr "შესავალი ტექსტი"
+
+msgid "Latest questions"
+msgstr "უახლესი კითხვები"
+
+msgid "Manual questions"
+msgstr "ხელით შესარჩევი კითხვები"
+
+msgid "Manual selection"
+msgstr "ხელით შერჩევა"
+
+msgid "No questions published yet."
+msgstr "კითხვები ჯერ არ გამოქვეყნებულა."
+
+msgid "People also ask"
+msgstr "ასევე კითხულობენ"
+
+msgid "Play video"
+msgstr "ვიდეოს ჩართვა"
+
+msgid "Point"
+msgstr "პუნქტი"
+
+msgid "Popular question"
+msgstr "პოპულარული კითხვა"
+
+msgid "Popular questions"
+msgstr "პოპულარული კითხვები"
+
+msgid "Questions and answers"
+msgstr "კითხვები და პასუხები"
+
+msgid "Read more URL"
+msgstr "გარე ბმული „წაიკითხეთ მეტი“"
+
+msgid "Read more and related questions"
+msgstr "ბმულები და მსგავსი კითხვები"
+
+msgid "Read more label"
+msgstr "ღილაკის „წაიკითხეთ მეტი“ ტექსტი"
+
+msgid "Read more page"
+msgstr "გვერდი „წაიკითხეთ მეტი“"
+
+msgid "Recently checked"
+msgstr "ახლახან გადამოწმებული"
+
+msgid "Related questions"
+msgstr "მსგავსი კითხვები"
+
+msgid "Selection"
+msgstr "კითხვების შერჩევა"
+
+msgid "Short answer"
+msgstr "მოკლე პასუხი"
+
+msgid "Social image"
+msgstr "სოციალური ქსელების სურათი"
+
+msgid "Sort order"
+msgstr "რიგითობა"
+
+msgid "Source name"
+msgstr "წყაროს სახელი"
+
+msgid "Sources"
+msgstr "წყაროები"
+
+msgid "The check date cannot precede the answer date."
+msgstr "გადამოწმების თარიღი პასუხის თარიღზე ადრე ვერ იქნება."
+
+msgid "Tip"
+msgstr "რჩევა"
+
+msgid "Used only for manual selection; list order is preserved."
+msgstr "გამოიყენება მხოლოდ ხელით შერჩევისას; სიის რიგითობა შენარჩუნდება."
+
+msgid "Watch on YouTube"
+msgstr "უყურეთ YouTube-ზე"
+
+msgid "What actually happens"
+msgstr "როგორ არის სინამდვილეში"
+
+msgid "What may differ"
+msgstr "რა შეიძლება განსხვავდებოდეს"
+
+msgid "Why"
+msgstr "რატომ არის ასე"
+
+msgid "YouTube URL"
+msgstr "YouTube-ის ბმული"
+
+msgid "live must be 0 or 1"
+msgstr "live უნდა იყოს 0 ან 1"
+
+msgid "The page is locked or in a workflow"
+msgstr "გვერდი დაბლოკილია ან დამტკიცების პროცესშია"
+
+msgid "Alias or scheduled pages cannot be imported"
+msgstr "გვერდის ასლებისა და დაგეგმილი გვერდების იმპორტი შეუძლებელია"
+
+msgid "Publish or discard the pending draft before importing live changes"
+msgstr "გამოქვეყნებით იმპორტამდე გამოაქვეყნეთ ან უარყავით არსებული მონახაზი"
+
+msgid "Search questions and answers"
+msgstr "კითხვებისა და პასუხების ძიება"
+
+msgid "Question or topic"
+msgstr "კითხვა ან თემა"
+
+msgid "Enter a question or topic."
+msgstr "შეიყვანეთ კითხვა ან თემა."
+
+msgid "On this topic"
+msgstr "ამ თემაზე"
+
+#, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "ყველაფერი %(site_name)s შესახებ"
+
+#~ msgid "Find out all the benefits of premium placement in our catalog."
+#~ msgstr "გაიგეთ პრემიუმ განთავსების ყველა უპირატესობა ჩვენს კატალოგში."
+
+#~ msgid "Pnone"
+#~ msgstr "ტელეფონი"
+
+#~ msgid "Around the clock"
+#~ msgstr "მთელი საათის განმავლობაში"
+
+#~ msgid "Mark this organization as working around the clock."
+#~ msgstr "მონიშნეთ ეს ორგანიზაცია, როგორც მთელი საათის განმავლობაში."
+
+#~ msgid "Phone number"
+#~ msgstr "ტელეფონის ნომერი"
+
+#, fuzzy
+#~ msgid "Cards section"
+#~ msgstr "მდებარეობა"
+
+#~ msgid "Additional info"
+#~ msgstr "დამატებითი ინფორმაცია"
+
+#~ msgid "Language"
+#~ msgstr "ენა"
+
+#~ msgid "Additional information"
+#~ msgstr "დამატებითი ინფორმაცია"
+
+#~ msgid "Something"
+#~ msgstr "რაღაც"
+
+#~ msgid "More"
+#~ msgstr "მეტი"
+
+#, fuzzy
+#~ msgid "Awards received by this organization."
+#~ msgstr "დაამატეთ ორგანიზაცია"
+
+#: faq/models.py
+msgid "Links and media"
+msgstr "ბმულები და მედია"
+
+#: faq/models.py
+msgid "Leave blank to show four automatically selected questions from the same category, ordered by check date. Select up to five questions to replace the automatic list. Clear this field to restore it."
+msgstr "დატოვეთ ველი ცარიელი, რათა ავტომატურად გამოჩნდეს იმავე კატეგორიის ოთხი კითხვა, შემოწმების თარიღის მიხედვით. ავტომატური სიის ჩასანაცვლებლად აირჩიეთ მაქსიმუმ ხუთი კითხვა. ავტომატური შერჩევის აღსადგენად გაასუფთავეთ ველი."
+
+#: faq/models.py
+msgid "Enter both the misconception and its correction, or leave both blank."
+msgstr "შეავსეთ როგორც მცდარი წარმოდგენა, ისე მისი შესწორება, ან ორივე ველი ცარიელი დატოვეთ."

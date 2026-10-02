@@ -1,0 +1,8 @@
+<div class="{{ classname }}">
+  {% for name, child in children.items %}
+    <div class="w-field" data-contentpath="{{ name }}"{% if name|slice:':5' == 'name_' %} data-faq-source-language="{{ name|slice:'5:' }}"{% endif %}>
+      <label class="w-field__label" for="{{ prefix }}-{{ name }}">{{ child.block.label }}{% if child.block.required %}<span class="w-required-mark">*</span>{% endif %}</label>
+      {{ child.render_form }}
+    </div>
+  {% endfor %}
+</div>

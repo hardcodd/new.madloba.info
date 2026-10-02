@@ -2,19 +2,20 @@
 {% load i18n core %}
 
 {% block body_class %}template-searchresults{% endblock %}
-{% block title %}{% trans "Search" %}{% if search_query %}: {{ search_query }}{% endif %}{% endblock %}
+{% block title %}{% if faq_search %}{% trans "Search questions and answers" %}{% else %}{% trans "Search" %}{% endif %}{% if search_query %}: {{ search_query }}{% endif %}{% endblock %}
 
 {% block content %}
   <div class="container search-page">
     <header class="search-page__header">
       <h1 class="search-page__title">
-        {% trans "Search" %}{% if search_query %} <mark class="search-page__query">«{{ search_query }}»</mark>{% endif %}
+        {% if faq_search %}{% trans "Search questions and answers" %}{% else %}{% trans "Search" %}{% endif %}{% if search_query %} <mark class="search-page__query">«{{ search_query }}»</mark>{% endif %}
       </h1>
-      <form action="{% url 'search' %}" method="get" class="search-page__form" role="search" aria-label="{% trans 'Search the site' %}">
+      <form action="{% url 'search' %}" method="get" class="search-page__form" role="search" aria-label="{% if faq_search %}{% trans 'Search questions and answers' %}{% else %}{% trans 'Search the site' %}{% endif %}">
+        {% if faq_search %}<input type="hidden" name="scope" value="faq">{% endif %}
         <label for="search-page-query" class="sr-only">{% trans "Search query" %}</label>
         <div class="search-page__field">
           <span class="search-page__icon" aria-hidden="true">{% include "icons/search.svg" %}</span>
-          <input id="search-page-query" type="search" name="query" value="{{ search_query }}" placeholder="{% trans 'Name, place or keyword' %}" required>
+          <input id="search-page-query" type="search" name="query" value="{{ search_query }}" placeholder="{% if faq_search %}{% trans 'Question or topic' %}{% else %}{% trans 'Name, place or keyword' %}{% endif %}" required>
         </div>
         <button type="submit" class="search-page__submit">{% trans "Find" %}</button>
       </form>
@@ -42,7 +43,7 @@
           <p>{% trans "Check the spelling or try fewer, more general words." %}</p>
         {% else %}
           <h2 id="search-empty-title">{% trans "What would you like to find?" %}</h2>
-          <p>{% trans "Enter an organization, place or topic in the search field above." %}</p>
+          <p>{% if faq_search %}{% trans "Enter a question or topic." %}{% else %}{% trans "Enter an organization, place or topic in the search field above." %}{% endif %}</p>
         {% endif %}
       </section>
     {% endif %}

@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: core/templates/core/import_pages.html:93
 #, fuzzy
 msgid ""
 msgstr ""
@@ -134,8 +133,12 @@ msgid "Select the city you are interested in"
 msgstr "Выберите интересующий вас город"
 
 #: app/templates/includes/hero-banner.html:9
-msgid "After selecting a city, you will be taken to its page and can start searching for the establishment or company you need."
-msgstr "После выбора города вы попадете на его страницу и сможете начать поиск нужного заведения или компании."
+msgid ""
+"After selecting a city, you will be taken to its page and can start "
+"searching for the establishment or company you need."
+msgstr ""
+"После выбора города вы попадете на его страницу и сможете начать поиск "
+"нужного заведения или компании."
 
 #: app/templates/includes/hero-counters.html:13
 msgid "Organizations in catalog"
@@ -751,8 +754,12 @@ msgstr "Показать"
 
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
-msgid "Tell the company you found their number on %(site_name)s — it motivates them to work better, knowing you can leave a review."
-msgstr " Скажите компании, что нашли номер на %(site_name)s — это мотивирует их работать лучше, зная, что вы можете оставить отзыв."
+msgid ""
+"Tell the company you found their number on %(site_name)s — it motivates them"
+" to work better, knowing you can leave a review."
+msgstr ""
+" Скажите компании, что нашли номер на %(site_name)s — это мотивирует их "
+"работать лучше, зная, что вы можете оставить отзыв."
 
 #: catalog/templates/catalog/organization_page.html:138
 msgid "Official website"
@@ -1169,7 +1176,7 @@ msgstr "Описание"
 
 #: core/blocks.py:186
 msgid "Answer"
-msgstr ""
+msgstr "Ответ"
 
 #: core/blocks.py:188
 msgid "Q&A Item"
@@ -1243,7 +1250,7 @@ msgstr ""
 
 #: core/blocks.py:294
 msgid "Video"
-msgstr ""
+msgstr "Видео"
 
 #: core/blocks.py:310
 msgid "Custom"
@@ -1422,8 +1429,12 @@ msgid "Robots.txt"
 msgstr ""
 
 #: core/models.py:172
-msgid "Add external code snippets e.g. Google Analytics, Facebook Pixel, etc... to the header, body, or footer of your site."
-msgstr "Добавьте внешние фрагменты кода, например Google Analytics, Facebook Pixel и т. д., в header, body или footer вашего сайта."
+msgid ""
+"Add external code snippets e.g. Google Analytics, Facebook Pixel, etc... to "
+"the header, body, or footer of your site."
+msgstr ""
+"Добавьте внешние фрагменты кода, например Google Analytics, Facebook Pixel и"
+" т. д., в header, body или footer вашего сайта."
 
 #: core/models.py:179
 msgid "Header code"
@@ -1894,8 +1905,11 @@ msgid "File size must be less than 2MB."
 msgstr "Размер файла должен быть менее 2 МБ."
 
 #: reviews/views.py:218
-msgid "Review submitted successfully. It will be published after admin approval."
-msgstr "Отзыв успешно отправлен. Он будет опубликован после одобрения администратором."
+msgid ""
+"Review submitted successfully. It will be published after admin approval."
+msgstr ""
+"Отзыв успешно отправлен. Он будет опубликован после одобрения "
+"администратором."
 
 #: reviews/wagtail_hooks.py:29
 msgid "There are reviews pending moderation."
@@ -2041,75 +2055,6 @@ msgstr "Комментарий успешно создан."
 #: reviews/services.py reviews/views.py
 msgid "Review created successfully."
 msgstr "Отзыв успешно создан."
-
-#, fuzzy, python-format
-#~ msgid "All about %(site_name)s"
-#~ msgstr "Всё о Грузии"
-
-#~ msgid "Find out all the benefits of premium placement in our catalog."
-#~ msgstr "Узнайте о всех преимуществах премиум размещения в нашем каталоге."
-
-#~ msgid "Advertising on Madloba"
-#~ msgstr "Реклама на Madloba"
-
-#~ msgid "Be the first to know about new interesting places [[in Tbilisi]]"
-#~ msgstr "Узнайте первым о новых интересных местах [[в Тбилиси]]"
-
-#~ msgid "Pnone"
-#~ msgstr "Телефон"
-
-#~ msgid "Social network"
-#~ msgstr "Социальная сеть"
-
-#~ msgid "Website link"
-#~ msgstr "Ссылка на сайт"
-
-#~ msgid "Around the clock"
-#~ msgstr "Круглосуточно"
-
-#~ msgid "Mark this organization as working around the clock."
-#~ msgstr "Отметить эту организацию как работающую круглосуточно."
-
-#~ msgid "Phone number"
-#~ msgstr "Номер телефона"
-
-#~ msgid "Caption"
-#~ msgstr "Подпись"
-
-#~ msgid "As text"
-#~ msgstr "Как текст"
-
-#~ msgid "Did you get through?"
-#~ msgstr "Дозвонились?"
-
-#~ msgid "For search engines"
-#~ msgstr "Для поисковых систем"
-
-#~ msgid "For site menus"
-#~ msgstr "Для меню сайта"
-
-#, fuzzy
-#~ msgid "Cards section"
-#~ msgstr "Карточек в ряду"
-
-#~ msgid "Additional info"
-#~ msgstr "Дополнительная информация"
-
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#~ msgid "Additional information"
-#~ msgstr "Дополнительная информация"
-
-#~ msgid "Something"
-#~ msgstr "Что-нибудь"
-
-#~ msgid "More"
-#~ msgstr "Ещё"
-
-#, fuzzy
-#~ msgid "Awards received by this organization."
-#~ msgstr "Добавить организацию"
 
 #: search/templates/search/search.html
 msgid "Search"
@@ -2408,7 +2353,6 @@ msgstr "Подходящих мест не найдено"
 msgid "Try another name, lower the rating or remove a filter."
 msgstr "Попробуй другое название, снизь рейтинг или убери один из фильтров."
 
-
 msgid "Filters and sorting"
 msgstr "Фильтры и сортировка"
 
@@ -2429,16 +2373,28 @@ msgid "How to match services and features"
 msgstr "Как учитывать услуги и особенности"
 
 #: catalog/templates/catalog/includes/organization-filters.html
-msgid "At least one feature from every selected group is required. Counts include selections in other groups."
-msgstr "Нужен хотя бы один признак из каждой выбранной группы. Цифры учитывают выбор в других группах."
+msgid ""
+"At least one feature from every selected group is required. Counts include "
+"selections in other groups."
+msgstr ""
+"Нужен хотя бы один признак из каждой выбранной группы. Цифры учитывают выбор"
+" в других группах."
 
 #: catalog/templates/catalog/includes/organization-filters.html
-msgid "Any selected feature is enough. Each number counts places with that feature; a place may match several features."
-msgstr "Достаточно любого выбранного признака. Цифра рядом — места с этим признаком; одно место может иметь несколько признаков."
+msgid ""
+"Any selected feature is enough. Each number counts places with that feature;"
+" a place may match several features."
+msgstr ""
+"Достаточно любого выбранного признака. Цифра рядом — места с этим признаком;"
+" одно место может иметь несколько признаков."
 
 #: catalog/templates/catalog/includes/organization-filters.html
-msgid "Search, rating and other filters apply in both modes. The button shows the total number of matching places."
-msgstr "Поиск, рейтинг и другие фильтры действуют в обоих режимах. Итоговое число подходящих мест — на кнопке."
+msgid ""
+"Search, rating and other filters apply in both modes. The button shows the "
+"total number of matching places."
+msgstr ""
+"Поиск, рейтинг и другие фильтры действуют в обоих режимах. Итоговое число "
+"подходящих мест — на кнопке."
 
 #: catalog/templates/catalog/includes/organization-filters.html
 msgid "Updating counts…"
@@ -2446,7 +2402,8 @@ msgstr "Пересчитываем…"
 
 #: catalog/templates/catalog/includes/organization-filters.html
 msgid "Counts could not be updated. Use Show places to apply your filters."
-msgstr "Не удалось обновить цифры. Нажми «Показать места», чтобы применить фильтры."
+msgstr ""
+"Не удалось обновить цифры. Нажми «Показать места», чтобы применить фильтры."
 
 #: catalog/templates/catalog/includes/organization-filters.html
 msgid "Matching places:"
@@ -2460,3 +2417,272 @@ msgstr "Оценка должна быть от 1 до 5."
 #, python-format
 msgid "Error saving review: %(error)s"
 msgstr "Ошибка при сохранении отзыва: %(error)s"
+
+# FAQ pages and editor controls
+msgid "All categories"
+msgstr "Все категории"
+
+msgid "Answer details"
+msgstr "Пояснения к ответу"
+
+msgid "Answered at"
+msgstr "Дата ответа"
+
+msgid "Blog category"
+msgstr "Категория блога"
+
+msgid "Catalog category"
+msgstr "Категория каталога"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Checked at"
+msgstr "Проверено"
+
+msgid "Common misconception"
+msgstr "Распространённое заблуждение"
+
+msgid "Cover"
+msgstr "Обложка"
+
+msgid "Dates"
+msgstr "Даты"
+
+msgid "Details"
+msgstr "Подробнее"
+
+msgid "Enter a valid HTTPS YouTube video URL."
+msgstr "Укажи корректную HTTPS-ссылку на видео YouTube."
+
+msgid "FAQ category"
+msgstr "Категория вопросов"
+
+msgid "FAQ category group"
+msgstr "Группа категорий FAQ"
+
+msgid "FAQ category groups"
+msgstr "Группы категорий FAQ"
+
+msgid "FAQ category page"
+msgstr "Страница категории вопросов"
+
+msgid "FAQ category pages"
+msgstr "Страницы категорий вопросов"
+
+msgid "FAQ index page"
+msgstr "Главная страница FAQ"
+
+msgid "FAQ index pages"
+msgstr "Главные страницы FAQ"
+
+msgid "FAQ question page"
+msgstr "Страница вопроса FAQ"
+
+msgid "FAQ question pages"
+msgstr "Страницы вопросов FAQ"
+
+msgid "FAQ questions"
+msgstr "Вопросы FAQ"
+
+msgid "Important note"
+msgstr "Важно"
+
+msgid "Introduction"
+msgstr "Вводный текст"
+
+msgid "Latest questions"
+msgstr "Последние вопросы"
+
+msgid "Manual questions"
+msgstr "Вопросы для ручного выбора"
+
+msgid "Manual selection"
+msgstr "Ручной выбор"
+
+msgid "No questions published yet."
+msgstr "Вопросы пока не опубликованы."
+
+msgid "People also ask"
+msgstr "Ещё люди спрашивают"
+
+msgid "Play video"
+msgstr "Воспроизвести видео"
+
+msgid "Point"
+msgstr "Пункт"
+
+msgid "Popular question"
+msgstr "Популярный вопрос"
+
+msgid "Popular questions"
+msgstr "Популярные вопросы"
+
+msgid "Questions and answers"
+msgstr "Вопросы и ответы"
+
+msgid "Read more URL"
+msgstr "Внешний адрес «Читать дальше»"
+
+msgid "Read more and related questions"
+msgstr "Переходы и похожие вопросы"
+
+msgid "Read more label"
+msgstr "Текст кнопки «Читать дальше»"
+
+msgid "Read more page"
+msgstr "Страница «Читать дальше»"
+
+msgid "Recently checked"
+msgstr "Недавно проверенные"
+
+msgid "Related questions"
+msgstr "Похожие вопросы"
+
+msgid "Selection"
+msgstr "Подбор вопросов"
+
+msgid "Short answer"
+msgstr "Короткий ответ"
+
+msgid "Social image"
+msgstr "Картинка для соцсетей"
+
+msgid "Sort order"
+msgstr "Порядок"
+
+msgid "Source name"
+msgstr "Название источника"
+
+msgid "Sources"
+msgstr "Источники"
+
+msgid "The check date cannot precede the answer date."
+msgstr "Дата проверки не может быть раньше даты ответа."
+
+msgid "Tip"
+msgstr "Совет"
+
+msgid "Used only for manual selection; list order is preserved."
+msgstr "Используется только в ручном режиме; порядок списка сохраняется."
+
+msgid "Watch on YouTube"
+msgstr "Смотреть на YouTube"
+
+msgid "What actually happens"
+msgstr "Как на самом деле"
+
+msgid "What may differ"
+msgstr "Что может отличаться"
+
+msgid "Why"
+msgstr "Почему так"
+
+msgid "YouTube URL"
+msgstr "Ссылка на YouTube"
+
+msgid "live must be 0 or 1"
+msgstr "live должен быть 0 или 1"
+
+msgid "The page is locked or in a workflow"
+msgstr "Страница заблокирована или находится на согласовании"
+
+msgid "Alias or scheduled pages cannot be imported"
+msgstr ""
+"Импорт страниц-псевдонимов и страниц с отложенной публикацией запрещён"
+
+msgid "Publish or discard the pending draft before importing live changes"
+msgstr "Перед импортом с публикацией опубликуй или отклони текущий черновик"
+
+msgid "Search questions and answers"
+msgstr "Поиск по вопросам и ответам"
+
+msgid "Question or topic"
+msgstr "Вопрос или тема"
+
+msgid "Enter a question or topic."
+msgstr "Введи вопрос или тему."
+
+msgid "On this topic"
+msgstr "По теме"
+
+#, fuzzy, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "Всё о Грузии"
+
+#~ msgid "Find out all the benefits of premium placement in our catalog."
+#~ msgstr "Узнайте о всех преимуществах премиум размещения в нашем каталоге."
+
+#~ msgid "Advertising on Madloba"
+#~ msgstr "Реклама на Madloba"
+
+#~ msgid "Be the first to know about new interesting places [[in Tbilisi]]"
+#~ msgstr "Узнайте первым о новых интересных местах [[в Тбилиси]]"
+
+#~ msgid "Pnone"
+#~ msgstr "Телефон"
+
+#~ msgid "Social network"
+#~ msgstr "Социальная сеть"
+
+#~ msgid "Website link"
+#~ msgstr "Ссылка на сайт"
+
+#~ msgid "Around the clock"
+#~ msgstr "Круглосуточно"
+
+#~ msgid "Mark this organization as working around the clock."
+#~ msgstr "Отметить эту организацию как работающую круглосуточно."
+
+#~ msgid "Phone number"
+#~ msgstr "Номер телефона"
+
+#~ msgid "Caption"
+#~ msgstr "Подпись"
+
+#~ msgid "As text"
+#~ msgstr "Как текст"
+
+#~ msgid "Did you get through?"
+#~ msgstr "Дозвонились?"
+
+#~ msgid "For search engines"
+#~ msgstr "Для поисковых систем"
+
+#~ msgid "For site menus"
+#~ msgstr "Для меню сайта"
+
+#, fuzzy
+#~ msgid "Cards section"
+#~ msgstr "Карточек в ряду"
+
+#~ msgid "Additional info"
+#~ msgstr "Дополнительная информация"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
+
+#~ msgid "Additional information"
+#~ msgstr "Дополнительная информация"
+
+#~ msgid "Something"
+#~ msgstr "Что-нибудь"
+
+#~ msgid "More"
+#~ msgstr "Ещё"
+
+#, fuzzy
+#~ msgid "Awards received by this organization."
+#~ msgstr "Добавить организацию"
+
+#: faq/models.py
+msgid "Links and media"
+msgstr "Ссылки и медиа"
+
+#: faq/models.py
+msgid "Leave blank to show four automatically selected questions from the same category, ordered by check date. Select up to five questions to replace the automatic list. Clear this field to restore it."
+msgstr "Оставь поле пустым для автоматического вывода четырёх вопросов из той же категории по дате проверки. Выбери до пяти вопросов, чтобы заменить автоматический список. Очисти поле, чтобы вернуть автоматический подбор."
+
+#: faq/models.py
+msgid "Enter both the misconception and its correction, or leave both blank."
+msgstr "Заполни и заблуждение, и его исправление либо оставь оба поля пустыми."

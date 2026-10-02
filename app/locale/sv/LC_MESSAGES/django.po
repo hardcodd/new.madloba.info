@@ -703,8 +703,8 @@ msgstr "Visa"
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
 msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them "
-"to work better, knowing you can leave a review."
+"Tell the company you found their number on %(site_name)s — it motivates them"
+" to work better, knowing you can leave a review."
 msgstr ""
 "Berätta för företaget att du hittade deras nummer på %(site_name)s – det "
 "motiverar dem att arbeta bättre, eftersom de vet att du kan lämna en "
@@ -1092,7 +1092,7 @@ msgstr ""
 
 #: core/blocks.py:186
 msgid "Answer"
-msgstr ""
+msgstr "Svar"
 
 #: core/blocks.py:188
 msgid "Q&A Item"
@@ -1160,7 +1160,7 @@ msgstr ""
 
 #: core/blocks.py:294
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: core/blocks.py:310
 msgid "Custom"
@@ -1572,13 +1572,6 @@ msgstr ""
 msgid "Subscriptions"
 msgstr "Prenumerationer"
 
-#, python-format
-#~ msgid "All about %(site_name)s"
-#~ msgstr "Allt om %(site_name)s"
-
-#~ msgid "Find out all the benefits of premium placement in our catalog."
-#~ msgstr "Ta reda på alla fördelar med premiumplacering i vår katalog."
-
 #: app/templates/404.html:5
 msgid "Page not found"
 msgstr "Sidan hittades inte"
@@ -1911,3 +1904,210 @@ msgstr "Cirka %(distance)s m"
 #, python-format
 msgid "About %(distance)s km"
 msgstr "Cirka %(distance)s km"
+
+# FAQ pages and editor controls
+msgid "All categories"
+msgstr "Alla kategorier"
+
+msgid "Answer details"
+msgstr "Svarsinformation"
+
+msgid "Answered at"
+msgstr "Besvarad"
+
+msgid "Blog category"
+msgstr "Bloggkategori"
+
+msgid "Catalog category"
+msgstr "Katalogkategori"
+
+msgid "Categories"
+msgstr "Kategorier"
+
+msgid "Checked at"
+msgstr "Kontrollerad"
+
+msgid "Common misconception"
+msgstr "Vanlig missuppfattning"
+
+msgid "Cover"
+msgstr "Omslagsbild"
+
+msgid "Dates"
+msgstr "Datum"
+
+msgid "Details"
+msgstr "Mer information"
+
+msgid "Enter a valid HTTPS YouTube video URL."
+msgstr "Ange en giltig HTTPS-länk till en YouTube-video."
+
+msgid "FAQ category"
+msgstr "Frågekategori"
+
+msgid "FAQ category group"
+msgstr "Grupp av frågekategorier"
+
+msgid "FAQ category groups"
+msgstr "Grupper av frågekategorier"
+
+msgid "FAQ category page"
+msgstr "Sida för frågekategori"
+
+msgid "FAQ category pages"
+msgstr "Sidor för frågekategorier"
+
+msgid "FAQ index page"
+msgstr "Huvudsida för frågor och svar"
+
+msgid "FAQ index pages"
+msgstr "Huvudsidor för frågor och svar"
+
+msgid "FAQ question page"
+msgstr "Frågesida"
+
+msgid "FAQ question pages"
+msgstr "Frågesidor"
+
+msgid "FAQ questions"
+msgstr "Frågor och svar"
+
+msgid "Important note"
+msgstr "Viktigt"
+
+msgid "Introduction"
+msgstr "Introduktion"
+
+msgid "Latest questions"
+msgstr "Senaste frågorna"
+
+msgid "Manual questions"
+msgstr "Manuellt valda frågor"
+
+msgid "Manual selection"
+msgstr "Manuellt urval"
+
+msgid "No questions published yet."
+msgstr "Inga frågor har publicerats ännu."
+
+msgid "People also ask"
+msgstr "Andra frågar också"
+
+msgid "Play video"
+msgstr "Spela upp video"
+
+msgid "Point"
+msgstr "Punkt"
+
+msgid "Popular question"
+msgstr "Populär fråga"
+
+msgid "Popular questions"
+msgstr "Populära frågor"
+
+msgid "Questions and answers"
+msgstr "Frågor och svar"
+
+msgid "Read more URL"
+msgstr "Extern länk för Läs mer"
+
+msgid "Read more and related questions"
+msgstr "Läs mer och relaterade frågor"
+
+msgid "Read more label"
+msgstr "Text för Läs mer-knappen"
+
+msgid "Read more page"
+msgstr "Sida för Läs mer"
+
+msgid "Recently checked"
+msgstr "Nyligen kontrollerade"
+
+msgid "Related questions"
+msgstr "Relaterade frågor"
+
+msgid "Selection"
+msgstr "Urval av frågor"
+
+msgid "Short answer"
+msgstr "Kort svar"
+
+msgid "Social image"
+msgstr "Bild för sociala medier"
+
+msgid "Sort order"
+msgstr "Sorteringsordning"
+
+msgid "Source name"
+msgstr "Källnamn"
+
+msgid "Sources"
+msgstr "Källor"
+
+msgid "The check date cannot precede the answer date."
+msgstr "Kontrolldatumet kan inte vara före svarsdatumet."
+
+msgid "Tip"
+msgstr "Tips"
+
+msgid "Used only for manual selection; list order is preserved."
+msgstr "Används endast vid manuellt urval; listordningen bevaras."
+
+msgid "Watch on YouTube"
+msgstr "Se på YouTube"
+
+msgid "What actually happens"
+msgstr "Så är det egentligen"
+
+msgid "What may differ"
+msgstr "Vad kan variera"
+
+msgid "Why"
+msgstr "Varför"
+
+msgid "YouTube URL"
+msgstr "YouTube-länk"
+
+msgid "live must be 0 or 1"
+msgstr "live måste vara 0 eller 1"
+
+msgid "The page is locked or in a workflow"
+msgstr "Sidan är låst eller ingår i ett arbetsflöde"
+
+msgid "Alias or scheduled pages cannot be imported"
+msgstr "Alias och sidor med schemalagd publicering kan inte importeras"
+
+msgid "Publish or discard the pending draft before importing live changes"
+msgstr ""
+"Publicera eller avvisa utkastet innan publicerade ändringar importeras"
+
+msgid "Search questions and answers"
+msgstr "Sök bland frågor och svar"
+
+msgid "Question or topic"
+msgstr "Fråga eller ämne"
+
+msgid "Enter a question or topic."
+msgstr "Ange en fråga eller ett ämne."
+
+msgid "On this topic"
+msgstr "Om detta ämne"
+
+#, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "Allt om %(site_name)s"
+
+#~ msgid "Find out all the benefits of premium placement in our catalog."
+#~ msgstr "Ta reda på alla fördelar med premiumplacering i vår katalog."
+
+#: faq/models.py
+msgid "Links and media"
+msgstr "Länkar och medier"
+
+#: faq/models.py
+msgid "Leave blank to show four automatically selected questions from the same category, ordered by check date. Select up to five questions to replace the automatic list. Clear this field to restore it."
+msgstr "Lämna fältet tomt för att automatiskt visa fyra frågor från samma kategori, sorterade efter kontrolldatum. Välj upp till fem frågor för att ersätta den automatiska listan. Töm fältet för att återställa det automatiska urvalet."
+
+#: faq/models.py
+msgid "Enter both the misconception and its correction, or leave both blank."
+msgstr "Fyll i både missuppfattningen och rättelsen, eller lämna båda fälten tomma."

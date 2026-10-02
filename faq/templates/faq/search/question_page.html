@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+<article class="search-item"><div class="search-item__content">
+  <h2 class="search-item__title"><a href="{% pageurl result %}" class="search-item__link">{{ result.title }}</a></h2>
+  <p class="search-item__description">{{ result.answer_excerpt }}</p>
+</div></article>

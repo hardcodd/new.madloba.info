@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     "ratings",
     "gallery",
     "search",
+    "faq.apps.FaqConfig",
     "site_logs.apps.SiteLogsConfig",
 ]
 

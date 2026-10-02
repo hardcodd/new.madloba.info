@@ -48,8 +48,8 @@ msgid ""
 "We use cookies to improve your experience, analyze traffic, and personalize "
 "content."
 msgstr ""
-"Käytämme evästeitä käyttökokemuksesi parantamiseen, liikenteen analysointiin "
-"ja sisällön personointiin."
+"Käytämme evästeitä käyttökokemuksesi parantamiseen, liikenteen analysointiin"
+" ja sisällön personointiin."
 
 #: app/templates/includes/cookie_consent.html:9
 msgid "Privacy Policy"
@@ -703,8 +703,8 @@ msgstr "Show"
 #: catalog/templates/catalog/organization_page.html:132
 #, python-format
 msgid ""
-"Tell the company you found their number on %(site_name)s — it motivates them "
-"to work better, knowing you can leave a review."
+"Tell the company you found their number on %(site_name)s — it motivates them"
+" to work better, knowing you can leave a review."
 msgstr ""
 "Kerro yritykselle, että löysit heidän numeronsa %(site_name)s – se motivoi "
 "heitä työskentelemään paremmin, koska he tietävät, että voit jättää "
@@ -1092,7 +1092,7 @@ msgstr ""
 
 #: core/blocks.py:186
 msgid "Answer"
-msgstr ""
+msgstr "Vastaus"
 
 #: core/blocks.py:188
 msgid "Q&A Item"
@@ -1158,7 +1158,7 @@ msgstr ""
 
 #: core/blocks.py:294
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: core/blocks.py:310
 msgid "Custom"
@@ -1570,13 +1570,6 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#, python-format
-#~ msgid "All about %(site_name)s"
-#~ msgstr "Kaikki sivustosta %(site_name)s"
-
-#~ msgid "Find out all the benefits of premium placement in our catalog."
-#~ msgstr "Tutustu kaikkiin premium-sijoittelun etuihin luettelossamme."
-
 #: app/templates/404.html:5
 msgid "Page not found"
 msgstr "Sivua ei löytynyt"
@@ -1910,3 +1903,209 @@ msgstr "Noin %(distance)s m"
 #, python-format
 msgid "About %(distance)s km"
 msgstr "Noin %(distance)s km"
+
+# FAQ pages and editor controls
+msgid "All categories"
+msgstr "Kaikki kategoriat"
+
+msgid "Answer details"
+msgstr "Vastauksen lisätiedot"
+
+msgid "Answered at"
+msgstr "Vastattu"
+
+msgid "Blog category"
+msgstr "Blogikategoria"
+
+msgid "Catalog category"
+msgstr "Luettelon kategoria"
+
+msgid "Categories"
+msgstr "Kategoriat"
+
+msgid "Checked at"
+msgstr "Tarkistettu"
+
+msgid "Common misconception"
+msgstr "Yleinen väärinkäsitys"
+
+msgid "Cover"
+msgstr "Kansikuva"
+
+msgid "Dates"
+msgstr "Päivämäärät"
+
+msgid "Details"
+msgstr "Lisätietoja"
+
+msgid "Enter a valid HTTPS YouTube video URL."
+msgstr "Anna kelvollinen HTTPS-linkki YouTube-videoon."
+
+msgid "FAQ category"
+msgstr "Kysymyskategoria"
+
+msgid "FAQ category group"
+msgstr "Kysymyskategorioiden ryhmä"
+
+msgid "FAQ category groups"
+msgstr "Kysymyskategorioiden ryhmät"
+
+msgid "FAQ category page"
+msgstr "Kysymyskategorian sivu"
+
+msgid "FAQ category pages"
+msgstr "Kysymyskategorioiden sivut"
+
+msgid "FAQ index page"
+msgstr "Kysymysten ja vastausten pääsivu"
+
+msgid "FAQ index pages"
+msgstr "Kysymysten ja vastausten pääsivut"
+
+msgid "FAQ question page"
+msgstr "Kysymyssivu"
+
+msgid "FAQ question pages"
+msgstr "Kysymyssivut"
+
+msgid "FAQ questions"
+msgstr "Kysymykset ja vastaukset"
+
+msgid "Important note"
+msgstr "Tärkeää"
+
+msgid "Introduction"
+msgstr "Johdanto"
+
+msgid "Latest questions"
+msgstr "Uusimmat kysymykset"
+
+msgid "Manual questions"
+msgstr "Käsin valitut kysymykset"
+
+msgid "Manual selection"
+msgstr "Valitse käsin"
+
+msgid "No questions published yet."
+msgstr "Kysymyksiä ei ole vielä julkaistu."
+
+msgid "People also ask"
+msgstr "Myös näitä kysytään"
+
+msgid "Play video"
+msgstr "Toista video"
+
+msgid "Point"
+msgstr "Kohta"
+
+msgid "Popular question"
+msgstr "Suosittu kysymys"
+
+msgid "Popular questions"
+msgstr "Suositut kysymykset"
+
+msgid "Questions and answers"
+msgstr "Kysymykset ja vastaukset"
+
+msgid "Read more URL"
+msgstr "Lue lisää -linkin ulkoinen osoite"
+
+msgid "Read more and related questions"
+msgstr "Lisätiedot ja liittyvät kysymykset"
+
+msgid "Read more label"
+msgstr "Lue lisää -painikkeen teksti"
+
+msgid "Read more page"
+msgstr "Lue lisää -sivu"
+
+msgid "Recently checked"
+msgstr "Äskettäin tarkistetut"
+
+msgid "Related questions"
+msgstr "Liittyvät kysymykset"
+
+msgid "Selection"
+msgstr "Kysymysten valinta"
+
+msgid "Short answer"
+msgstr "Lyhyt vastaus"
+
+msgid "Social image"
+msgstr "Sosiaalisen median kuva"
+
+msgid "Sort order"
+msgstr "Järjestys"
+
+msgid "Source name"
+msgstr "Lähteen nimi"
+
+msgid "Sources"
+msgstr "Lähteet"
+
+msgid "The check date cannot precede the answer date."
+msgstr "Tarkistuspäivä ei voi olla ennen vastauspäivää."
+
+msgid "Tip"
+msgstr "Vinkki"
+
+msgid "Used only for manual selection; list order is preserved."
+msgstr "Käytetään vain käsin valittaessa; luettelon järjestys säilyy."
+
+msgid "Watch on YouTube"
+msgstr "Katso YouTubessa"
+
+msgid "What actually happens"
+msgstr "Näin asia todella on"
+
+msgid "What may differ"
+msgstr "Mikä voi vaihdella"
+
+msgid "Why"
+msgstr "Miksi"
+
+msgid "YouTube URL"
+msgstr "YouTube-linkki"
+
+msgid "live must be 0 or 1"
+msgstr "live-arvon on oltava 0 tai 1"
+
+msgid "The page is locked or in a workflow"
+msgstr "Sivu on lukittu tai työnkulussa"
+
+msgid "Alias or scheduled pages cannot be imported"
+msgstr "Alias-sivuja tai ajastettuja sivuja ei voi tuoda"
+
+msgid "Publish or discard the pending draft before importing live changes"
+msgstr "Julkaise tai hylkää luonnos ennen julkaistavien muutosten tuontia"
+
+msgid "Search questions and answers"
+msgstr "Hae kysymyksistä ja vastauksista"
+
+msgid "Question or topic"
+msgstr "Kysymys tai aihe"
+
+msgid "Enter a question or topic."
+msgstr "Kirjoita kysymys tai aihe."
+
+msgid "On this topic"
+msgstr "Tästä aiheesta"
+
+#, python-format
+#~ msgid "All about %(site_name)s"
+#~ msgstr "Kaikki sivustosta %(site_name)s"
+
+#~ msgid "Find out all the benefits of premium placement in our catalog."
+#~ msgstr "Tutustu kaikkiin premium-sijoittelun etuihin luettelossamme."
+
+#: faq/models.py
+msgid "Links and media"
+msgstr "Linkit ja media"
+
+#: faq/models.py
+msgid "Leave blank to show four automatically selected questions from the same category, ordered by check date. Select up to five questions to replace the automatic list. Clear this field to restore it."
+msgstr "Jätä kenttä tyhjäksi, jotta neljä saman kategorian kysymystä näytetään automaattisesti tarkistuspäivän mukaan. Valitse enintään viisi kysymystä korvataksesi automaattisen listan. Tyhjennä kenttä palauttaaksesi automaattisen valinnan."
+
+#: faq/models.py
+msgid "Enter both the misconception and its correction, or leave both blank."
+msgstr "Täytä sekä väärinkäsitys että sen korjaus tai jätä molemmat kentät tyhjiksi."

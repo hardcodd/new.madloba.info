@@ -2,16 +2,24 @@ from django.db.models import Exists, OuterRef, Prefetch, prefetch_related_object
 from django.http import HttpRequest
 from django.template.response import TemplateResponse
 from wagtail.contrib.search_promotions.models import Query
-from wagtail.models import Page
+from wagtail.models import Page, Site
 
 from catalog.models import Organization, OrganizationImage
 from core.pagination import paginate
+from faq.models import FaqQuestionPage
 
 
 def search(request: HttpRequest) -> TemplateResponse:
-    """Search live pages, placing closed organizations last before pagination."""
+    """Search pages or public site FAQ questions using the shared backend."""
     raw_query = request.GET.get("query")
     search_query = raw_query.strip() if isinstance(raw_query, str) else ""
+
+    faq_search = request.GET.get("scope") == "faq"
+    pages = Page.objects.live().defer_streamfields()
+    if faq_search:
+        site = Site.find_for_request(request)
+        pages = pages.type(FaqQuestionPage).public()
+        pages = pages.in_site(site) if site is not None else pages.none()
 
     # Search
     if search_query:
@@ -21,9 +29,7 @@ def search(request: HttpRequest) -> TemplateResponse:
         # The configured PostgreSQL search backend exposes a lazy queryset.
         # Keep its relevance score and tie-breaker within each status group.
         search_results = (
-            Page.objects.live()
-            .defer_streamfields()
-            .search(search_query)
+            pages.search(search_query)
             .annotate_score("search_score")
             .get_queryset()
             .alias(search_closed=Exists(closed_organizations))
@@ -64,6 +70,7 @@ def search(request: HttpRequest) -> TemplateResponse:
         "search/search.html",
         {
             "search_query": search_query,
+            "faq_search": faq_search,
             "search_results": search_page,
         },
     )

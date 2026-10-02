@@ -1,0 +1,31 @@
+{% extends "faq/base.html" %}
+{% load i18n wagtailcore_tags %}
+{% block body_class %}template-faq-index{% endblock %}
+{% block content %}
+<div class="container faq-page">
+  <h1 class="page__title">{{ page.title }}</h1>
+  {% if page.intro %}<div class="faq-intro">{{ page.intro|richtext }}</div>{% endif %}
+  <form action="{% url 'search' %}" method="get" class="faq-search" role="search">
+    <input type="hidden" name="scope" value="faq">
+    <label for="faq-query">{% trans "Search questions and answers" %}</label>
+    <div><input id="faq-query" type="search" name="query" required><button class="btn" type="submit">{% trans "Find" %}</button></div>
+  </form>
+  {% if category_groups %}
+  <section class="faq-section" aria-labelledby="faq-categories"><h2 id="faq-categories">{% trans "Categories" %}</h2>
+    <div class="row v-gutters">
+    {% for group, categories in category_groups %}
+      <div class="col-12 faq-category-group">
+        {% if group %}<h3 class="faq-group-title">{{ group.title }}</h3>{% endif %}
+        <ul class="faq-category-grid">{% for category in categories %}<li><a class="card faq-category-card" href="{% pageurl category %}"><span class="faq-category-card__title">{{ category.title }}</span><span class="faq-category-count">{{ category.question_count }}</span></a></li>{% endfor %}</ul>
+      </div>
+    {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  {% if popular_questions %}
+  <section class="faq-section" aria-labelledby="faq-popular"><h2 id="faq-popular">{% trans "Popular questions" %}</h2>
+    {% include "faq/includes/question_list.html" with questions=popular_questions %}
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

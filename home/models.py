@@ -6,6 +6,7 @@ from wagtail.models import Page
 
 from core import blocks
 from core.panels import Panels
+from faq.blocks import FaqQuestionsBlock
 
 
 class HomePage(Panels, Page):
@@ -30,6 +31,7 @@ class HomePage(Panels, Page):
             ("html", blocks.HTMLBlock()),
             ("reviews", blocks.ReviewsBlock()),
             ("video", blocks.VideoBlock()),
+            ("faq_questions", FaqQuestionsBlock()),
         ],
         blank=True,
         verbose_name=_("Content"),
